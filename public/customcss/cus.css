@@ -1,0 +1,101 @@
+.side-admin{
+    background-color: #06441E;
+}
+a:link {text-decoration:none}
+a:visited {text-decoration:none}
+a:hover {text-decoration:underline}
+a:active {text-decoration:none}
+
+.notes li{
+    color: black;
+}
+.table-yello th {
+    background-color: #F0972D;
+    color: #F0972D;
+}
+
+
+#participants {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+  #participants td, #participants th {
+    border: 0px solid #ddd;
+    padding: 8px;
+    text-align:center;
+}
+  
+  #participants tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #participants tr:hover {background-color: #ddd;}
+  
+  #participants th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+}
+  #participants th:first-of-type{
+    border-radius:10px 0px 0px 10px;
+}
+  #participants th:last-of-type{
+    border-radius:0px 10px 10px 0px;
+}
+  
+  /* #participants td:nth-child(5){
+    color:red;
+    
+} */
+.participants-index td:nth-child(4),
+.participants-view td:nth-child(5),
+.td-red
+{
+  color:red;
+  
+}
+
+.td-yellow
+{
+  color:rgb(146, 146, 0);
+  
+}
+  
+
+  
+.done {
+    
+    border-radius: 5px;
+    background-color: Palegreen;
+    padding:9px;
+    width:120px;
+    margin: 0px auto 0px;
+    color: darkgreen;
+}
+  
+.undone {
+    border-radius: 5px;
+    background-color: pink;
+    padding:9px;
+    width:120px;
+    margin: 0px auto 0px;
+}
+.unregister {
+  border-radius: 5px;
+  background-color: rgb(236, 255, 110);
+  padding:9px;
+  width:120px;
+  margin: 0px auto 0px;
+}
+  
+.done,.undone,.unregister{
+    font-weight: bold;
+}
+
+
+
+/* nav css */
+
+

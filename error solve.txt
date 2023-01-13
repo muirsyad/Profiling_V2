@@ -1,0 +1,9 @@
+If default value no
+check models fillable
+
+if form not submit please check
+	form name
+	csrf token
+	model fillable
+	get method
+
