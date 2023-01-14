@@ -210,18 +210,18 @@ class questionsController extends Controller
         $high = 0;
         $highV = "";
         $val = array();
-        array_push($val, $record->D,$record->I, $record->S,$record->C);
+        array_push($val, $record->D, $record->I, $record->S, $record->C);
         $value = $this->splot($val);
-       
+
         // $plot = explode(",", $record->plot);
-        
+
         $max = max($value);
-        
-        
+
+
         $b_val = $this->max($value, $max);
-       
-        
-        
+
+
+
 
         // if ($record->D > $high) {
         //     $high = $record->D;
@@ -421,12 +421,12 @@ class questionsController extends Controller
 
         //dd($record->D,$record->I,$record->S,$record->C,$high,$highV);
         //dd(auth()->user()->id);
-        
+
         $darray = $value;
         // $integerIDs = array_map('intval', $darray);
         //sort
         $sorted = $this->vsort($darray);
-        
+
         // dd($sorted, "sorted");
 
         $deptm = auth()->user()->department_id;
@@ -440,16 +440,16 @@ class questionsController extends Controller
 
 
         //update user status
-        $status = User::where('id',$record->user_id)->update(['status' => 1]);
-       $all = DB::table('users')->where('client_id', $cid)->count();
+        $status = User::where('id', $record->user_id)->update(['status' => 1]);
+        $all = DB::table('users')->where('client_id', $cid)->count();
 
-       $allanswer = DB::table('answer_records')->where('client_id', $cid)->count();
+        $allanswer = DB::table('answer_records')->where('client_id', $cid)->count();
         // $allanswer = 4;
-       $percentage = $allanswer/$all*100;
-    //    $percentage = 100;
-       $percentage = intval($percentage);
+        $percentage = $allanswer / $all * 100;
+        //    $percentage = 100;
+        $percentage = intval($percentage);
 
-    //    dd($darray,$b_val);
+        //    dd($darray,$b_val);
 
 
 
@@ -724,12 +724,12 @@ class questionsController extends Controller
 
         //qury get value depat
 
-        $teamChart = $this->bydepart($join->department_id,'department_id');
+        $teamChart = $this->bydepart($join->department_id, 'department_id');
         $teamvalue = $teamChart;
 
         $teamChart = $this->getURLchart($teamChart);
 
-        $companyChart = $this->bydepart($join->client_id,'client_id');
+        $companyChart = $this->bydepart($join->client_id, 'client_id');
         $companyvalue = $companyChart;
         $companyChart = $this->getURLchart($companyChart);
 
@@ -746,7 +746,7 @@ class questionsController extends Controller
         $sorted = $this->bsort($integerIDs);
         //your disc
         $ystyle = array();
-        array_push($ystyle,$ans->D,$ans->I,$ans->S,$ans->C);
+        array_push($ystyle, $ans->D, $ans->I, $ans->S, $ans->C);
 
 
         //$type = gettype($integerIDs);
@@ -1049,12 +1049,12 @@ class questionsController extends Controller
         //qury get value depat
 
         // $personchart = $this->getURLchart();
-        $teamChart = $this->bydepart($join->department_id,'department_id');
+        $teamChart = $this->bydepart($join->department_id, 'department_id');
         $teamvalue = $teamChart;
 
         $teamChart = $this->getURLchart($teamChart);
 
-        $companyChart = $this->bydepart($join->client_id,'client_id');
+        $companyChart = $this->bydepart($join->client_id, 'client_id');
         $companyvalue = $companyChart;
         $companyChart = $this->getURLchart($companyChart);
 
@@ -1069,7 +1069,7 @@ class questionsController extends Controller
         $sorted = $this->bsort($integerIDs);
         //your disc
         $ystyle = array();
-        array_push($ystyle,$ans->D,$ans->I,$ans->S,$ans->C);
+        array_push($ystyle, $ans->D, $ans->I, $ans->S, $ans->C);
 
 
 
@@ -1302,7 +1302,7 @@ class questionsController extends Controller
 
 
 
-        $bar = $this->barchart(0,0);
+        $bar = $this->barchart(0, 0);
 
         $line = $qc->getUrl();
 
@@ -1317,11 +1317,11 @@ class questionsController extends Controller
         //technical report value
         //presonal style
         $style_personal = array();
-        array_push($style_personal,$ans->D,$ans->I,$ans->S,$ans->C);
+        array_push($style_personal, $ans->D, $ans->I, $ans->S, $ans->C);
         $personalchart = $this->getURLchart($style_personal);
 
         $dept = auth()->user()->department_id;
-        $same = $this->same($dept,$b_val);
+        $same = $this->same($dept, $b_val);
         $same = intval($same);
 
 
@@ -1407,36 +1407,75 @@ class questionsController extends Controller
             ->where('users.id', $auth)
             ->first();
         //template query
-        $template = DB::table('templates_reports')->where('Behaviour_type',$ans->High)->first();
+        $template = DB::table('templates_reports')->where('Behaviour_type', $ans->High)->first();
         $strength = $template->Strength;
         $strength = explode(",", $strength);
         $motivate = $template->Wmotivate;
         $motivate = explode(".", $motivate);
         $improve = $template->A_improve;
         $improve = explode(".", $improve);
+        $High = $ans->High;
+        $keywords = $template->keywords;
+        $keywords = explode(",", $keywords);
+
         
+       
+        $array_plot = explode(",",$ans->plot);
+        $array_plot = array_map('intval', $array_plot);
+        $D_value = $array_plot[0];
+        $D_value = $this->compareHL($D_value,"D");
+
+        $I_value = $array_plot[1];
+        $S_value = $array_plot[2];
+        $C_value = $array_plot[3];
+        dd($ans,$array_plot,$D_value);
+
+
+
+
+        // dd($join);
+
+
+
+
         //qury get value depat
-        
+
+
         // $personchart = $this->getURLchart();
-        $teamChart = $this->bydepart($join->department_id,'department_id');
+        $personalchart = [];
+        array_push($personalchart, $ans->D, $ans->I,$ans->S,$ans->C);
+        $personalchart = $this->getURLchart($personalchart);
+        
+
+        
+        
+
+        $teamChart = $this->bydepart($join->department_id, 'department_id');
         $teamvalue = $teamChart;
+        
+
 
         $teamChart = $this->getURLchart($teamChart);
 
-        $companyChart = $this->bydepart($join->client_id,'client_id');
+        $companyChart = $this->bydepart($join->client_id, 'client_id');
         $companyvalue = $companyChart;
         $companyChart = $this->getURLchart($companyChart);
 
+        
         $u_among = $this->comteam($join->id);
         $u_among = $this->percentageamong($u_among);
 
-       
+
         $pdf = pdf::loadView('PDF.ProfilingIndividu', [
+            'personalchart' =>$personalchart,
             'teamChart' => $teamChart,
-            'companyChart' =>$companyChart,
-            'strength' =>$strength,
-            'motivate' =>$motivate,
-            'improve'=> $improve,
+            'companyChart' => $companyChart,
+            'strength' => $strength,
+            'motivate' => $motivate,
+            'improve' => $improve,
+            'High' => $High,
+            'keywords' => $keywords,
+            'users' => $join,
 
 
         ]);
@@ -1476,12 +1515,12 @@ class questionsController extends Controller
         //qury get value depat
 
         // $personchart = $this->getURLchart();
-        $teamChart = $this->bydepart($join->department_id,'department_id');
+        $teamChart = $this->bydepart($join->department_id, 'department_id');
         $teamvalue = $teamChart;
 
         $teamChart = $this->getURLchart($teamChart);
 
-        $companyChart = $this->bydepart($join->client_id,'client_id');
+        $companyChart = $this->bydepart($join->client_id, 'client_id');
         $companyvalue = $companyChart;
         $companyChart = $this->getURLchart($companyChart);
 
@@ -1496,7 +1535,7 @@ class questionsController extends Controller
         $sorted = $this->bsort($integerIDs);
         //your disc
         $ystyle = array();
-        array_push($ystyle,$ans->D,$ans->I,$ans->S,$ans->C);
+        array_push($ystyle, $ans->D, $ans->I, $ans->S, $ans->C);
 
 
 
@@ -1729,7 +1768,7 @@ class questionsController extends Controller
 
 
 
-        $bar = $this->barchart(0,0);
+        $bar = $this->barchart(0, 0);
 
         $line = $qc->getUrl();
 
@@ -1744,11 +1783,11 @@ class questionsController extends Controller
         //technical report value
         //presonal style
         $style_personal = array();
-        array_push($style_personal,$ans->D,$ans->I,$ans->S,$ans->C);
+        array_push($style_personal, $ans->D, $ans->I, $ans->S, $ans->C);
         $personalchart = $this->getURLchart($style_personal);
 
         $dept = auth()->user()->department_id;
-        $same = $this->same($dept,$b_val);
+        $same = $this->same($dept, $b_val);
         $same = intval($same);
 
 
@@ -1840,12 +1879,12 @@ class questionsController extends Controller
         //qury get value depat
 
         // $personchart = $this->getURLchart();
-        $teamChart = $this->bydepart($join->department_id,'department_id');
+        $teamChart = $this->bydepart($join->department_id, 'department_id');
         $teamvalue = $teamChart;
 
         $teamChart = $this->getURLchart($teamChart);
 
-        $companyChart = $this->bydepart($join->client_id,'client_id');
+        $companyChart = $this->bydepart($join->client_id, 'client_id');
         $companyvalue = $companyChart;
         $companyChart = $this->getURLchart($companyChart);
 
@@ -1860,7 +1899,7 @@ class questionsController extends Controller
         $sorted = $this->bsort($integerIDs);
         //your disc
         $ystyle = array();
-        array_push($ystyle,$ans->D,$ans->I,$ans->S,$ans->C);
+        array_push($ystyle, $ans->D, $ans->I, $ans->S, $ans->C);
 
 
 
@@ -2093,7 +2132,7 @@ class questionsController extends Controller
 
 
 
-        $bar = $this->barchart(0,0);
+        $bar = $this->barchart(0, 0);
 
         $line = $qc->getUrl();
 
@@ -2108,14 +2147,14 @@ class questionsController extends Controller
         //technical report value
         //presonal style
         $style_personal = array();
-        array_push($style_personal,$ans->D,$ans->I,$ans->S,$ans->C);
-        
+        array_push($style_personal, $ans->D, $ans->I, $ans->S, $ans->C);
+
         // $personalchart = $this->getURLchart($style_personal);
-        $personalchart = $this->getURLchart2($style_personal,'radar');
-        
+        $personalchart = $this->getURLchart2($style_personal, 'radar');
+
 
         $dept = auth()->user()->department_id;
-        $same = $this->same($dept,$b_val);
+        $same = $this->same($dept, $b_val);
         $same = intval($same);
 
 
@@ -2247,7 +2286,7 @@ class questionsController extends Controller
 
     public function max($plot, $max)
     {
-        
+
         $b_val = "";
         if ($plot[0] >= $max) {
             $b_val = 'D';
@@ -2275,20 +2314,21 @@ class questionsController extends Controller
         }
         return $hl;
     }
-    public function same($dept,$value){
+    public function same($dept, $value)
+    {
         $qdept = DB::table('answer_records')
-        ->where('department_id',$dept)
-        ->get();
+            ->where('department_id', $dept)
+            ->get();
         $count = DB::table('answer_records')
-        ->where('department_id',$dept)
-        ->count();
-        $sum=0;
-        foreach ( $qdept as $dept){
-            if($dept->High === $value){
-                $sum = $sum+1;
+            ->where('department_id', $dept)
+            ->count();
+        $sum = 0;
+        foreach ($qdept as $dept) {
+            if ($dept->High === $value) {
+                $sum = $sum + 1;
             }
         }
-        $all = $sum/$count*100;
+        $all = $sum / $count * 100;
         return $all;
     }
 
@@ -2376,7 +2416,7 @@ class questionsController extends Controller
         // }
         $max = max($bsort);
         $bsort = $this->removearr($bsort, $max);
-        
+
         $scnd = max($bsort);
         $bsort = $this->removearr($bsort, $scnd);
         $third = max($bsort);
@@ -2384,7 +2424,7 @@ class questionsController extends Controller
         $forth = max($bsort);
         $bsort = $this->removearr($bsort, $scnd);
         //$bsort=$this->removearr($bsort,$scnd);
-        
+
 
         //$scnd=max($bsort);
 
@@ -2394,7 +2434,7 @@ class questionsController extends Controller
         array_push($arrbsort, $max, $scnd, $third, $forth);
         //temp storage value array that been sorted
         $temparr = $arrbsort;
-       
+
 
 
         $copybs = $arrbsort;
@@ -2434,7 +2474,7 @@ class questionsController extends Controller
         $maxlow = array();
         array_push($maxlow, $sortmax, $lowsort);
         //dd($arrbsort, $arrbsort[3],$sortmax,$lowsort,$copybs,$maxlow);
-        
+
         return $maxlow;
     }
     public function tpdf()
@@ -2886,8 +2926,9 @@ class questionsController extends Controller
         //dd('Genereated url : ',$url);
         return $url;
     }
-    public function Linequick($name,$value,$width,$height)
+    public function Linequick($name, $value, $width, $height)
     {
+        
 
         $qc = new QuickChart(array(
             'width' => $width,
@@ -2904,7 +2945,7 @@ class questionsController extends Controller
               }]
             }
           }');
-          $qc->setConfig("{
+        $qc->setConfig("{
             type: 'line',
             data: {
                 labels: ['','D', 'I', 'S', 'C',''],
@@ -2923,7 +2964,7 @@ class questionsController extends Controller
                     fill: false,
                     backgroundColor: 'rgb(54, 162, 235)',
                     borderColor: 'rgb(54, 162, 235)',
-                    data: [null, 12,13,24,33,null],
+                    data: [null, '$value[0]','$value[1]','$value[2]','$value[3]',null],
                     borderWidth: 4,
                     pointStyle: 'circle',
                    pointRadius: 2,
@@ -2946,7 +2987,7 @@ class questionsController extends Controller
                             beginAtZero: true,
                             display: false,
                             min: 0,
-                            max: 40,
+                            max: 50,
                         },
                         gridLines:{
                             display: false,
@@ -2971,15 +3012,16 @@ class questionsController extends Controller
         //dd('Genereated url : ',$url);
         return $url;
     }
-    public function barchart($width, $height){
+    public function barchart($width, $height)
+    {
 
         $qc = new QuickChart(array(
-            'width'=> 500,
-            'height'=> 300,
-            'version'> '2',
-          ));
+            'width' => 500,
+            'height' => 300,
+            'version' > '2',
+        ));
 
-          $config = <<<EOD
+        $config = <<<EOD
           {
             "type": "horizontalBar",
             "data": {
@@ -3025,21 +3067,22 @@ class questionsController extends Controller
           }
           EOD;
 
-          // Chart config can be set as a string or as a nested array
-          $qc->setConfig($config);
+        // Chart config can be set as a string or as a nested array
+        $qc->setConfig($config);
 
-          // Print the chart URL
-          $link = $qc->getUrl();
-          return $link;
+        // Print the chart URL
+        $link = $qc->getUrl();
+        return $link;
     }
-    public function barchart2($width, $height){
+    public function barchart2($width, $height)
+    {
         $qc = new QuickChart(array(
-            'width'=> $width,
-            'height'=> $height,
-            'version'=> '2',
-          ));
+            'width' => $width,
+            'height' => $height,
+            'version' => '2',
+        ));
 
-          $config = <<<EOD
+        $config = <<<EOD
           {
             "type": "horizontalBar",
             "data": {
@@ -3313,19 +3356,20 @@ class questionsController extends Controller
           }
           EOD;
 
-          // Chart config can be set as a string or as a nested array
-          $qc->setConfig($config);
+        // Chart config can be set as a string or as a nested array
+        $qc->setConfig($config);
 
-          // Print the chart URL
-          return $qc->getUrl();
+        // Print the chart URL
+        return $qc->getUrl();
     }
-    public function getchart($type,$value,$width,$height){
+    public function getchart($type, $value, $width, $height)
+    {
         $qc = new QuickChart(array(
             'width' => $width,
             'height' => $height,
             'version' => '3',
         ));
-          $qc->setConfig("{
+        $qc->setConfig("{
             type: 'radar',
             data: {
                 labels: [
@@ -3372,7 +3416,7 @@ class questionsController extends Controller
 
         $url = $qc->getUrl();
         //dd('Genereated url : ',$url);
-        
+
         return $url;
     }
     public function persent($num, $total)
@@ -3445,37 +3489,37 @@ class questionsController extends Controller
             ->get();
         return $sql;
     }
-    public function qurjoin($style,$client){
-        $style =DB::table('answer_records')
-        ->join('clients', 'answer_records.client_id', '=', 'clients.id')
-        ->join('users', 'answer_records.user_id', '=', 'users.id')
-        ->join('departments','answer_records.department_id', '=', 'departments.id')
-        ->select('answer_records.*', 'clients.client', 'users.department_id', 'users.name','departments.department')
-        ->orderBy('answer_records.department_id', 'asc')
-        ->where('answer_records.client_id', $client)
-        ->where('High', $style)
+    public function qurjoin($style, $client)
+    {
+        $style = DB::table('answer_records')
+            ->join('clients', 'answer_records.client_id', '=', 'clients.id')
+            ->join('users', 'answer_records.user_id', '=', 'users.id')
+            ->join('departments', 'answer_records.department_id', '=', 'departments.id')
+            ->select('answer_records.*', 'clients.client', 'users.department_id', 'users.name', 'departments.department')
+            ->orderBy('answer_records.department_id', 'asc')
+            ->where('answer_records.client_id', $client)
+            ->where('High', $style)
 
-        // ->where('users.department_id', 1)
-        ->get();
+            // ->where('users.department_id', 1)
+            ->get();
 
         return $style;
-
     }
-    public function qurjoinlow($style,$client){
-        $style =DB::table('answer_records')
-        ->join('clients', 'answer_records.client_id', '=', 'clients.id')
-        ->join('users', 'answer_records.user_id', '=', 'users.id')
-        ->join('departments','answer_records.department_id', '=', 'departments.id')
-        ->select('answer_records.*', 'clients.client', 'users.department_id', 'users.name','departments.department')
-        ->orderBy('answer_records.department_id', 'asc')
-        ->where('answer_records.client_id', $client)
-        ->where('Low', $style)
+    public function qurjoinlow($style, $client)
+    {
+        $style = DB::table('answer_records')
+            ->join('clients', 'answer_records.client_id', '=', 'clients.id')
+            ->join('users', 'answer_records.user_id', '=', 'users.id')
+            ->join('departments', 'answer_records.department_id', '=', 'departments.id')
+            ->select('answer_records.*', 'clients.client', 'users.department_id', 'users.name', 'departments.department')
+            ->orderBy('answer_records.department_id', 'asc')
+            ->where('answer_records.client_id', $client)
+            ->where('Low', $style)
 
-        // ->where('users.department_id', 1)
-        ->get();
+            // ->where('users.department_id', 1)
+            ->get();
 
         return $style;
-
     }
     public function Gpdf(Clients $clients)
     {
@@ -3490,25 +3534,25 @@ class questionsController extends Controller
             // ->where('users.department_id', 1)
             ->get();
         $joinall = DB::table('answer_records')
-        ->join('clients', 'answer_records.client_id', '=', 'clients.id')
-        ->join('users', 'answer_records.user_id', '=', 'users.id')
-        ->join('departments','answer_records.department_id', '=', 'departments.id')
-        ->select('answer_records.*', 'clients.client', 'users.department_id', 'users.name','departments.department')
-        ->orderBy('answer_records.department_id', 'asc')
-        ->where('answer_records.client_id', $clients->id)
+            ->join('clients', 'answer_records.client_id', '=', 'clients.id')
+            ->join('users', 'answer_records.user_id', '=', 'users.id')
+            ->join('departments', 'answer_records.department_id', '=', 'departments.id')
+            ->select('answer_records.*', 'clients.client', 'users.department_id', 'users.name', 'departments.department')
+            ->orderBy('answer_records.department_id', 'asc')
+            ->where('answer_records.client_id', $clients->id)
             // ->where('users.department_id', 1)
-        ->get();
+            ->get();
         //dd($joinall);
 
-        $djoin = $this->qurjoin('D',$clients->id);
-        $djoinlow=$this->qurjoinlow('D',$clients->id);
+        $djoin = $this->qurjoin('D', $clients->id);
+        $djoinlow = $this->qurjoinlow('D', $clients->id);
 
-        $ijoin = $this->qurjoin('I',$clients->id);
-        $ijoinlow=$this->qurjoinlow('I',$clients->id);
-        $sjoin = $this->qurjoin('S',$clients->id);
-        $sjoinlow=$this->qurjoinlow('S',$clients->id);
-        $cjoin = $this->qurjoin('C',$clients->id);
-        $cjoinlow=$this->qurjoinlow('C',$clients->id);
+        $ijoin = $this->qurjoin('I', $clients->id);
+        $ijoinlow = $this->qurjoinlow('I', $clients->id);
+        $sjoin = $this->qurjoin('S', $clients->id);
+        $sjoinlow = $this->qurjoinlow('S', $clients->id);
+        $cjoin = $this->qurjoin('C', $clients->id);
+        $cjoinlow = $this->qurjoinlow('C', $clients->id);
         //dd($djoin,$ijoin,$sjoin,$cjoin);
 
         //dd($djoin,$djoinlow);
@@ -3657,126 +3701,125 @@ class questionsController extends Controller
             'ijoinlow' => $ijoinlow,
             'sjoinlow' => $sjoinlow,
             'cjoinlow' => $cjoinlow,
-            'joinall' =>$joinall,
+            'joinall' => $joinall,
             'sum' => $totalval,
         ]);
         return $pdf->stream('DiSC Report.pdf');
     }
 
     //To get averange value from style
-    public function bydepart($d_id,$qury){
+    public function bydepart($d_id, $qury)
+    {
 
-        $sumD=0;
-        $sumi=0;
-        $sumS=0;
-        $sumC=0;
+        $sumD = 0;
+        $sumi = 0;
+        $sumS = 0;
+        $sumC = 0;
 
         $qdept = DB::table('answer_records')
-        ->where($qury,$d_id)
-        ->get();
+            ->where($qury, $d_id)
+            ->get();
 
-        $count= count($qdept);
-        foreach($qdept as $dept){
+        $count = count($qdept);
+        foreach ($qdept as $dept) {
             $user = DB::table('answer_records')
-            ->where('user_id',$dept->user_id)
-            ->first();
+                ->where('user_id', $dept->user_id)
+                ->first();
 
-            $sumD = $sumD+$user->D;
-            $sumi = $sumi+$user->I;
-            $sumS = $sumS+$user->S;
-            $sumC = $sumC+$user->C;
+            $sumD = $sumD + $user->D;
+            $sumi = $sumi + $user->I;
+            $sumS = $sumS + $user->S;
+            $sumC = $sumC + $user->C;
 
 
-        $query = $this->chartvalue($qdept);
+            $query = $this->chartvalue($qdept);
 
-        //dd($query);
+            //dd($query);
         }
         //average
-        $sumD = intval(round($sumD/$count));
-        $sumi = intval(round($sumi/$count));
-        $sumS = intval(round($sumS/$count));
-        $sumC = intval(round($sumC/$count));
+        $sumD = intval(round($sumD / $count));
+        $sumi = intval(round($sumi / $count));
+        $sumS = intval(round($sumS / $count));
+        $sumC = intval(round($sumC / $count));
 
         //dd($sumD,$sumi,$sumS,$sumC);
-        $teamvalue=array();
-        array_push($teamvalue,$sumD,$sumi,$sumS,$sumC);
+        $teamvalue = array();
+        array_push($teamvalue, $sumD, $sumi, $sumS, $sumC);
 
         // $plot = $this->splot($sumD,$sumi,$sumS,$sumC);
         // //dd($plot);
         // $teamUrl = $this->Linequick("team" ,$plot,150,200);
 
         return $teamvalue;
-
-
     }
 
     //get URL For Chart
-    public function getURLchart($plot){
+    public function getURLchart($plot)
+    {
         $url = $this->splot($plot);
-        $url = $this->Linequick("team" ,$url,180,390);
+        $url = $this->Linequick("team", $url, 150, 380);
         return $url;
     }
-    public function getURLchart2($plot,$type){
-        
-        $url = $this->splot($plot);
-        $url = $this->getchart($type,$url,438,376);
-        return $url;
+    public function getURLchart2($plot, $type)
+    {
 
+        $url = $this->splot($plot);
+        $url = $this->getchart($type, $url, 438, 376);
+        return $url;
     }
-    public function comteam($uid){
-        $sumD=0;
-        $sumi=0;
-        $sumS=0;
-        $sumC=0;
+    public function comteam($uid)
+    {
+        $sumD = 0;
+        $sumi = 0;
+        $sumS = 0;
+        $sumC = 0;
 
         $query = DB::table('answer_records')
-        ->where('user_id',$uid)
-        ->first();
+            ->where('user_id', $uid)
+            ->first();
         $high = $query->High;
 
         $dept = $this->seldept($query->department_id);
 
         $count = count($dept);
-        foreach($dept as $dept){
+        foreach ($dept as $dept) {
             $High = $dept->High;
-            switch($High){
+            switch ($High) {
                 case 'D':
-                    $sumD=$sumD+1;
+                    $sumD = $sumD + 1;
                     break;
                 case 'I':
-                    $sumi=$sumi+1;
+                    $sumi = $sumi + 1;
                     break;
                 case 'S':
-                    $sumS=$sumS+1;
+                    $sumS = $sumS + 1;
                     break;
                 case 'C':
-                    $sumC=$sumC+1;
+                    $sumC = $sumC + 1;
                     break;
                 default:
                     dd("some error occured");
             }
             $value = array();
-            array_push($value,$sumD,$sumi,$sumS,$sumC);
-
-
-
+            array_push($value, $sumD, $sumi, $sumS, $sumC);
         }
 
 
         return $value;
-
     }
-    public function percentageamong($value){
-
+    public function percentageamong($value)
+    {
     }
-    public function seldept($did){
+    public function seldept($did)
+    {
         $dept = DB::table('answer_records')
-        ->where('department_id',$did)
-        ->get();
+            ->where('department_id', $did)
+            ->get();
         return $dept;
     }
 
-    public function splot($value){
+    public function splot($value)
+    {
 
         $plot = array();
 
@@ -3959,18 +4002,21 @@ class questionsController extends Controller
 
     // SQL FUNCTION
     // SELECT DEPARTMENT
-    public function sel_dep($did){
-        $query= DB::table('answer_records')
-        ->where('department_id',$did)
-        ->get();
+    public function sel_dep($did)
+    {
+        $query = DB::table('answer_records')
+            ->where('department_id', $did)
+            ->get();
     }
-    public function sel_cel($cid){
-        $query= DB::table('answer_records')
-        ->where('client_id',$cid)
-        ->get();
+    public function sel_cel($cid)
+    {
+        $query = DB::table('answer_records')
+            ->where('client_id', $cid)
+            ->get();
     }
 
-    public function fetchcomments(){
+    public function fetchcomments()
+    {
 
         // $progress = DB::table('progress')->first();
         $cid = auth()->user()->client_id;
@@ -3981,19 +4027,31 @@ class questionsController extends Controller
 
         $all = DB::table('users')->where('client_id', $cid)->count();
 
-       $allanswer = DB::table('answer_records')->where('client_id', $cid)->count();
+        $allanswer = DB::table('answer_records')->where('client_id', $cid)->count();
         // $allanswer = 4;
-       $percentage = $allanswer/$all*100;
-    //    $percentage = 100;
-       $percentage = intval($percentage);
-    //
-    //    dd($percentage);
+        $percentage = $allanswer / $all * 100;
+        //    $percentage = 100;
+        $percentage = intval($percentage);
+        //
+        //    dd($percentage);
 
-    //     return $percentage;
+        //     return $percentage;
 
         return response()->json([
-            '0' =>$percentage,
+            '0' => $percentage,
         ]);
+    }
 
+    public function compareHL($value,$style){
+        
+        if($value > 22){
+            $value ="High";
+        }
+        else{
+            $value = "Low";
+        }
+
+        
+        return $value;
     }
 }

@@ -20,7 +20,7 @@
             margin: 0;
             padding: 0; // you can set margin and padding 0
         }
-
+        
         .page-break {
             page-break-after: always;
         }
@@ -374,13 +374,43 @@
         .size-18{
             font-size: 24px
         }
+        .name{
+            position: absolute;
+            top: 80%;
+            left: 4%;
+        }
+        .department{
+            position: absolute;
+            top: 82%;
+            left: 4%;
+        }
+        .big-text{
+            font-size: 50px;
+            font-weight:900;
+        }
 
+        .sm-text {
+            font-size: 18px;
+        }
+
+        .smm-text {
+            font-size: 12px;
+        }
+        .text-bold{
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+        .text-bolder{
+            font-weight: bolder
+        }
 
 
     </style>
     {{-- page 1     --}}
     <div class="page-break">
         <img src="{{ public_path('assets/img/report/1.png') }}" width="800px" height="1100px" >
+        <span class="name text-bolder" style="color: #05572f">{{$users->name}}</span>
+        <span class="department text-bolder" style="color: #05572f">{{$users->department}}</span>
         
     </div>
 
