@@ -173,7 +173,7 @@
 
     <div class="top-right">
         <ul>
-            @foreach ($motivate as $i => $motivate)
+            @foreach ($motivates as $i => $motivate)
                 <li class="sm-text">{{ $motivate }}</li>
                 @if ($i > 0)
                 @break
@@ -184,7 +184,7 @@
 
 <div class="bot-left">
     <ul>
-        @foreach ($improve as $i => $improve)
+        @foreach ($improves as $i => $improve)
             <li class="sm-text">{{ $improve }}</li>
             @if ($i > 0)
             @break
@@ -197,42 +197,34 @@
 <img src="{{ public_path('assets/img/report/3.png') }}" width="800px" height="1122px">
 <div class="row-1">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($Dvalues as $d)
+    <li>{{$d}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-2">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($Ivalues as $I)
+    <li>{{$I}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-3">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($Svalues as $S)
+    <li>{{$S}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-4">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($Cvalues as $C)
+    <li>{{$C}}</li>
+
+    @endforeach
 </ul>
 </div>
 
@@ -241,42 +233,34 @@
 <img src="{{ public_path('assets/img/report/4.png') }}" width="800px" height="1122px">
 <div class="row-1">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($motivates as  $motivate)
+    <li>{{$motivate}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-2">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($bests as $best)
+    <li>{{$best}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-3">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($demotives as $demotive)
+    <li>{{$demotive}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-4">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($worsts as $worst)
+    <li>{{$worst}}</li>
+
+    @endforeach
 </ul>
 </div>
 </div>
@@ -285,42 +269,34 @@
 <img src="{{ public_path('assets/img/report/5.png') }}" width="800px" height="1122px">
 <div class="row-1">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($improves as $improve)
+    <li>{{$improve}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-2">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($betters as $better)
+    <li>{{$better}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-3">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($avoids as $avoid)
+    <li>{{$avoid}}</li>
+
+    @endforeach
 </ul>
 </div>
 <div class="row-4">
 <ul class="smm-text">
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>t took him a month to finish the meal.</li>
-    <li>The light that burns twice as bright burns half as long.</li>
-    <li>Eating eggs on Thursday for choir practice was recommended.</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
-    <li>The newly planted trees were held up by wooden frames in hopes they</li>
+    @foreach ($environments as $environment)
+    <li>{{$environment}}</li>
+
+    @endforeach
 </ul>
 </div>
 </div>

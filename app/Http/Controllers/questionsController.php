@@ -1410,25 +1410,72 @@ class questionsController extends Controller
         $template = DB::table('templates_reports')->where('Behaviour_type', $ans->High)->first();
         $strength = $template->Strength;
         $strength = explode(",", $strength);
+
+        //fetch motivation management
         $motivate = $template->Wmotivate;
         $motivate = explode(".", $motivate);
+        $best = $template->Wbest;
+        $best = explode(".", $best);
+        $demotive = $template->Wdemotive;
+        $demotive = explode(".", $demotive);
+        $worst = $template->Wworst;
+        $worst = explode(".", $worst);
+
+        //dd($motivate,$best,$demotive,$worst);
+
+        //fetch perfoemance management
         $improve = $template->A_improve;
         $improve = explode(".", $improve);
+        $better = $template->O_better;
+        $better = explode(".", $better);
+        $avoid = $template->O_avoid;
+        $avoid = explode(".", $avoid);
+        $environment = $template->Y_environment;
+        $environment = explode(".", $environment);
+
+        //dd($improve,$better,$avoid,$environment);
+        
         $High = $ans->High;
         $keywords = $template->keywords;
         $keywords = explode(",", $keywords);
+
+
+        //fetch motivation
+
 
         
        
         $array_plot = explode(",",$ans->plot);
         $array_plot = array_map('intval', $array_plot);
+
+        //assign high or low the style
         $D_value = $array_plot[0];
         $D_value = $this->compareHL($D_value,"D");
 
         $I_value = $array_plot[1];
+        $I_value = $this->compareHL($I_value,"I");
         $S_value = $array_plot[2];
+        $S_value = $this->compareHL($S_value,"S");
         $C_value = $array_plot[3];
-        dd($ans,$array_plot,$D_value);
+        $C_value = $this->compareHL($C_value,"C");
+        
+
+        $D_value = $this->styleTemplate("D",$D_value);
+        $I_value = $this->styleTemplate("I",$I_value);
+        $S_value = $this->styleTemplate("S",$S_value);
+        $C_value = $this->styleTemplate("C",$C_value);
+        //assign final value into array so can easily display this for style template high or low
+        $D_value = explode(".",$D_value);
+        $I_value = explode(".",$I_value);
+        $S_value = explode(".",$S_value);
+        $C_value = explode(".",$C_value);
+        //dd($ans,$array_plot,$D_value,$I_value,$S_value,$C_value);
+
+        
+        // dd($High);
+        
+
+
 
 
 
@@ -1471,11 +1518,21 @@ class questionsController extends Controller
             'teamChart' => $teamChart,
             'companyChart' => $companyChart,
             'strength' => $strength,
-            'motivate' => $motivate,
-            'improve' => $improve,
+            'motivates' => $motivate,
+            'bests' => $best,
+            'demotives'=>$demotive,
+            'worsts' => $worst,
+            'improves' => $improve,
+            'betters' => $better,
+            'avoids' => $avoid,
+            'environments' => $environment,
             'High' => $High,
             'keywords' => $keywords,
             'users' => $join,
+            'Dvalues' => $D_value,
+            'Ivalues' => $I_value,
+            'Svalues' => $S_value,
+            'Cvalues' => $C_value,
 
 
         ]);
@@ -4054,4 +4111,26 @@ class questionsController extends Controller
         
         return $value;
     }
+
+    public function styleTemplate($style,$rank){
+       switch ($rank) {
+        case 'High':
+            $qury = DB::table('templates_reports')->where('Behaviour_type',$style)->first();
+            $template = $qury->H_temp;
+            break;
+
+        case 'Low':
+            $qury = DB::table('templates_reports')->where('Behaviour_type',$style)->first();
+            $template = $qury->H_temp;
+            break;
+        
+        default:
+            dd("error");
+            break;
+       }
+
+       return $template;
+    }
+
+    
 }

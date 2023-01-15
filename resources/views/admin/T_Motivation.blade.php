@@ -50,7 +50,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="100"  type="text" value="{{ $motivate }}" class="form-control" id="keyD"
+                            <input maxlength="110"  type="text" value="{{ $motivate }}" class="form-control" id="keyD"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -72,7 +72,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -94,7 +94,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -116,7 +116,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -159,7 +159,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -181,7 +181,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -203,7 +203,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -225,7 +225,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -268,7 +268,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]}">
                         </div>
                         @endforeach
@@ -290,7 +290,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -312,7 +312,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input  maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <input  maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -334,7 +334,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -377,7 +377,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -399,7 +399,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -421,7 +421,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -443,7 +443,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach

@@ -1066,120 +1066,61 @@ function stylevar(style) {
 
 //new function
 
-function word_count(att,style) {
-    for (let i = 1; i < 5; i++) {
-        console.log('#'+style+'_'+att+i);
-    $('#'+style+'_'+att+i).on('keyup', function () {
+// function word_count(att,style) {
+//     for (let i = 1; i < 5; i++) {
+//         console.log('#'+style+'_'+att+i);
+//     $('#'+style+'_'+att+i).on('keyup', function () {
 
-        $('#'+style+'limit_'+att+i).html("(" + $(this).val().length + " / 100)");
+//         $('#'+style+'limit_'+att+i).html("(" + $(this).val().length + " / 100)");
 
-        if ($(this).val().length > 100) {
+//         if ($(this).val().length > 100) {
 
-            $(this).val($(this).val().substring(0, 100));
+//             $(this).val($(this).val().substring(0, 100));
 
-            $('#'+style+'limit_'+att+i).html("(100 / 100)");
+//             $('#'+style+'limit_'+att+i).html("(100 / 100)");
 
-        }
+//         }
 
-    });
-}
-}
+//     });
+// }
+// }
 
-function word_limit(style,att){
+// function word_limit(style,att){
     
-    $('div.'+style+'_count_'+att+'>input[type=textbox]').focus(function () {
-        // count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
-        focusCount = $(this).val().length;
-        console.log(focusCount);
-        count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
-            count += $(this).val().length;
-        });
-        count -= focusCount;
-    });
-    $('div.'+style+'_count_'+att+'>input[type=textbox]').keyup(function () {
-        focusCount = $(this).val().length;
-        $('#'+style+'_charNum_'+att).text(500 - (count + focusCount));
+//     $('div.'+style+'_count_'+att+'>input[type=textbox]').focus(function () {
+//         // count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
+//         focusCount = $(this).val().length;
+//         console.log(focusCount);
+//         count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
+//             count += $(this).val().length;
+//         });
+//         count -= focusCount;
+//     });
+//     $('div.'+style+'_count_'+att+'>input[type=textbox]').keyup(function () {
+//         focusCount = $(this).val().length;
+//         $('#'+style+'_charNum_'+att).text(500 - (count + focusCount));
         
 
-    });
+//     });
     
 
-}
+// }
 
-            // $('div.c_count_im>input[type=textbox]').focus(function () {
-            //     // count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
-            //     focusCount = $(this).val().length;
-            //     console.log(focusCount);
-            //     count = 0; $('div.c_count_im>input[type=textbox]').each(function () {
-            //         count += $(this).val().length;
-            //     });
-            //     count -= focusCount;
-            // });
-            // $('div.c_count_im>input[type=textbox]').keyup(function () {
-            //     focusCount = $(this).val().length;
-            //     $('#c_charNum_im').text(500 - (count + focusCount));
-                
-
-            // });
-            // $('div.c_count_bet>input[type=textbox]').focus(function () {
-            //     // count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
-            //     focusCount = $(this).val().length;
-            //     console.log(focusCount);
-            //     count = 0; $('div.c_count_bet>input[type=textbox]').each(function () {
-            //         count += $(this).val().length;
-            //     });
-            //     count -= focusCount;
-            // });
-            // $('div.c_count_bet>input[type=textbox]').keyup(function () {
-            //     focusCount = $(this).val().length;
-            //     $('#c_charNum_bet').text(500 - (count + focusCount));
-                
-
-            // });
-            // $('div.c_count_avo>input[type=textbox]').focus(function () {
-            //     // count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
-            //     focusCount = $(this).val().length;
-            //     console.log(focusCount);
-            //     count = 0; $('div.c_count_avo>input[type=textbox]').each(function () {
-            //         count += $(this).val().length;
-            //     });
-            //     count -= focusCount;
-            // });
-            // $('div.c_count_avo>input[type=textbox]').keyup(function () {
-            //     focusCount = $(this).val().length;
-            //     $('#c_charNum_avo').text(500 - (count + focusCount));
-                
-
-            // });
-            // $('div.c_count_env>input[type=textbox]').focus(function () {
-            //     // count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
-            //     focusCount = $(this).val().length;
-            //     console.log(focusCount);
-            //     count = 0; $('div.c_count_env>input[type=textbox]').each(function () {
-            //         count += $(this).val().length;
-            //     });
-            //     count -= focusCount;
-            // });
-            // $('div.c_count_env>input[type=textbox]').keyup(function () {
-            //     focusCount = $(this).val().length;
-            //     $('#c_charNum_env').text(500 - (count + focusCount));
-                
-
-            // });
+          
             
 
-function looplimit(style){
-    word_count('im',style);
-    word_count('bet',style);
-    word_count('avo',style);
-    word_count('env',style);
-}
+// function looplimit(style){
+//     word_count('im',style);
+//     word_count('bet',style);
+//     word_count('avo',style);
+//     word_count('env',style);
+// }
 
-function W_limit(style){
-    word_limit(style,'im');
-    word_limit(style,'bet');
-    word_limit(style,'avo');
-    word_limit(style,'env');
-}
+// function W_limit(style){
+//     word_limit(style,'im');
+//     word_limit(style,'bet');
+//     word_limit(style,'avo');
+//     word_limit(style,'env');
+// }
 
     
