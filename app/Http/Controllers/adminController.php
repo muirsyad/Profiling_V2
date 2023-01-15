@@ -614,7 +614,7 @@ class adminController extends Controller
 
     public function update(Clients $clients)
     {
-        //dd($request);
+        //dd($clients);
         $clients = Clients::find($clients->id);
         return view('admin.update', [
             'clients' => $clients,
