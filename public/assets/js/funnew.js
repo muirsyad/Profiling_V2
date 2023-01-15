@@ -7,6 +7,34 @@ $(document).ready(function () {
     // cstyle('S',limit);
     // cstyle('C',limit);
 
+    // input1Length = $("#d_im1").val().length;
+    // input2Length = $("#d_im2").val().length;
+    // console.log("FIrst row::  " + input1Length);
+    // console.log("scnd row::  " + input2Length);
+    // $(".dlimit_im1").text("(" + input1Length + "/110)");
+    // $(".dlimit_im2").text("(" + input2Length + "/110)");
+
+
+
+
+
+
+    //   var input1Length = 0;
+    //   var input2Length = 0;
+    //   $(".form-control").on("input", function() {
+    //     input1Length = $("#d_im1").val().length;
+    //     input2Length = $("#d_im2").val().length;
+    //     console.log("FIrst row::  "+input1Length);
+    //     console.log("scnd row::  "+input2Length);
+    //     $(".dlimit_im1").text("("+input1Length+"/110)");
+    //   });
+
+
+
+
+
+
+
 
     $("#hide").click(function () {
         $("p").hide();
@@ -294,7 +322,7 @@ $(document).ready(function () {
     });
 
 
-    
+
 
     // $('div.count>input[type=textbox]').focus(function () {
 
@@ -309,9 +337,9 @@ $(document).ready(function () {
     //     $('#charNum').text(500 - (count + focusCount));
 
     // });
-    
 
-    
+
+
 
 
 
@@ -463,24 +491,74 @@ $(document).ready(function () {
     // word_count(2,'c');
     // word_count(3,'c');
     // word_count(4,'c');
-    looplimit('d');
-    looplimit('i');
-    looplimit('s');
-    looplimit('c');
-    
-    W_limit('d');
-    W_limit('i');
-    W_limit('s');
-    W_limit('c');
-    
-    
+   
+
+
 
     // word_limit('c',1);
     // word_limit('c',2);
     // word_limit('c',3);
     // word_limit('c',4);
+
     
-    
+
+    baseWordCounter("d");
+    baseWordCounter("i");
+    baseWordCounter("s");
+    baseWordCounter("c");
+
+    function baseWordCounter(style) {
+
+        wordCounter(style, "im");
+        inputCount(style, "im");
+        wordCounter(style, "bet");
+        inputCount(style, "bet");
+        wordCounter(style, "avo");
+        inputCount(style, "avo");
+        wordCounter(style, "env");
+        inputCount(style, "env");
+        console.log(style);
+    }
+
+
+    function wordCounter(style, att) {
+        input1Length = $("#" + style + "_" + att + "1").val().length;
+        input2Length = $("#" + style + "_" + att + "2").val().length;
+        input3Length = $("#" + style + "_" + att + "3").val().length;
+        input4Length = $("#" + style + "_" + att + "4").val().length;
+        input5Length = $("#" + style + "_" + att + "5").val().length;
+
+        $("." + style + "limit_" + att + "1").text("(" + input1Length + "/110)");
+        $("." + style + "limit_" + att + "2").text("(" + input2Length + "/110)");
+        $("." + style + "limit_" + att + "3").text("(" + input3Length + "/110)");
+        $("." + style + "limit_" + att + "4").text("(" + input4Length + "/110)");
+        $("." + style + "limit_" + att + "5").text("(" + input5Length + "/110)");
+
+        console.log(style+"in");
+
+    }
+    function inputCount(style, att) {
+        $(".form-control").on("input", function () {
+            input1Length = $("#" + style + "_" + att + "1").val().length;
+            input2Length = $("#" + style + "_" + att + "2").val().length;
+            input3Length = $("#" + style + "_" + att + "3").val().length;
+            input4Length = $("#" + style + "_" + att + "4").val().length;
+            input5Length = $("#" + style + "_" + att + "5").val().length;
+
+            $("." + style + "limit_" + att + "1").text("(" + input1Length + "/110)");
+            $("." + style + "limit_" + att + "2").text("(" + input2Length + "/110)");
+            $("." + style + "limit_" + att + "3").text("(" + input3Length + "/110)");
+            $("." + style + "limit_" + att + "4").text("(" + input4Length + "/110)");
+            $("." + style + "limit_" + att + "5").text("(" + input5Length + "/110)");
+            console.log(style+"in2");
+
+        });
+
+    }
+
+
+
+
 
 });
 
@@ -1086,7 +1164,7 @@ function stylevar(style) {
 // }
 
 // function word_limit(style,att){
-    
+
 //     $('div.'+style+'_count_'+att+'>input[type=textbox]').focus(function () {
 //         // count = 0; $('div.'+style+'_count_'+att+'>input[type=textbox]').each(function () {
 //         focusCount = $(this).val().length;
@@ -1099,22 +1177,22 @@ function stylevar(style) {
 //     $('div.'+style+'_count_'+att+'>input[type=textbox]').keyup(function () {
 //         focusCount = $(this).val().length;
 //         $('#'+style+'_charNum_'+att).text(500 - (count + focusCount));
-        
+
 
 //     });
-    
+
 
 // }
 
-          
-            
 
-// function looplimit(style){
-//     word_count('im',style);
-//     word_count('bet',style);
-//     word_count('avo',style);
-//     word_count('env',style);
-// }
+
+
+function looplimit(style) {
+    word_count('im', style);
+    word_count('bet', style);
+    word_count('avo', style);
+    word_count('env', style);
+}
 
 // function W_limit(style){
 //     word_limit(style,'im');
@@ -1123,4 +1201,3 @@ function stylevar(style) {
 //     word_limit(style,'env');
 // }
 
-    

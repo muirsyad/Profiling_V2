@@ -43,14 +43,15 @@
                 <h3 class="text-primary mb-3">Dominance (D)</h3>
                 <span style="color: red;" ><sup>*</sup>Please save first before edit other value tab</span>
 
-                <div id="tab-motivate"  >
+                <div id="tab-motivate">
                     <form action="{{ route('motivatestore') }}" method="POST">
                         @csrf
                         <input type="hidden" name="valuef" value="Wmotivate">
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="110"  type="text" value="{{ $motivate }}" class="form-control" id="keyD"
+                            <p class="dlimit_im{{$i+1}}">(0/100)</p>
+                            <input maxlength="110"  type="text" value="{{ $motivate }}" class="form-control" id="d_im{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -72,7 +73,8 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <p class="dlimit_bet{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="d_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -94,7 +96,8 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <p class="dlimit_avo{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="d_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -116,7 +119,8 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $styleD[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <p class="dlimit_env{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="d_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -138,7 +142,7 @@
 
         <div style="display: none" id="tab-i" class="card title2 col-10 mx-auto mb-3">
             <div class="card-header">
-                <h3 class="text-primary">Behaviour Template</h3>
+                <h3 class="text-primary">Motivation Template</h3>
             </div>
 
             <div class="card-body">
@@ -159,7 +163,8 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
+                            <p class="ilimit_im{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="i_im{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -181,7 +186,8 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <p class="ilimit_bet{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="i_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -203,7 +209,8 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <p class="ilimit_avo{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="i_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -225,7 +232,8 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $styleI[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <p class="ilimit_env{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="i_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -247,7 +255,7 @@
 
         <div style="display: none" id="tab-S" class="card title2 col-10 mx-auto mb-3">
             <div class="card-header">
-                <h3 class="text-primary">Behaviour Template</h3>
+                <h3 class="text-primary">Motivation Template</h3>
             </div>
 
             <div class="card-body">
@@ -268,7 +276,8 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
+                            <p class="slimit_im{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="s_im{{$i+1}}"
                                 placeholder="soalan" name="value[]}">
                         </div>
                         @endforeach
@@ -290,7 +299,8 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <p class="slimit_bet{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="s_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -312,7 +322,8 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input  maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <p class="slimit_avo{{$i+1}}">(0/100)</p>
+                            <input  maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="s_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -334,7 +345,8 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $styleS[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <p class="slimit_env{{$i+1}}">(0/100)</p>
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="s_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -356,7 +368,7 @@
 
         <div style="display: none" id="tab-C" class="card title2 col-10 mx-auto mb-3">
             <div class="card-header">
-                <h3 class="text-primary">Behaviour Template</h3>
+                <h3 class="text-primary">Motivation Template</h3>
             </div>
 
             <div class="card-body">
@@ -377,7 +389,8 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[0] as $i =>$motivate )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="keyI"
+                            <p class='climit_im{{$i+1}}'>(0 / 100)</p>
+                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="c_im{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -399,7 +412,8 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[1] as $i =>$best )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="keyI"
+                            <p class='climit_bet{{$i+1}}'>(0 / 100)</p>
+                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="c_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -421,7 +435,8 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[2] as $i =>$demotive )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="keyI"
+                            <p class='climit_avo{{$i+1}}'>(0 / 100)</p>
+                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="c_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -443,7 +458,8 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $styleC[3] as $i =>$worst )
                         <div class="mb-3">
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="keyI"
+                            <p class='climit_env{{$i+1}}'>(0 / 100)</p>
+                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="c_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach

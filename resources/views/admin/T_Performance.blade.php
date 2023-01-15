@@ -52,7 +52,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[0] as $i =>$improve )
                         <div class="mb-3">
-                            {{-- <p class="dlimit_im{{$i+1}}">(0/100)</p> --}}
+                            <p class="dlimit_im{{$i+1}}">(0/100)</p>
                             <div class="d_count_im">
                             <input type="textbox" value="{{ $improve }}" class="form-control" id="d_im{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -79,7 +79,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[1] as $i =>$better )
                         <div class="mb-3">
-                            {{-- <p class="dlimit_bet{{$i+1}}">(0/100)</p> --}}
+                            <p class="dlimit_bet{{$i+1}}">(0/100)</p>
                             <div class="d_count_bet">
                             <input type="textbox" value="{{ $better }}" class="form-control" id="d_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110" >
@@ -107,7 +107,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[2] as $i =>$avoid )
                         <div class="mb-3">
-                            {{-- <p class="dlimit_avo{{$i+1}}">(0/100)</p> --}}
+                            <p class="dlimit_avo{{$i+1}}">(0/100)</p>
                             <div class="d_count_avo">
                             <input type="textbox" value="{{ $avoid }}" class="form-control" id="d_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110" >
@@ -134,7 +134,7 @@
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[3] as $i =>$env )
                         <div class="mb-3">
-                            {{-- <p class="dlimit_env{{$i+1}}">(0/100)</p> --}}
+                            <p class="dlimit_env{{$i+1}}">(0/100)</p>
                             <div class="d_count_env">
                             <input type="textbox" value="{{ $env }}" class="form-control" id="d_env{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -182,7 +182,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[0] as $i =>$improve )
                         <div class="mb-3">
-                            {{-- <p class="ilimit_im{{$i+1}}">(0/100)</p> --}}
+                            <p class="ilimit_im{{$i+1}}">(0/100)</p>
                             <div class="i_count_im">
                             <input type="textbox" value="{{ $improve }}" class="form-control" id="i_im{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -209,7 +209,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[1] as $i =>$better )
                         <div class="mb-3">
-                            {{-- <p class="ilimit_bet{{$i+1}}">(0/100)</p> --}}
+                            <p class="ilimit_bet{{$i+1}}">(0/100)</p>
                             <div class="i_count_bet">
                             <input type="textbox" value="{{ $better }}" class="form-control" id="i_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -237,7 +237,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[2] as $i =>$avoid )
                         <div class="mb-3">
-                            {{-- <p class="ilimit_avo{{$i+1}}">(0/100)</p> --}}
+                            <p class="ilimit_avo{{$i+1}}">(0/100)</p>
                             <div class="i_count_avo">
                             <input type="textbox" value="{{ $avoid }}" class="form-control" id="i_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -264,7 +264,7 @@
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[3] as $i =>$env )
                         <div class="mb-3">
-                            {{-- <p class="ilimit_env{{$i+1}}">(0/100)</p> --}}
+                            <p class="ilimit_env{{$i+1}}">(0/100)</p>
                             <div class="i_count_env">
                             <input type="text" value="{{ $env }}" class="form-control" id="i_env{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -312,7 +312,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[0] as $i =>$improve )
                         <div class="mb-3">
-                            {{-- <p id="slimit_im{{$i+1}}">(0/100)</p> --}}
+                            <p class="slimit_im{{$i+1}}">(0/100)</p>
                             <div class="s_count_im">
                                 <input type="textbox" value="{{ $improve }}" class="form-control" id="s_im{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -340,7 +340,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[1] as $i =>$better )
                         <div class="mb-3">
-                            {{-- <p id="slimit_bet{{$i+1}}">(0/100)</p> --}}
+                            <p class="slimit_bet{{$i+1}}">(0/100)</p>
                             <div class="s_count_bet">
                             <input type="textbox" value="{{ $better }}" class="form-control" id="s_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -368,7 +368,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[2] as $i =>$avoid )
                         <div class="mb-3">
-                            {{-- <p id="slimit_avo{{$i+1}}">(0/100)</p> --}}
+                            <p class="slimit_avo{{$i+1}}">(0/100)</p>
                             <div class="s_count_avo">
                             <input type="textbox" value="{{ $avoid }}" class="form-control" id="s_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -396,7 +396,7 @@
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[3] as $i =>$env )
                         <div class="mb-3">
-                            {{-- <p id="slimit_env{{$i+1}}">(0/100)</p> --}}
+                            <p class="slimit_env{{$i+1}}">(0/100)</p>
                             <div class="s_count_env">
                             <input type="textbox" value="{{ $env }}" class="form-control" id="s_env{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -445,7 +445,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $perC[0] as $i =>$improve )
                         <div class="mb-3">
-                            {{-- <p id='climit_im{{$i+1}}'>(0 / 100)</p> --}}
+                            <p class='climit_im{{$i+1}}'>(0 / 100)</p>
                             <div class="c_count_im">
                                 <input maxlength="100" type="textbox" value="{{ $improve }}" class="form-control" id="c_im{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -473,7 +473,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $perC[1] as $i =>$better )
                         <div class="mb-3">
-                            {{-- <p id='climit_bet{{$i+1}}'>(0 / 100)</p> --}}
+                            <p class='climit_bet{{$i+1}}'>(0 / 100)</p>
                             <div class="c_count_bet">
                                 <input type="textbox" value="{{ $better }}" class="form-control" id="c_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
@@ -502,7 +502,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $perC[2] as $i =>$avoid )
                         <div class="mb-3">
-                            {{-- <p id='climit_avo{{$i+1}}'>(0 / 100)</p> --}}
+                            <p class='climit_avo{{$i+1}}'>(0 / 100)</p>
 
                             <div class="c_count_avo">
                                 <input type="textbox" value="{{ $avoid }}" class="form-control" id="c_avo{{$i+1}}"
@@ -532,7 +532,7 @@
                         <input type="hidden" name="style" value="C">
                         @foreach ( $perC[3] as $i =>$env )
                         <div class="mb-3">
-                            {{-- <p id='climit_env{{$i+1}}'>(0 / 100)</p> --}}
+                            <p class='climit_env{{$i+1}}'>(0 / 100)</p>
                             <div class="c_count_env">
                                 <input type="textbox" value="{{ $env }}" class="form-control" id="c_env{{$i+1}}"
                                 placeholder="soalan" name="value[]" maxlength="110">
