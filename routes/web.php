@@ -107,6 +107,11 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
 //accesor route
 Route::middleware(['auth', 'is_accesor'])->group(function () {
     route::get('/AC-index', [adminController::class, 'ac_index'])->name('acindex');
+    route::get('/remarks/{users}', [adminController::class, 'remarks'])->name('remarks');
+    route::post('/remarks/update', [adminController::class, 'updateRemarks1'])->name('Remup1');
+    route::post('/remarks2/update', [adminController::class, 'updateRemarks2'])->name('Remup2');
+    route::post('/remarks3/update', [adminController::class, 'updateRemarks3'])->name('Remup3');
+   
 });
 
 
@@ -129,6 +134,9 @@ Route::middleware(['auth'])->group(function () {
     route::get('/pdf2', [questionsController::class, 'inv2'])->name('inv2')->middleware('auth');
     route::get('/pdf/version3', [questionsController::class, 'inv3'])->name('inv3')->middleware('auth');
     route::get('/pdf/version3/{id}', [questionsController::class, 'report_inv'])->name('report_inv')->middleware('auth');
+
+
+    
 });
 
 

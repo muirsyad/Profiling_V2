@@ -1,20 +1,28 @@
-@extends('admin_template')
+@extends('acc_template')
 @section('content')
+    <style>
+        .dis-icon {
+            color: grey;
+            cursor: not-allowed;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
     <center>
         <h1>Accessor</h1>
     </center>
-
+<h1>{{$var}}</h1>
     <div class="progress mb-3" style="margin-bottom: 20px; margin-top: 20px;">
         <div id="progress" class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 25%;"
             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $var }}</div>
     </div>
-    <div class="d-flex justify-content-end">
+    {{-- <div class="d-flex justify-content-end">
         @if ($var === '100%')
             <button class="btn btn-primary mb-3">Download</button>
         @else
             <button class="btn btn-primary mb-3" disabled>Download</button>
         @endif
-    </div>
+    </div> --}}
 
 
 
@@ -74,9 +82,20 @@
 
                     <td>
                         <div class="row">
-                            <div class="col"><a href="{{ route('report_inv', $pax->id) }}"><i
-                                class="far fa-eye igreen"></i></a></div>
+                            @if ($var === "100%")
+                            <div class="col"><a href="{{ route('report_inv', $pax->id) }}" aria-disabled="true"><i
+                                class="fas fa-download "></i></a></div>
+                            @else
+                            <div class="col"><a href="{{ route('report_inv', $pax->id) }}" class="dis-icon" aria-disabled="true"><i
+                                class="fas fa-download dis-icon "></i></a></div>
+                            @endif
+                            <div class="col"><a href="{{ route('remarks', $pax->id) }}" aria-disabled="true"><i
+                                class="	fas fa-edit"></i></a></div>
                             <div class="col"><a href="#"><i class="fas fa-trash-alt igreen"></i></a></div>
+
+
+
+
                         </div>
                     </td>
                 </tr>

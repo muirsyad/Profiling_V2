@@ -15,6 +15,7 @@ use App\Imports\UsersImport;
 use App\Models\Users;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Mail\Signup;
+use App\Models\Remarks;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -499,6 +500,7 @@ class adminController extends Controller
     public function details(Clients $clients)
     {
 
+        dd($clients );
         $clients = DB::table('clients')->where('id', $clients->id)->first();
         $participants = DB::table('users')->where('client_id', $clients->id)->get();
         // $participants = Users::where('client_id', $clients->id)->get();
@@ -539,7 +541,7 @@ class adminController extends Controller
 
     public function ac_index(){
         $current = auth()->user()->client_id;
-        $pax = DB::table('users')->where('client_id', $current)->get();
+        // $pax = DB::table('users')->where('client_id', $current)->where('role_id',2)->get();
         $clients = DB::table('clients')->where('id', $current)->first();
         $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id',2)->get();
         
@@ -565,9 +567,98 @@ class adminController extends Controller
        
 
         return view('Accessor\index',[
-            'pax' => $pax,
+            'pax' => $participants,
             'var' => $valuevar,
         ]);
+    }
+
+    public function remarks(User $users){
+        
+        
+        //dd($users->id);
+        $remarks = DB::table('remarks')->where('user_id', $users->id)->first();
+        $count= DB::table('remarks')->where('user_id', $users->id)->count();
+        $join = DB::table('users')
+            ->join('departments', 'users.department_id', '=', 'departments.id')
+            ->select('users.*', 'departments.department')
+            ->where('users.id', $users->id)
+            ->first();
+        if($count > 0){
+        
+        $rem1 = $remarks->rem_1;
+        $rem1 = explode(".",$rem1);
+        $rem1=array_filter($rem1);
+
+        $rem2 = $remarks->rem_2;
+        $rem2 = explode(".",$rem2);
+
+        $rem3 = $remarks->rem_3;
+        $rem3 = explode(".",$rem3);
+        }else{
+            $rem1 = "";
+       
+
+        $rem2 = "";
+        $rem3 = "";
+        }
+
+
+        
+           
+        
+        
+        
+        
+
+        
+        
+        return view('Accessor.remarks',
+        [
+            'rem1' => $rem1,
+            'rem2' => $rem2,
+            'rem3' => $rem3,
+            'user' => $join,
+            'count' => $count,
+        
+        
+        ]
+    );
+     }
+    public function updateRemarks1(Request $request){
+        // dd($request);
+        $value = $request->value;
+        $value = implode(".",$value);
+        $affected = DB::table('remarks')
+              ->where('user_id', $request->uid)
+              ->update(['rem_1' => $value]);
+
+        return redirect(route('acindex'));
+        
+
+    }
+    public function updateRemarks2(Request $request){
+        // dd($request);
+        $value = $request->value;
+        $value = implode(".",$value);
+        $affected = DB::table('remarks')
+              ->where('user_id', $request->uid)
+              ->update(['rem_2' => $value]);
+
+        return redirect(route('acindex'));
+        
+
+    }
+    public function updateRemarks3(Request $request){
+        // dd($request);
+        $value = $request->value;
+        $value = implode(".",$value);
+        $affected = DB::table('remarks')
+              ->where('user_id', $request->uid)
+              ->update(['rem_3' => $value]);
+
+        return redirect(route('acindex'));
+        
+
     }
 
     public function updatestts($participants)

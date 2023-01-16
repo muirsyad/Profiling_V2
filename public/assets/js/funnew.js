@@ -491,7 +491,7 @@ $(document).ready(function () {
     // word_count(2,'c');
     // word_count(3,'c');
     // word_count(4,'c');
-   
+
 
 
 
@@ -499,13 +499,16 @@ $(document).ready(function () {
     // word_limit('c',2);
     // word_limit('c',3);
     // word_limit('c',4);
-
     
+
 
     baseWordCounter("d");
     baseWordCounter("i");
     baseWordCounter("s");
     baseWordCounter("c");
+
+   
+
 
     function baseWordCounter(style) {
 
@@ -534,7 +537,7 @@ $(document).ready(function () {
         $("." + style + "limit_" + att + "4").text("(" + input4Length + "/110)");
         $("." + style + "limit_" + att + "5").text("(" + input5Length + "/110)");
 
-        console.log(style+"in");
+        console.log(style + "in");
 
     }
     function inputCount(style, att) {
@@ -550,9 +553,13 @@ $(document).ready(function () {
             $("." + style + "limit_" + att + "3").text("(" + input3Length + "/110)");
             $("." + style + "limit_" + att + "4").text("(" + input4Length + "/110)");
             $("." + style + "limit_" + att + "5").text("(" + input5Length + "/110)");
-            console.log(style+"in2");
+            console.log(style + "in2");
 
         });
+
+    }
+
+    function addRRow() {
 
     }
 

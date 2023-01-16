@@ -19,6 +19,7 @@ use App\Models\Templates_summary;
 use Illuminate\Support\Facades\DB;
 use App\Models\Answer_records as record;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 
 class questionsController extends Controller
 {
@@ -1394,6 +1395,7 @@ class questionsController extends Controller
     }
     //end
 
+    
     //version 3 start
     public function report_inv($uid)
     {
