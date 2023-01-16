@@ -51,17 +51,17 @@ class adminController extends Controller
         //dd($count);
         $clients = Clients::all()->where('is_delete', '0');
         $totClients = $clients->count();
-        
+
         foreach ($clients as $i => $client) {
             $userdone = User::where('client_id', $client->id)->where('status', 1)->count();
             $all = User::where('client_id', $client->id)->count();
-           
+
             //change status if all user answer
             if ($userdone == $all) {
                 $affected = DB::table('clients')
                     ->where('id', $client->id)
                     ->update(['status' => 1]);
-            }else{
+            } else {
                 //stay value 0 if not all user answer
                 $affected = DB::table('clients')
                     ->where('id', $client->id)
@@ -72,7 +72,7 @@ class adminController extends Controller
         $uncomplete = $clients->count();
         $c_complete  = Clients::all()->where('is_delete', '0')->where('status', 1)->count();
         $total = User::where('role_id', 2)->count();
-        
+
         return view(
             'admin.index',
             [
@@ -483,24 +483,24 @@ class adminController extends Controller
         //dd($cid);
         $newUSer = DB::table('users')->insert([
             'name'     => $formFields['client'],
-            'email'    => $formFields['email'], 
+            'email'    => $formFields['email'],
             'role_id' => 4,
             'status' => 3,
             'client_id' => $cid,
             'created_at' => date("Y-m-d"),
-         ]);
-         $code = $formFields['link_code'];
-         $url = route('link-acc', $code);
+        ]);
+        $code = $formFields['link_code'];
+        $url = route('link-acc', $code);
 
-         
 
-         Mail::to($formFields['email'])->send(new Signup($code, $url));
+
+        Mail::to($formFields['email'])->send(new Signup($code, $url));
         return redirect('/admin/index');
     }
     public function details(Clients $clients)
     {
 
-        dd($clients );
+        dd($clients);
         $clients = DB::table('clients')->where('id', $clients->id)->first();
         $participants = DB::table('users')->where('client_id', $clients->id)->get();
         // $participants = Users::where('client_id', $clients->id)->get();
@@ -539,19 +539,20 @@ class adminController extends Controller
         ]);
     }
 
-    public function ac_index(){
+    public function ac_index()
+    {
         $current = auth()->user()->client_id;
         // $pax = DB::table('users')->where('client_id', $current)->where('role_id',2)->get();
         $clients = DB::table('clients')->where('id', $current)->first();
-        $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id',2)->get();
-        
+        $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->get();
+
 
 
 
         $department = DB::table('departments')->get();
         $countre = DB::table('answer_records')->where('client_id', $clients->id)->count();
-        $countall = DB::table('users')->where('client_id', $clients->id)->where('role_id',2)->count();
-        
+        $countall = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->count();
+
         $allc = count($participants);
         if ($allc > 0) {
             $progress = $countre / $allc * 100;
@@ -562,103 +563,154 @@ class adminController extends Controller
 
         //update value statue
         $valuevar = $progress . "%";
-        
-        $update = $this->updatestts($participants);
-       
 
-        return view('Accessor\index',[
+        $update = $this->updatestts($participants);
+
+
+        return view('Accessor\index', [
             'pax' => $participants,
             'var' => $valuevar,
         ]);
     }
 
-    public function remarks(User $users){
-        
-        
+    public function remarks(User $users)
+    {
+
+
         //dd($users->id);
         $remarks = DB::table('remarks')->where('user_id', $users->id)->first();
-        $count= DB::table('remarks')->where('user_id', $users->id)->count();
+        $count = DB::table('remarks')->where('user_id', $users->id)->count();
         $join = DB::table('users')
             ->join('departments', 'users.department_id', '=', 'departments.id')
             ->select('users.*', 'departments.department')
             ->where('users.id', $users->id)
             ->first();
-        if($count > 0){
-        
-        $rem1 = $remarks->rem_1;
-        $rem1 = explode(".",$rem1);
-        $rem1=array_filter($rem1);
+        if ($count > 0) {
 
-        $rem2 = $remarks->rem_2;
-        $rem2 = explode(".",$rem2);
+            $rem1 = $remarks->rem_1;
+            $rem1 = explode(".", $rem1);
+            $rem1 = array_filter($rem1);
 
-        $rem3 = $remarks->rem_3;
-        $rem3 = explode(".",$rem3);
-        }else{
+            $rem2 = $remarks->rem_2;
+            $rem2 = explode(".", $rem2);
+            $rem2 = array_filter($rem2);
+
+            $rem3 = $remarks->rem_3;
+            $rem3 = explode(".", $rem3);
+            $rem3 = array_filter($rem3);
+        } else {
             $rem1 = "";
-       
 
-        $rem2 = "";
-        $rem3 = "";
+
+            $rem2 = "";
+            $rem3 = "";
         }
 
 
-        
-           
-        
-        
-        
-        
 
-        
-        
-        return view('Accessor.remarks',
-        [
-            'rem1' => $rem1,
-            'rem2' => $rem2,
-            'rem3' => $rem3,
-            'user' => $join,
-            'count' => $count,
-        
-        
-        ]
-    );
-     }
-    public function updateRemarks1(Request $request){
-        // dd($request);
-        $value = $request->value;
-        $value = implode(".",$value);
-        $affected = DB::table('remarks')
-              ->where('user_id', $request->uid)
-              ->update(['rem_1' => $value]);
 
-        return redirect(route('acindex'));
-        
 
+
+
+
+
+
+
+        return view(
+            'Accessor.remarks',
+            [
+                'rem1' => $rem1,
+                'rem2' => $rem2,
+                'rem3' => $rem3,
+                'user' => $join,
+                'count' => $count,
+
+
+            ]
+        );
     }
-    public function updateRemarks2(Request $request){
-        // dd($request);
-        $value = $request->value;
-        $value = implode(".",$value);
-        $affected = DB::table('remarks')
-              ->where('user_id', $request->uid)
-              ->update(['rem_2' => $value]);
-
-        return redirect(route('acindex'));
+    public function updateRemarks1(Request $request)
+    {
+        
+        $check = DB::table('remarks')->where('user_id', $request->uid)->count();
         
 
+        $value = $request->value;
+        $countval = count($value);
+        
+        if($countval > 1){
+            $value = implode(".", $value);
+        }else{
+            $value = implode("", $value);
+        }
+        
+        if ($check > 0) {
+            $affected = DB::table('remarks')
+                ->where('user_id', $request->uid)
+                ->update(['rem_1' => $value]);
+        }else{
+            $insert = DB::table('remarks')->insert([
+                'user_id' => $request->uid,
+                'rem_1' => $value,
+            ]);
+        }
+
+
+        return redirect(route('acindex'));
     }
-    public function updateRemarks3(Request $request){
-        // dd($request);
-        $value = $request->value;
-        $value = implode(".",$value);
-        $affected = DB::table('remarks')
-              ->where('user_id', $request->uid)
-              ->update(['rem_3' => $value]);
-
-        return redirect(route('acindex'));
+    public function updateRemarks2(Request $request)
+    {
+        $check = DB::table('remarks')->where('user_id', $request->uid)->count();
         
 
+        $value = $request->value;
+        $countval = count($value);
+        
+        if($countval > 1){
+            $value = implode(".", $value);
+        }else{
+            $value = implode("", $value);
+        }
+        
+        if ($check > 0) {
+            $affected = DB::table('remarks')
+                ->where('user_id', $request->uid)
+                ->update(['rem_2' => $value]);
+        }else{
+            $insert = DB::table('remarks')->insert([
+                'user_id' => $request->uid,
+                'rem_2' => $value,
+            ]);
+        }
+
+        return redirect(route('acindex'));
+    }
+    public function updateRemarks3(Request $request)
+    {
+        $check = DB::table('remarks')->where('user_id', $request->uid)->count();
+        
+
+        $value = $request->value;
+        $countval = count($value);
+        
+        if($countval > 1){
+            $value = implode(".", $value);
+        }else{
+            $value = implode("", $value);
+        }
+        
+        if ($check > 0) {
+            $affected = DB::table('remarks')
+                ->where('user_id', $request->uid)
+                ->update(['rem_3' => $value]);
+        }else{
+            $insert = DB::table('remarks')->insert([
+                'user_id' => $request->uid,
+                'rem_3' => $value,
+            ]);
+        }
+
+        return redirect(route('acindex'));
     }
 
     public function updatestts($participants)

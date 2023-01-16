@@ -1038,6 +1038,7 @@ class questionsController extends Controller
         $bvalue = 2;
         $auth = auth()->user()->id;
 
+        dd($auth);
         //get plot value
 
         $ans = DB::table('answer_records')->where('user_id', $auth)->first();
@@ -1046,6 +1047,8 @@ class questionsController extends Controller
             ->select('users.*', 'departments.department')
             ->where('users.id', $auth)
             ->first();
+
+        // $remarks = DB::table('remarks')->where('user_id', $auth)
 
         //qury get value depat
 
@@ -1408,6 +1411,15 @@ class questionsController extends Controller
             ->select('users.*', 'departments.department')
             ->where('users.id', $auth)
             ->first();
+        $remarks = DB::table('remarks')->where('user_id', $auth)->first();
+        $cremarks =  DB::table('remarks')->where('user_id', $auth)->count();
+        if($cremarks > 0){
+            $remarks=$remarks;
+        }
+        else{
+            $remarks = "";
+        }
+        // dd($remarks);
         //template query
         $template = DB::table('templates_reports')->where('Behaviour_type', $ans->High)->first();
         $strength = $template->Strength;
@@ -1535,6 +1547,7 @@ class questionsController extends Controller
             'Ivalues' => $I_value,
             'Svalues' => $S_value,
             'Cvalues' => $C_value,
+            'remarks' => $remarks,
 
 
         ]);

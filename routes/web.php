@@ -111,6 +111,10 @@ Route::middleware(['auth', 'is_accesor'])->group(function () {
     route::post('/remarks/update', [adminController::class, 'updateRemarks1'])->name('Remup1');
     route::post('/remarks2/update', [adminController::class, 'updateRemarks2'])->name('Remup2');
     route::post('/remarks3/update', [adminController::class, 'updateRemarks3'])->name('Remup3');
+
+    route::post('/remarks/insert', [adminController::class, 'updateRemarks1'])->name('Remup1');
+    route::post('/remarks2/update', [adminController::class, 'updateRemarks2'])->name('Remup2');
+    route::post('/remarks3/update', [adminController::class, 'updateRemarks3'])->name('Remup3');
    
 });
 

@@ -42,7 +42,7 @@
             left: 5%;
             padding-top: 0;
             /* width: 100px;
-                height: 400px; */
+                    height: 400px; */
             border: 1px solid rgb(0, 0, 0);
         }
 
@@ -52,7 +52,7 @@
             left: 25%;
             padding-top: 0;
             /* width: 100px;
-                height: 400px; */
+                    height: 400px; */
             border: 1px solid rgb(0, 0, 0);
         }
 
@@ -62,7 +62,7 @@
             left: 45%;
             padding-top: 0;
             /* width: 100px;
-                height: 400px; */
+                    height: 400px; */
             border: 1px solid rgb(0, 0, 0);
         }
 
@@ -72,18 +72,19 @@
             left: 70%;
             padding-top: 0;
             /* width: 100px;
-                height: 400px; */
-            
+                    height: 400px; */
+
         }
+
         .box-key {
             position: absolute;
             top: 38%;
             left: 66%;
             padding-top: 0;
             /* width: 100px;
-                height: 400px; */
-            
-            
+                    height: 400px; */
+
+
         }
 
         .row-1 {
@@ -122,26 +123,34 @@
             word-wrap: break-word;
         }
 
-        
+        .rem-1 {
+            position: absolute;
+            top: 24%;
+            left: 70%;
+            padding-top: 0;
+            max-width: 250px;
+            word-wrap: break-word;
+            
+        }
     </style>
     <div class="container page-break">
         @switch($High)
             @case('D')
                 <img src="{{ public_path('assets/img/report/D.png') }}" width="800px" height="1122px">
-                
-                @break
+            @break
 
             @case('I')
                 <img src="{{ public_path('assets/img/report/I.png') }}" width="800px" height="1122px">
-                @break
+            @break
 
             @case('S')
                 <img src="{{ public_path('assets/img/report/S.png') }}" width="800px" height="1122px">
-                @break
-            @case("C")
-                <img src="{{ public_path('assets/img/report/CC.png') }}" width="800px" height="1122px">    
-                
-                @break
+            @break
+
+            @case('C')
+                <img src="{{ public_path('assets/img/report/CC.png') }}" width="800px" height="1122px">
+            @break
+
             @default
         @endswitch
         {{-- <img src="{{ public_path('assets/img/report/2.png') }}" width="800px" height="1122px"> --}}
@@ -149,154 +158,178 @@
         <img class="top-2" src="{{ $teamChart }}" alt="chart">
         <img class="top-3" src="{{ $companyChart }}" alt="chart">
         <div class="box-number" style="color: red"><span class="big-text">100%</span></div>
-        <div class="box-key" style="color: rgb(0, 0, 0)"><ul>
-            @foreach ($keywords as $i => $key)
-                <li class="smm-text text-bolde" style="color: red">{{$key}}</li>
-                @if ($i > 3)
-                @break
-                @endif
-            @endforeach</ul>
-        </div>
-        
-        {{-- <img class="top-2" src="{{$companyChart}}" alt="chart"> --}}
-        <div class="top-left">
+        <div class="box-key" style="color: rgb(0, 0, 0)">
             <ul>
-                @foreach ($strength as $i => $str)
-                    <li class="sm-text">{{ $str }}</li>
+                @foreach ($keywords as $i => $key)
+                    <li class="smm-text text-bolde" style="color: red">{{ $key }}</li>
                     @if ($i > 3)
                     @break
                 @endif
             @endforeach
-
         </ul>
     </div>
 
-    <div class="top-right">
+    {{-- <img class="top-2" src="{{$companyChart}}" alt="chart"> --}}
+    <div class="top-left">
         <ul>
-            @foreach ($motivates as $i => $motivate)
-                <li class="sm-text">{{ $motivate }}</li>
-                @if ($i > 0)
+            @foreach ($strength as $i => $str)
+                <li class="sm-text">{{ $str }}</li>
+                @if ($i > 3)
                 @break
             @endif
         @endforeach
+
     </ul>
 </div>
 
-<div class="bot-left">
+<div class="top-right">
     <ul>
-        @foreach ($improves as $i => $improve)
-            <li class="sm-text">{{ $improve }}</li>
+        @foreach ($motivates as $i => $motivate)
+            <li class="sm-text">{{ $motivate }}</li>
             @if ($i > 0)
             @break
         @endif
     @endforeach
 </ul>
 </div>
+
+<div class="bot-left">
+<ul>
+    @foreach ($improves as $i => $improve)
+        <li class="sm-text">{{ $improve }}</li>
+        @if ($i > 0)
+        @break
+    @endif
+@endforeach
+</ul>
+</div>
 </div>
 <div class="container page-break">
 <img src="{{ public_path('assets/img/report/3.png') }}" width="800px" height="1122px">
+<div class="rem-1">
+    <ul>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+    </ul>
+    </div>
 <div class="row-1">
 <ul class="smm-text">
-    @foreach ($Dvalues as $d)
-    <li>{{$d}}</li>
-
-    @endforeach
+@foreach ($Dvalues as $d)
+    <li>{{ $d }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-2">
 <ul class="smm-text">
-    @foreach ($Ivalues as $I)
-    <li>{{$I}}</li>
-
-    @endforeach
+@foreach ($Ivalues as $I)
+    <li>{{ $I }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-3">
 <ul class="smm-text">
-    @foreach ($Svalues as $S)
-    <li>{{$S}}</li>
-
-    @endforeach
+@foreach ($Svalues as $S)
+    <li>{{ $S }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-4">
 <ul class="smm-text">
-    @foreach ($Cvalues as $C)
-    <li>{{$C}}</li>
-
-    @endforeach
+@foreach ($Cvalues as $C)
+    <li>{{ $C }}</li>
+@endforeach
 </ul>
+
 </div>
 
 </div>
 <div class="container page-break">
 <img src="{{ public_path('assets/img/report/4.png') }}" width="800px" height="1122px">
+<div class="rem-1">
+    <ul>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+    </ul>
+    </div>
 <div class="row-1">
 <ul class="smm-text">
-    @foreach ($motivates as  $motivate)
-    <li>{{$motivate}}</li>
-
-    @endforeach
+@foreach ($motivates as $motivate)
+    <li>{{ $motivate }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-2">
 <ul class="smm-text">
-    @foreach ($bests as $best)
-    <li>{{$best}}</li>
-
-    @endforeach
+@foreach ($bests as $best)
+    <li>{{ $best }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-3">
 <ul class="smm-text">
-    @foreach ($demotives as $demotive)
-    <li>{{$demotive}}</li>
-
-    @endforeach
+@foreach ($demotives as $demotive)
+    <li>{{ $demotive }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-4">
 <ul class="smm-text">
-    @foreach ($worsts as $worst)
-    <li>{{$worst}}</li>
-
-    @endforeach
+@foreach ($worsts as $worst)
+    <li>{{ $worst }}</li>
+@endforeach
 </ul>
 </div>
 </div>
 {{-- LAST PAGE --}}
 <div class="container">
 <img src="{{ public_path('assets/img/report/5.png') }}" width="800px" height="1122px">
+<div class="rem-1">
+    <ul>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+    </ul>
+    </div>
 <div class="row-1">
 <ul class="smm-text">
-    @foreach ($improves as $improve)
-    <li>{{$improve}}</li>
-
-    @endforeach
+@foreach ($improves as $improve)
+    <li>{{ $improve }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-2">
 <ul class="smm-text">
-    @foreach ($betters as $better)
-    <li>{{$better}}</li>
-
-    @endforeach
+@foreach ($betters as $better)
+    <li>{{ $better }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-3">
 <ul class="smm-text">
-    @foreach ($avoids as $avoid)
-    <li>{{$avoid}}</li>
-
-    @endforeach
+@foreach ($avoids as $avoid)
+    <li>{{ $avoid }}</li>
+@endforeach
 </ul>
 </div>
 <div class="row-4">
 <ul class="smm-text">
-    @foreach ($environments as $environment)
-    <li>{{$environment}}</li>
-
-    @endforeach
+@foreach ($environments as $environment)
+    <li>{{ $environment }}</li>
+@endforeach
 </ul>
 </div>
 </div>
