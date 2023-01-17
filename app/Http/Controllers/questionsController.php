@@ -1430,7 +1430,7 @@ class questionsController extends Controller
 
         $template = DB::table('templates_reports')->where('Behaviour_type', $ans->High)->first();
         $strength = $template->Strength;
-        $strength = explode(",", $strength);
+        $strength = explode(".", $strength);
 
         //fetch motivation management
         $motivate = $template->Wmotivate;
