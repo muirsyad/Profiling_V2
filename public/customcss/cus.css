@@ -38,6 +38,10 @@ a:active {text-decoration:none}
     background-color: #04AA6D;
     color: white;
 }
+#participants td {
+  
+  color: black;
+}
   #participants th:first-of-type{
     border-radius:10px 0px 0px 10px;
 }
@@ -94,6 +98,23 @@ a:active {text-decoration:none}
     font-weight: bold;
 }
 
+.color-black{
+  color: black;
+}
+.color-success-icon{
+  color: #04AA6D;
+  font-size: medium;
+  vertical-align: middle;
+}
+
+.color-invalid-icon{
+  color: red;
+  font-size: medium;
+  vertical-align: middle;
+}
+i.cursor {
+  cursor: pointer;
+}
 
 
 /* nav css */

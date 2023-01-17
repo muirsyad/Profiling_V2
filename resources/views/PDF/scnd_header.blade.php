@@ -20,7 +20,17 @@
             margin: 0;
             padding: 0; // you can set margin and padding 0
         }
+
         
+        /* @font-face {
+            font-family: "RobotoCondensed-Regular";
+            src: url("{{ public_path('fonts/RobotoCondensed-Regular.ttf') }}") format("truetype");
+        } */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         .page-break {
             page-break-after: always;
         }
@@ -342,7 +352,8 @@
         hr {
             margin: 30px;
         }
-        .report-name{
+
+        .report-name {
             position: absolute;
             width: 203px;
             height: 14px;
@@ -350,43 +361,49 @@
             top: 760px;
         }
 
-        .report-position{
+        .report-position {
             position: absolute;
             width: 203px;
             height: 14px;
             left: 100px;
             top: 800px;
         }
-        .report-company{
+
+        .report-company {
             position: absolute;
             width: 203px;
             height: 14px;
             left: 500px;
             top: 760px;
         }
-        .report-date{
+
+        .report-date {
             position: absolute;
             width: 203px;
             height: 14px;
             left: 500px;
             top: 800px;
         }
-        .size-18{
+
+        .size-18 {
             font-size: 24px
         }
-        .name{
+
+        .name {
             position: absolute;
             top: 80%;
             left: 4%;
         }
-        .department{
+
+        .department {
             position: absolute;
             top: 82%;
             left: 4%;
         }
-        .big-text{
+
+        .big-text {
             font-size: 50px;
-            font-weight:900;
+            font-weight: 900;
         }
 
         .sm-text {
@@ -396,22 +413,22 @@
         .smm-text {
             font-size: 12px;
         }
-        .text-bold{
+
+        .text-bold {
             font-weight: bold;
             font-family: 'Roboto', sans-serif;
         }
-        .text-bolder{
+
+        .text-bolder {
             font-weight: bolder
         }
-
-
     </style>
     {{-- page 1     --}}
     <div class="page-break">
-        <img src="{{ public_path('assets/img/report/1.png') }}" width="800px" height="1100px" >
-        <span class="name text-bolder" style="color: #05572f">{{$users->name}}</span>
-        <span class="department text-bolder" style="color: #05572f">{{$users->department}}</span>
-        
+        <img src="{{ public_path('assets/img/report/1.png') }}" width="800px" height="1100px">
+        <span class="name text-bolder" style="color: #05572f">{{ $users->name }}</span>
+        <span class="department text-bolder" style="color: #05572f">{{ $users->department }}</span>
+
     </div>
 
     @yield('content')

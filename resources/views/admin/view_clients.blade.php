@@ -140,17 +140,8 @@
                     <td>{{$clients->created_at}}</td>
                     <td>{{ $clients->client }}</td>
                     <td>{{ $clients->address }}</td>
-                    @php
-                        $answer_all = DB::table('users')->where('client_id',$clients->id)->count();
-                    $answer = DB::table('users')->where('client_id',$clients->id)->where('status',1)->count();
-                    if($answer == $answer_all && $answer>0){
-                        $complete=1;
-                    }
-                    else {
-                        $complete=0;
-                    }
-                    @endphp
-                    @if ($complete == 1)
+                   
+                    @if ($clients->status == 1)
                         <td><div class="done">Done</div></td>
                     @else
                     <td><div class="undone">Uncompleted</div></td>

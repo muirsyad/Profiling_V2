@@ -7,13 +7,13 @@
         {{-- <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
             <div class="sidebar-brand-icon img-fluid"><img src="{{ asset('assets/img/lhilogo.svg') }}" style="width:100px"
                     alt=""></div><br></a> --}}
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                        <div class="sidebar-brand-icon">
-                            {{-- <i class="fas fa-laugh-wink"></i> --}}
-                            <img class="img-fluid" src="{{ asset('assets/img/logo.svg') }}">
-                        </div>
-                        <div class="sidebar-brand-text mx-3">DiSC Profiling</div>
-                    </a>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon">
+                {{-- <i class="fas fa-laugh-wink"></i> --}}
+                <img class="img-fluid" src="{{ asset('assets/img/logo.svg') }}">
+            </div>
+            <div class="sidebar-brand-text mx-3">DiSC Profiling</div>
+        </a>
         {{-- <div class="sidebar-brand-text text-white"><span>Disc Profiling</span></div> --}}
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
@@ -25,6 +25,8 @@
                         class="fas fa-question"></i><span>Question</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('template') }}"><i
                         class="fas fa-book"></i><span>Template report</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('depart') }}"><i
+                        class='fas fa-archive'></i><span>Departments</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}"><i
                         class="far fa-user"></i><span>Profile</span></a></li>
 

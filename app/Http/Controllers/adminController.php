@@ -53,15 +53,17 @@ class adminController extends Controller
         $totClients = $clients->count();
 
         foreach ($clients as $i => $client) {
-            $userdone = User::where('client_id', $client->id)->where('status', 1)->count();
-            $all = User::where('client_id', $client->id)->count();
+            $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
+            $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
 
             //change status if all user answer
             if ($userdone == $all) {
+
                 $affected = DB::table('clients')
                     ->where('id', $client->id)
                     ->update(['status' => 1]);
             } else {
+
                 //stay value 0 if not all user answer
                 $affected = DB::table('clients')
                     ->where('id', $client->id)
@@ -131,19 +133,22 @@ class adminController extends Controller
     public function view()
     {
         $select = Clients::all()->where('is_delete', '0');
-        //dd($select);
-        foreach ($select as $client) {
-            $answer_all = DB::table('users')->where('client_id', $client->id)->count();
-            $answer = DB::table('users')->where('client_id', $client->id)->where('status', 1)->count();
 
-            if ($answer == $answer_all && $answer > 0) {
-                $complete = 1;
-                $complete = DB::table('clients')
+        $clients = Clients::all()->where('is_delete', '0');
+        foreach ($clients as $i => $client) {
+            $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
+            $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
+
+            //change status if all user answer
+            if ($userdone == $all) {
+
+                $affected = DB::table('clients')
                     ->where('id', $client->id)
                     ->update(['status' => 1]);
             } else {
-                $complete = 0;
-                $complete = DB::table('clients')
+
+                //stay value 0 if not all user answer
+                $affected = DB::table('clients')
                     ->where('id', $client->id)
                     ->update(['status' => 0]);
             }
@@ -186,6 +191,7 @@ class adminController extends Controller
     }
     public function indTemplate2()
     {
+        
         $highlowD = $this->selBehaviour('D');
         $highlowI = $this->selBehaviour('I');
         $highlowS = $this->selBehaviour('S');
@@ -500,7 +506,7 @@ class adminController extends Controller
     public function details(Clients $clients)
     {
 
-        dd($clients);
+
         $clients = DB::table('clients')->where('id', $clients->id)->first();
         $participants = DB::table('users')->where('client_id', $clients->id)->get();
         // $participants = Users::where('client_id', $clients->id)->get();
@@ -510,10 +516,11 @@ class adminController extends Controller
 
         $department = DB::table('departments')->get();
         $countre = DB::table('answer_records')->where('client_id', $clients->id)->count();
-        $countall = DB::table('users')->where('client_id', $clients->id)->count();
-        $allc = count($participants);
-        if ($allc > 0) {
-            $progress = $countre / $allc * 100;
+        $countall = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->count();
+        // dd($countall,$countre);
+        // $allc = count($participants);
+        if ($countall > 0) {
+            $progress = $countre / $countall * 100;
             $progress = intval($progress);
         } else {
             $progress = 0;
@@ -631,24 +638,24 @@ class adminController extends Controller
     }
     public function updateRemarks1(Request $request)
     {
-        
+
         $check = DB::table('remarks')->where('user_id', $request->uid)->count();
-        
+
 
         $value = $request->value;
         $countval = count($value);
-        
-        if($countval > 1){
+
+        if ($countval > 1) {
             $value = implode(".", $value);
-        }else{
+        } else {
             $value = implode("", $value);
         }
-        
+
         if ($check > 0) {
             $affected = DB::table('remarks')
                 ->where('user_id', $request->uid)
                 ->update(['rem_1' => $value]);
-        }else{
+        } else {
             $insert = DB::table('remarks')->insert([
                 'user_id' => $request->uid,
                 'rem_1' => $value,
@@ -661,22 +668,22 @@ class adminController extends Controller
     public function updateRemarks2(Request $request)
     {
         $check = DB::table('remarks')->where('user_id', $request->uid)->count();
-        
+
 
         $value = $request->value;
         $countval = count($value);
-        
-        if($countval > 1){
+
+        if ($countval > 1) {
             $value = implode(".", $value);
-        }else{
+        } else {
             $value = implode("", $value);
         }
-        
+
         if ($check > 0) {
             $affected = DB::table('remarks')
                 ->where('user_id', $request->uid)
                 ->update(['rem_2' => $value]);
-        }else{
+        } else {
             $insert = DB::table('remarks')->insert([
                 'user_id' => $request->uid,
                 'rem_2' => $value,
@@ -688,22 +695,22 @@ class adminController extends Controller
     public function updateRemarks3(Request $request)
     {
         $check = DB::table('remarks')->where('user_id', $request->uid)->count();
-        
+
 
         $value = $request->value;
         $countval = count($value);
-        
-        if($countval > 1){
+
+        if ($countval > 1) {
             $value = implode(".", $value);
-        }else{
+        } else {
             $value = implode("", $value);
         }
-        
+
         if ($check > 0) {
             $affected = DB::table('remarks')
                 ->where('user_id', $request->uid)
                 ->update(['rem_3' => $value]);
-        }else{
+        } else {
             $insert = DB::table('remarks')->insert([
                 'user_id' => $request->uid,
                 'rem_3' => $value,
@@ -921,6 +928,55 @@ class adminController extends Controller
             }
         }
         return $stdh;
+    }
+    public function department()
+    {
+        $department = DB::table('departments')->get();
+        return view('admin.depart', [
+            'departments' => $department,
+        ]);
+    }
+    public function department_add(Request $request)
+    {
+
+        $formFields = $request->validate([
+            'depart' => 'required',
+
+        ]);
+        DB::table('departments')->insert([
+            'department' => $request->depart,
+        ]);
+
+
+        return redirect(route('depart'));
+    }
+    public function department_update(Request $request)
+    {
+        
+        $formFields = $request->validate([
+            'depart' => 'required',
+
+        ]);
+
+        $affected = DB::table('departments')
+            ->where('id', $request->did)
+            ->update(['department' => $request->depart]);
+
+
+        return redirect(route('depart'));
+    }
+
+    public function department_delete($departments)
+    {
+        
+
+        $affected = DB::table('departments')
+            ->where('id', $departments)
+            ->delete();
+        
+
+
+        return redirect(route('depart'));
     }
     public function profile()
     {

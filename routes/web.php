@@ -77,9 +77,14 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin/clients/delete/{clients}', [adminController::class, 'Cdelete'])->name('Cdelete');
     Route::post('/admin/clients/change/{clients}', [adminController::class, 'change'])->name('Cupdate');
     Route::get('/admin/questions', [adminController::class, 'vquest'])->name('vquest');
+    Route::get('/admin/department', [adminController::class, 'department'])->name('depart');
+    Route::post('/admin/department/add', [adminController::class, 'department_add'])->name('depart_add');
+    Route::post('/admin/department/update', [adminController::class, 'department_update'])->name('depart_update');
+    Route::get('/admin/department/delete{departments}', [adminController::class, 'department_delete'])->name('depart_delete');
     Route::get('/admin/profile', [adminController::class, 'profile'])->name('profile');
     Route::get('/admin/profile/update', [adminController::class, 'profilemodify'])->name('profilemodify');
     route::get('/admin/templates', [adminController::class, 'templates'])->name('template');
+    route::get('/admin/templates/individual', [adminController::class, 'indTemplate'])->name('indTemp');
     route::get('/admin/templates/individual2', [adminController::class, 'indTemplate2'])->name('indTemp2');
     route::get('/admin/templates/keywords', [adminController::class, 'Template_key'])->name('key');
     route::get('/admin/templates/motivation', [adminController::class, 'Template_motivate'])->name('motivate');

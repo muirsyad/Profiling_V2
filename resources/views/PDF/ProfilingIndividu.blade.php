@@ -116,7 +116,7 @@
 
         .row-4 {
             position: absolute;
-            top: 77%;
+            top: 76%;
             left: 20%;
             padding-top: 0;
             max-width: 350px;
@@ -125,10 +125,10 @@
 
         .rem-1 {
             position: absolute;
-            top: 24%;
-            left: 70%;
+            top: 22%;
+            left: 69%;
             padding-top: 0;
-            max-width: 250px;
+            width: 230px;
             word-wrap: break-word;
             
         }
@@ -208,13 +208,12 @@
 <img src="{{ public_path('assets/img/report/3.png') }}" width="800px" height="1122px">
 <div class="rem-1">
     <ul>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        @if ($cremarks > 0)
+        @foreach ($remarks->rem_1 as $rem1)
+        <li>{{$rem1}}</li>
+        @endforeach
+        @endif
+        
     </ul>
     </div>
 <div class="row-1">
@@ -252,13 +251,12 @@
 <img src="{{ public_path('assets/img/report/4.png') }}" width="800px" height="1122px">
 <div class="rem-1">
     <ul>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        @if ($cremarks > 0)
+        @foreach ($remarks->rem_2 as $rem2)
+        <li>{{$rem2}}</li>
+        @endforeach
+        @endif
+        
     </ul>
     </div>
 <div class="row-1">
@@ -295,13 +293,12 @@
 <img src="{{ public_path('assets/img/report/5.png') }}" width="800px" height="1122px">
 <div class="rem-1">
     <ul>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
-        <li>test value 12312343 asdasdad asdasdasda asdasdadsadad asdasdasd asdasdasd</li>
+        
+        @if ($cremarks > 0)
+        @foreach ($remarks->rem_3 as $rem3)
+        <li>{{$rem3}}</li>
+        @endforeach
+        @endif
     </ul>
     </div>
 <div class="row-1">

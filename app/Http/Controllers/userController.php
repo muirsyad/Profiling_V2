@@ -60,6 +60,18 @@ class userController extends Controller
     }
     public function Rstore(Request $request)
     {
+        $countdept = DB::table('departments')->get();
+        $ar=array();
+        
+        foreach ($countdept as $dp) {
+            if($dp->id > 0){
+                array_push($ar,$dp->id);
+            } else{
+                $ar = $ar;
+            }
+            
+        }
+        $ar=implode(",",$ar);
         
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
@@ -68,7 +80,8 @@ class userController extends Controller
             'password' => 'required|confirmed|min:6',
             'client_id' => 'required',
             'role_id' => 'required',
-            'department_id' => 'required|in:1,2,3,4,5',
+            
+            'department_id' => 'required|in:'.$ar,
             'status' => 'required',
             'created_at' => 'required',
             'is_delete' => 'required',

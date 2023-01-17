@@ -51,7 +51,7 @@
                         @foreach ( $styleD[0] as $i =>$motivate )
                         <div class="mb-3">
                             <p class="dlimit_im{{$i+1}}">(0/100)</p>
-                            <input maxlength="110"  type="text" value="{{ $motivate }}" class="form-control" id="d_im{{$i+1}}"
+                            <input maxlength="100"  type="text" value="{{ $motivate }}" class="form-control" id="d_im{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -74,7 +74,7 @@
                         @foreach ( $styleD[1] as $i =>$best )
                         <div class="mb-3">
                             <p class="dlimit_bet{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="d_bet{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="d_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -97,7 +97,7 @@
                         @foreach ( $styleD[2] as $i =>$demotive )
                         <div class="mb-3">
                             <p class="dlimit_avo{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="d_avo{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="d_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -120,7 +120,7 @@
                         @foreach ( $styleD[3] as $i =>$worst )
                         <div class="mb-3">
                             <p class="dlimit_env{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="d_env{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="d_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -164,7 +164,7 @@
                         @foreach ( $styleI[0] as $i =>$motivate )
                         <div class="mb-3">
                             <p class="ilimit_im{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="i_im{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $motivate }}" class="form-control" id="i_im{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -187,7 +187,7 @@
                         @foreach ( $styleI[1] as $i =>$best )
                         <div class="mb-3">
                             <p class="ilimit_bet{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="i_bet{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="i_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -210,7 +210,7 @@
                         @foreach ( $styleI[2] as $i =>$demotive )
                         <div class="mb-3">
                             <p class="ilimit_avo{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="i_avo{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="i_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -233,7 +233,7 @@
                         @foreach ( $styleI[3] as $i =>$worst )
                         <div class="mb-3">
                             <p class="ilimit_env{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="i_env{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="i_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -277,7 +277,7 @@
                         @foreach ( $styleS[0] as $i =>$motivate )
                         <div class="mb-3">
                             <p class="slimit_im{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="s_im{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $motivate }}" class="form-control" id="s_im{{$i+1}}"
                                 placeholder="soalan" name="value[]}">
                         </div>
                         @endforeach
@@ -300,7 +300,7 @@
                         @foreach ( $styleS[1] as $i =>$best )
                         <div class="mb-3">
                             <p class="slimit_bet{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="s_bet{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="s_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -323,7 +323,7 @@
                         @foreach ( $styleS[2] as $i =>$demotive )
                         <div class="mb-3">
                             <p class="slimit_avo{{$i+1}}">(0/100)</p>
-                            <input  maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="s_avo{{$i+1}}"
+                            <input  maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="s_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -346,7 +346,7 @@
                         @foreach ( $styleS[3] as $i =>$worst )
                         <div class="mb-3">
                             <p class="slimit_env{{$i+1}}">(0/100)</p>
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="s_env{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="s_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -390,7 +390,7 @@
                         @foreach ( $styleC[0] as $i =>$motivate )
                         <div class="mb-3">
                             <p class='climit_im{{$i+1}}'>(0 / 100)</p>
-                            <input maxlength="110" type="text" value="{{ $motivate }}" class="form-control" id="c_im{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $motivate }}" class="form-control" id="c_im{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -413,7 +413,7 @@
                         @foreach ( $styleC[1] as $i =>$best )
                         <div class="mb-3">
                             <p class='climit_bet{{$i+1}}'>(0 / 100)</p>
-                            <input maxlength="110" type="text" value="{{ $best }}" class="form-control" id="c_bet{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $best }}" class="form-control" id="c_bet{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -436,7 +436,7 @@
                         @foreach ( $styleC[2] as $i =>$demotive )
                         <div class="mb-3">
                             <p class='climit_avo{{$i+1}}'>(0 / 100)</p>
-                            <input maxlength="110" type="text" value="{{ $demotive }}" class="form-control" id="c_avo{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $demotive }}" class="form-control" id="c_avo{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach
@@ -459,7 +459,7 @@
                         @foreach ( $styleC[3] as $i =>$worst )
                         <div class="mb-3">
                             <p class='climit_env{{$i+1}}'>(0 / 100)</p>
-                            <input maxlength="110" type="text" value="{{ $worst }}" class="form-control" id="c_env{{$i+1}}"
+                            <input maxlength="100" type="text" value="{{ $worst }}" class="form-control" id="c_env{{$i+1}}"
                                 placeholder="soalan" name="value[]">
                         </div>
                         @endforeach

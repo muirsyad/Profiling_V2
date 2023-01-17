@@ -1415,12 +1415,19 @@ class questionsController extends Controller
         $cremarks =  DB::table('remarks')->where('user_id', $auth)->count();
         if($cremarks > 0){
             $remarks=$remarks;
+            $remarks->rem_1 = explode(".",$remarks->rem_1);
+            $remarks->rem_2 = explode(".",$remarks->rem_2);
+            $remarks->rem_3 = explode(".",$remarks->rem_3);
+           
         }
         else{
             $remarks = "";
         }
         // dd($remarks);
         //template query
+
+        
+
         $template = DB::table('templates_reports')->where('Behaviour_type', $ans->High)->first();
         $strength = $template->Strength;
         $strength = explode(",", $strength);
@@ -1525,7 +1532,7 @@ class questionsController extends Controller
         
         $u_among = $this->comteam($join->id);
         $u_among = $this->percentageamong($u_among);
-
+        
 
         $pdf = pdf::loadView('PDF.ProfilingIndividu', [
             'personalchart' =>$personalchart,
@@ -1548,6 +1555,7 @@ class questionsController extends Controller
             'Svalues' => $S_value,
             'Cvalues' => $C_value,
             'remarks' => $remarks,
+            'cremarks' => $cremarks
 
 
         ]);
@@ -1561,9 +1569,9 @@ class questionsController extends Controller
             ])
         );
         // $pdf->setPaper('A4', 'potrait');
-
+        $docname = 'Profiling Report '.$join->name.'.pdf';
         $pdf->setOption('isRemoteEnabled', true);
-        return $pdf->stream('invoice.pdf');
+        return $pdf->stream($docname);
         //return $pdf->download('profiling.pdf');
     }
     //end

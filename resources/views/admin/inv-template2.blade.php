@@ -44,7 +44,7 @@
 
                             <div class="mb-3">
                                 <input type="text" value="{{ $Dhigh }}" class="form-control" id="D_High{{ $i+1 }}"
-                                    placeholder="soalan" name="valueH[]" maxlength="110">
+                                    placeholder="soalan" name="valueH[]" maxlength="100">
                             </div>
                             @endforeach
 
@@ -65,7 +65,7 @@
                                         @break
                                     @endif
                                     <input type="text" value="{{ $DLow }}" class="form-control" id="D_low{{ $i+1 }}"
-                                        placeholder="soalan" name="valueL[]" maxlength="110">
+                                        placeholder="soalan" name="valueL[]" maxlength="100">
                                 </div>
                             @endforeach
 
@@ -122,7 +122,7 @@
                                 @endif
                             <div class="mb-3">
                                 <input type="text" value="{{ $Ihigh }}" class="form-control" id="I_High{{ $i+1 }}"
-                                    placeholder="soalan" name="valueH[]" maxlength="110">
+                                    placeholder="soalan" name="valueH[]" maxlength="100">
                             </div>
                             @endforeach
                         </div>
@@ -139,7 +139,7 @@
                                         @break
                                     @endif
                                     <input type="text" value="{{ $ILow }}" class="form-control" id="I_low{{ $i+1 }}"
-                                        placeholder="soalan" name="valueL[]" maxlength="110">
+                                        placeholder="soalan" name="valueL[]" maxlength="100">
                                 </div>
                             @endforeach
                         </div>
@@ -192,7 +192,7 @@
                                 @endif
                             <div class="mb-3">
                                 <input type="text" value="{{ $Shigh }}" class="form-control" id="S_High{{ $i+1 }}"
-                                    placeholder="soalan" name="valueH[]" maxlength="110">
+                                    placeholder="soalan" name="valueH[]" maxlength="100">
                             </div>
                             @endforeach
                         </div>
@@ -209,7 +209,7 @@
                                         @break
                                     @endif
                                     <input type="text" value="{{ $SLow }}" class="form-control" id="S_low{{ $i+1 }}"
-                                        placeholder="soalan" name="valueL[]" maxlength="110">
+                                        placeholder="soalan" name="valueL[]" maxlength="100">
                                 </div>
                             @endforeach
                         </div>
@@ -261,7 +261,7 @@
 
                             <div class="mb-3">
                                 <input type="text" value="{{ $Chigh }}" class="form-control" id="C_High{{ $i+1 }}"
-                                    placeholder="soalan" name="valueH[]" maxlength="110">
+                                    placeholder="soalan" name="valueH[]" maxlength="100">
                             </div>
                             @endforeach
                         </div>
@@ -278,7 +278,7 @@
                                         @break
                                     @endif
                                     <input type="text" value="{{ $CLow }}" class="form-control" id="C_low{{ $i+1 }}"
-                                        placeholder="soalan" name="valueL[]" maxlength="110">
+                                        placeholder="soalan" name="valueL[]" maxlength="100">
                                 </div>
                             @endforeach
                         </div>

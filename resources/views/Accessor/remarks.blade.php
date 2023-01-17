@@ -1,13 +1,21 @@
 @extends('acc_template')
 @section('content')
-    <h1>TEST</h1>
+
 
     <div class="card">
         <div class="card-body">
-            <h1>Name : {{ $user->name }}</h1>
-            <h1>Email : {{ $user->email }}</h1>
-            <h1>Department : {{ $user->department }}</h1>
-            <h1>Complete Assasment : {{ $user->status }}</h1>
+            <div class="color-black mb-4">
+                <h1>Name : {{ $user->name }}</h1>
+                <h1>Email : {{ $user->email }}</h1>
+                <h1>Department : {{ $user->department }}</h1>
+                @if ($user->status === 1)
+                    <h1>Complete Assasment : <span class="done">Complete</span> </h1>
+                @else
+                <h1>Complete Assasment : <span class="undone">Uncomplete</span> </h1>
+                @endif
+
+            </div>
+
             <!-- Button trigger modal -->
 
             <div class="d-flex justify-content-around">
@@ -31,7 +39,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="remarks1Modal" tabindex="-1" aria-labelledby="remarks1ModalLabel" aria-hidden="true">
+    <div class="modal fade color-black" id="remarks1Modal" tabindex="-1" aria-labelledby="remarks1ModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,7 +61,8 @@
                                 <div class="mb-3">
                                     {{-- <input maxlength="90" value="{{$rem}}" type="text"class="form-control" placeholder="soalan" name="value[]"
                             id="inputId"> --}}
-                                    <textarea maxlength='110' class='form-control' id='rem1inputId' name='value[]' placeholder='remarks' rows='2'>{{ $rem }}</textarea>
+                                    <textarea maxlength='110' class='form-control color-black' id='rem1inputId' name='value[]' placeholder='remarks'
+                                        rows='2'>{{ $rem }}</textarea>
 
                                 </div>
                             @endforeach
@@ -60,7 +70,8 @@
                             <div class="mb-3">
 
 
-                                <textarea maxlength="110" class="form-control" name="value[]" id="exampleFormControlTextarea1" rows="2" placeholder="remarks"></textarea>
+                                <textarea maxlength="110" class="form-control color-black" name="value[]" id="exampleFormControlTextarea1"
+                                    rows="2" placeholder="remarks"></textarea>
                             </div>
                         @endif
 
@@ -77,7 +88,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="remarks2Modal" tabindex="-1" aria-labelledby="remarks2ModalLabel" aria-hidden="true">
+    <div class="modal fade color-black" id="remarks2Modal" tabindex="-1" aria-labelledby="remarks2ModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -95,7 +107,8 @@
                                 <div class="mb-3">
                                     {{-- <input maxlength="90" value="{{$rem}}" type="text"class="form-control" placeholder="soalan" name="value[]"
                             id="inputId"> --}}
-                                    <textarea maxlength='110' class='form-control' id='rem2inputId' name='value[]' placeholder='remarks' rows='2'>{{ $rem }}</textarea>
+                                    <textarea maxlength='110' class='form-control color-black' id='rem2inputId' name='value[]' placeholder='remarks'
+                                        rows='2'>{{ $rem }}</textarea>
 
                                 </div>
                             @endforeach
@@ -103,7 +116,8 @@
                             <div class="mb-3">
 
 
-                                <textarea maxlength="110" class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="remarks"></textarea>
+                                <textarea maxlength="110" class="form-control color-black" id="exampleFormControlTextarea1" rows="2"
+                                    placeholder="remarks"></textarea>
                             </div>
                         @endif
                 </div>
@@ -118,7 +132,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="remarks3Modal" tabindex="-1" aria-labelledby="remarks3ModalLabel" aria-hidden="true">
+    <div class="modal fade color-black" id="remarks3Modal" tabindex="-1" aria-labelledby="remarks3ModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,7 +151,7 @@
                                 <div class="mb-3">
                                     {{-- <input maxlength="90" value="{{$rem}}" type="text"class="form-control" placeholder="soalan" name="value[]"
                             id="inputId"> --}}
-                                    <textarea maxlength='110' class='form-control' id='rem3inputId' name='value[]' placeholder='remarks'
+                                    <textarea maxlength='110' class='form-control color-black' id='rem3inputId' name='value[]' placeholder='remarks'
                                         rows='2'>{{ $rem }}</textarea>
 
                                 </div>
@@ -145,7 +160,7 @@
                             <div class="mb-3">
 
 
-                                <textarea maxlength="110" class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                <textarea maxlength="110" class="form-control color-black" id="exampleFormControlTextarea1" rows="2"
                                     placeholder="remarks"></textarea>
                             </div>
                         @endif
