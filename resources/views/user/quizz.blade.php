@@ -192,6 +192,20 @@
                             @endphp
 
                             <div class="tab">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        {{-- <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                           
+                                        </ul> --}}
+                                        <span>This Question is not answered :</span><br>
+                                        @foreach ($errors->all() as $error)
+                                                {{ $error }} <br>
+                                            @endforeach
+                                    </div>
+                                @endif
                                 <h4>{{ $groups->id }} of {{ $countG }}</h4>
                                 <hr class="">
                                 <h5 class="Qtitle mb-5">Please choose answer that <strong

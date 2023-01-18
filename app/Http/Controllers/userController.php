@@ -74,7 +74,7 @@ class userController extends Controller
         $ar=implode(",",$ar);
         
         $formFields = $request->validate([
-            'name' => ['required', 'min:3'],
+            // 'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::exists('users', 'email')],
             //'email' => ['required', 'email'],
             'password' => 'required|confirmed|min:6',
@@ -159,7 +159,7 @@ class userController extends Controller
         
 
 
-        $role = $user->role_id;
+        
         // echo $role;
         // dd($user);
 
@@ -168,6 +168,7 @@ class userController extends Controller
 
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
+            $role = $user->role_id;
             switch ($role) {
                 case 4:
                     return redirect(route('acindex'))->with('message', 'Logged in successfully');

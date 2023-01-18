@@ -136,21 +136,31 @@ class adminController extends Controller
 
         $clients = Clients::all()->where('is_delete', '0');
         foreach ($clients as $i => $client) {
-            $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
-            $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
+            $answercount = DB::table('answer_records')->where('client_id', $client->id)->count();
+            if ($answercount > 0) {
+                $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
+                $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
 
-            //change status if all user answer
-            if ($userdone == $all) {
+                dump($client->client, $userdone, $all, "ANSWERCOUNT", $answercount);
 
-                $affected = DB::table('clients')
-                    ->where('id', $client->id)
-                    ->update(['status' => 1]);
-            } else {
+                //change status if all user answer
+                if ($userdone == $all) {
 
+                    $affected = DB::table('clients')
+                        ->where('id', $client->id)
+                        ->update(['status' => 1]);
+                } else {
+
+                    //stay value 0 if not all user answer
+                    $affected = DB::table('clients')
+                        ->where('id', $client->id)
+                        ->update(['status' => 0]);
+                }
+            } else{
                 //stay value 0 if not all user answer
-                $affected = DB::table('clients')
-                    ->where('id', $client->id)
-                    ->update(['status' => 0]);
+                $unffected = DB::table('clients')
+                ->where('id', $client->id)
+                ->update(['status' => 0]);
             }
         }
         $random = Str::random(8);
@@ -191,7 +201,7 @@ class adminController extends Controller
     }
     public function indTemplate2()
     {
-        
+
         $highlowD = $this->selBehaviour('D');
         $highlowI = $this->selBehaviour('I');
         $highlowS = $this->selBehaviour('S');
@@ -238,7 +248,7 @@ class adminController extends Controller
     }
     public function indTemplate4()
     {
-        
+
         $highlowD = $this->selBehaviour('D');
         $highlowI = $this->selBehaviour('I');
         $highlowS = $this->selBehaviour('S');
@@ -999,7 +1009,7 @@ class adminController extends Controller
     }
     public function department_update(Request $request)
     {
-        
+
         $formFields = $request->validate([
             'depart' => 'required',
 
@@ -1015,12 +1025,12 @@ class adminController extends Controller
 
     public function department_delete($departments)
     {
-        
+
 
         $affected = DB::table('departments')
             ->where('id', $departments)
             ->delete();
-        
+
 
 
         return redirect(route('depart'));

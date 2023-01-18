@@ -31,7 +31,7 @@
 
             <div class="title  text-white text-center">
                 <h1 class="nomar fw-bold">Create an account12</h1>
-                <span>Complete registeration to take DiSC Assement</span>
+                <span>Complete registeration to take DiSC Assessment</span>
 
             </div>
 
@@ -40,14 +40,14 @@
                     <div class="col col-lg-6 p-4 mx-auto">
                         <div class="card">
                             <div class="card-body c-wood">
-                                <div class="form-floating mb-3">
+                                {{-- <div class="form-floating mb-3">
                                     <input name="name" type="text" class="form-control" id="floatingPassword"
                                         placeholder="Password">
                                     <label for="floatingPassword">Name</label>
                                     @error('name')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="form-floating mb-3">
                                     <select name="department_id" class="form-select" id="floatingSelect"
                                         aria-label="Floating label select example">
