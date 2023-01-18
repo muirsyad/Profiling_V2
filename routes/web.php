@@ -86,6 +86,7 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     route::get('/admin/templates', [adminController::class, 'templates'])->name('template');
     route::get('/admin/templates/individual', [adminController::class, 'indTemplate'])->name('indTemp');
     route::get('/admin/templates/individual2', [adminController::class, 'indTemplate2'])->name('indTemp2');
+    route::get('/admin/templates/individual4', [adminController::class, 'indTemplate4'])->name('indTemp2');
     route::get('/admin/templates/keywords', [adminController::class, 'Template_key'])->name('key');
     route::get('/admin/templates/motivation', [adminController::class, 'Template_motivate'])->name('motivate');
     route::get('/admin/templates/performance', [adminController::class, 'Template_performance'])->name('performance');

@@ -236,6 +236,53 @@ class adminController extends Controller
             'Clcount' => $Clcount,
         ]);
     }
+    public function indTemplate4()
+    {
+        
+        $highlowD = $this->selBehaviour('D');
+        $highlowI = $this->selBehaviour('I');
+        $highlowS = $this->selBehaviour('S');
+        $highlowC = $this->selBehaviour('C');
+
+        $Dhigh = explode(".", $highlowD->H_temp);
+        $Dcount = count($Dhigh);
+        $DLow = explode(".", $highlowD->L_temp);
+        $Dlcount = count($DLow);
+
+        $Ihigh = explode(".", $highlowI->H_temp);
+        $Icount = count($Ihigh);
+        $ILow = explode(".", $highlowI->L_temp);
+        $Ilcount = count($ILow);
+
+        $Shigh = explode(".", $highlowS->H_temp);
+        $Scount = count($Shigh);
+        $SLow = explode(".", $highlowS->L_temp);
+        $Slcount = count($SLow);
+
+        $Chigh = explode(".", $highlowC->H_temp);
+        $Ccount = count($Chigh);
+        $CLow = explode(".", $highlowC->L_temp);
+        $Clcount = count($CLow);
+
+        return view('admin.inv-template4', [
+            'Dhigh' => $Dhigh,
+            'DLow' => $DLow,
+            'Dcount' => $Dcount,
+            'Dlcount' => $Dlcount,
+            'Ihigh' => $Ihigh,
+            'ILow' => $ILow,
+            'Icount' => $Icount,
+            'Ilcount' => $Ilcount,
+            'Shigh' => $Shigh,
+            'SLow' => $SLow,
+            'Scount' => $Scount,
+            'Slcount' => $Slcount,
+            'Chigh' => $Chigh,
+            'CLow' => $CLow,
+            'Ccount' => $Ccount,
+            'Clcount' => $Clcount,
+        ]);
+    }
     public function indTemplate3()
     {
         $highlowD = $this->selBehaviour('D');

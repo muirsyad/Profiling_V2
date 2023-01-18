@@ -1,25 +1,27 @@
 $(document).ready(function () {
 
+    var rowlimitstr = 1
+
 
 
     var inputCount1 = $("form input").filter(".inputDD").length;
     console.log("COUNT INPUT" + inputCount1);
 
-    if (inputCount1 > 4) {
+    if (inputCount1 > rowlimitstr) {
         $("#row-D").attr("disabled", true);
     }
 
     var inputCount2 = $("form input").filter(".inputDI").length;
     console.log("COUNT INPUT" + inputCount2);
 
-    if (inputCount2 > 4) {
+    if (inputCount2 > rowlimitstr) {
         $("#row-I").attr("disabled", true);
     }
 
     var inputCount3 = $("form input").filter(".inputDS").length;
     console.log("COUNT INPUT 3 = " + inputCount3);
 
-    if (inputCount3 > 4) {
+    if (inputCount3 > rowlimitstr) {
 
         $("#row-S").attr("disabled", true);
     }
@@ -27,7 +29,7 @@ $(document).ready(function () {
     var inputCount4 = $("form input").filter(".inputDC").length;
     console.log("COUNT INPUT CCC" + inputCount4);
 
-    if (inputCount4 > 4) {
+    if (inputCount4 > rowlimitstr) {
 
         $("#row-C").attr("disabled", true);
     }
@@ -41,7 +43,7 @@ $(document).ready(function () {
         console.log("CLICL BUTTON");
         inputCount1++;
         console.log("COUNT INPUT" + inputCount1);
-        if (inputCount1 > 4) {
+        if (inputCount1 > rowlimitstr) {
             $("#row-D").attr("disabled", true);
         }
         focusCount(inputCount1,'D');
@@ -55,7 +57,7 @@ $(document).ready(function () {
         console.log("CLICL BUTTON 2222");
         inputCount2++;
         console.log("COUNT INPUT" + inputCount2);
-        if (inputCount2 > 4) {
+        if (inputCount2 > rowlimitstr) {
             $("#row-I").attr("disabled", true);
         }
         focusCount(inputCount2,'I');
@@ -67,7 +69,7 @@ $(document).ready(function () {
         console.log("CLICL BUTTON 33333");
         inputCount3++;
         console.log("COUNT INPUT 3 =" + inputCount3);
-        if (inputCount3 > 4) {
+        if (inputCount3 > rowlimitstr) {
             $("#row-S").attr("disabled", true);
         }
         focusCount(inputCount3,'S');
@@ -79,7 +81,7 @@ $(document).ready(function () {
         console.log("CLICL BUTTON 33333");
         inputCount4++;
         console.log("COUNT INPUT" + inputCount4);
-        if (inputCount4 > 4) {
+        if (inputCount4 > rowlimitstr) {
             $("#row-C").attr("disabled", true);
         }
         focusCount(inputCount4,'C');
