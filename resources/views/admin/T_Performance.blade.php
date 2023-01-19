@@ -51,6 +51,9 @@
                         <input type="hidden" name="valuef" value="A_improve">
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[0] as $i =>$improve )
+                            @if ($i > 4)
+                                @break
+                            @endif
                         <div class="mb-3">
                             <p class="dlimit_im{{$i+1}}">(0/100)</p>
                             <div class="d_count_im">
@@ -78,6 +81,9 @@
                         <input type="hidden" name="valuef" value="O_better">
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[1] as $i =>$better )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="dlimit_bet{{$i+1}}">(0/100)</p>
                             <div class="d_count_bet">
@@ -106,6 +112,9 @@
                         <input type="hidden" name="valuef" value="O_avoid">
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[2] as $i =>$avoid )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="dlimit_avo{{$i+1}}">(0/100)</p>
                             <div class="d_count_avo">
@@ -133,6 +142,9 @@
                         <input type="hidden" name="valuef" value="Y_environment">
                         <input type="hidden" name="style" value="D">
                         @foreach ( $perD[3] as $i =>$env )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="dlimit_env{{$i+1}}">(0/100)</p>
                             <div class="d_count_env">
@@ -181,6 +193,9 @@
                         <input type="hidden" name="valuef" value="A_improve">
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[0] as $i =>$improve )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="ilimit_im{{$i+1}}">(0/100)</p>
                             <div class="i_count_im">
@@ -208,6 +223,9 @@
                         <input type="hidden" name="valuef" value="O_better">
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[1] as $i =>$better )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="ilimit_bet{{$i+1}}">(0/100)</p>
                             <div class="i_count_bet">
@@ -236,6 +254,9 @@
                         <input type="hidden" name="valuef" value="O_avoid">
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[2] as $i =>$avoid )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="ilimit_avo{{$i+1}}">(0/100)</p>
                             <div class="i_count_avo">
@@ -263,6 +284,9 @@
                         <input type="hidden" name="valuef" value="Y_environment">
                         <input type="hidden" name="style" value="I">
                         @foreach ( $perI[3] as $i =>$env )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="ilimit_env{{$i+1}}">(0/100)</p>
                             <div class="i_count_env">
@@ -311,6 +335,9 @@
                         <input type="hidden" name="valuef" value="A_improve">
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[0] as $i =>$improve )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="slimit_im{{$i+1}}">(0/100)</p>
                             <div class="s_count_im">
@@ -339,6 +366,9 @@
                         <input type="hidden" name="valuef" value="O_better">
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[1] as $i =>$better )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="slimit_bet{{$i+1}}">(0/100)</p>
                             <div class="s_count_bet">
@@ -367,6 +397,9 @@
                         <input type="hidden" name="valuef" value="O_avoid">
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[2] as $i =>$avoid )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="slimit_avo{{$i+1}}">(0/100)</p>
                             <div class="s_count_avo">
@@ -395,6 +428,9 @@
                         <input type="hidden" name="valuef" value="Y_environment">
                         <input type="hidden" name="style" value="S">
                         @foreach ( $perS[3] as $i =>$env )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class="slimit_env{{$i+1}}">(0/100)</p>
                             <div class="s_count_env">
@@ -444,6 +480,9 @@
                         <input type="hidden" name="valuef" value="A_improve">
                         <input type="hidden" name="style" value="C">
                         @foreach ( $perC[0] as $i =>$improve )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class='climit_im{{$i+1}}'>(0 / 100)</p>
                             <div class="c_count_im">
@@ -472,6 +511,9 @@
                         <input type="hidden" name="valuef" value="O_better">
                         <input type="hidden" name="style" value="C">
                         @foreach ( $perC[1] as $i =>$better )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class='climit_bet{{$i+1}}'>(0 / 100)</p>
                             <div class="c_count_bet">
@@ -501,6 +543,9 @@
                         <input type="hidden" name="valuef" value="O_avoid">
                         <input type="hidden" name="style" value="C">
                         @foreach ( $perC[2] as $i =>$avoid )
+                        @if ($i > 4)
+                            @break
+                        @endif
                         <div class="mb-3">
                             <p class='climit_avo{{$i+1}}'>(0 / 100)</p>
 
@@ -530,7 +575,11 @@
                         @csrf
                         <input type="hidden" name="valuef" value="Y_environment">
                         <input type="hidden" name="style" value="C">
+                       
                         @foreach ( $perC[3] as $i =>$env )
+                        @if ($i > 4)
+                        @break
+                    @endif
                         <div class="mb-3">
                             <p class='climit_env{{$i+1}}'>(0 / 100)</p>
                             <div class="c_count_env">

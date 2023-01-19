@@ -274,7 +274,7 @@ class adminController extends Controller
         $CLow = explode(".", $highlowC->L_temp);
         $Clcount = count($CLow);
 
-        return view('admin.inv-template4', [
+        return view('admin.inv-template4copy', [
             'Dhigh' => $Dhigh,
             'DLow' => $DLow,
             'Dcount' => $Dcount,

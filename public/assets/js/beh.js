@@ -54,7 +54,7 @@ $(document).ready(function () {
     console.log("COUNT INPUT HIGH C" + inputCountCH);
 
     if (inputCountCH > rowlimitstr) {
-        $("#row-SH").attr("disabled", true);
+        $("#row-CH").attr("disabled", true);
     }
 
     var inputCountCL = $("form input").filter(".inputCL").length;

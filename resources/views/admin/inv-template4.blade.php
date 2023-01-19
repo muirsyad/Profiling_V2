@@ -40,6 +40,9 @@
                             <span id="ch">{{ $Dcount }}</span>
                             <input id="chD" type="hidden" value="{{ $Dcount }}">
                             @foreach ($Dhigh as $i => $Dhigh)
+                            @if ($i > 4)
+                                @break
+                            @endif
                                 <p id="diDH{{ $i }}"></p>
                                 <div class="mb-3">
                                     <input type="text" value="{{ $Dhigh }}" class="form-control inputDH"
@@ -59,7 +62,7 @@
                             <span id="cl">{{ $Dlcount }}</span>
                             <input id="clD" type="hidden" value="{{ $Dlcount }}">
                             @foreach ($DLow as $j => $DLow)
-                                <div class="mb-3">
+                                
                                     @if ($j > 4)
                                     @break
                                 @endif
@@ -70,7 +73,7 @@
                                         maxlength="100">
                                 </div>
 
-                            </div>
+                            
                         @endforeach
 
 
@@ -101,14 +104,15 @@
                 </div>
             </div>
 
-
         </div>
+    
     </div>
 </form>
+
 <form action="{{ route('tempstore') }}" method="post" id="form_template">
     @csrf
     <input type="hidden" name="style" value="I">
-    <div style="display: none" id="tab-i" class="card title2 col-10 mx-auto mb-3">
+    <div style="display: none " id="tab-i" class="card title2 col-10 mx-auto mb-3">
         <div class="card-header">
             <h3 class="text-primary">Behaviour Template</h3>
         </div>
@@ -143,7 +147,7 @@
                     <input id="clI" type="hidden" value="{{ $Ilcount }}">
 
                     @foreach ($ILow as $j => $ILow)
-                        <div class="mb-3">
+                       
                             @if ($j > 4)
                             @break
                         @endif
@@ -154,7 +158,7 @@
                                 maxlength="100">
                         </div>
 
-                    </div>
+                   
                 @endforeach
             </div>
         </div>
@@ -186,12 +190,13 @@
 
 </div>
 </div>
+</div>
 </form>
 <form action="{{ route('tempstore') }}" method="post" id="form_template">
 @csrf
 <input type="hidden" name="style" value="S">
 
-<div style="display: none" id="tab-S" class="card title2 col-10 mx-auto mb-3">
+<div style="display: none " id="tab-S" class="card title2 col-10 mx-auto mb-3">
 <div class="card-header">
     <h3 class="text-primary">Behaviour Template</h3>
 </div>
@@ -226,10 +231,11 @@
             <input id="clS" type="hidden" value="{{ $Slcount }}">
 
             @foreach ($SLow as $j => $SLow)
-                <div class="mb-3">
-                    @if ($j > 4)
+                @if ($j > 4)
                     @break
                 @endif
+                
+                    
                 <p id="diSL{{ $j }}"></p>
                 <div class="mb-3">
                     <input type="text" value="{{ $SLow }}" class="form-control inputSL"
@@ -237,27 +243,27 @@
                         maxlength="100">
                 </div>
 
-            </div>
+            
         @endforeach
     </div>
 </div>
 <div class="d-flex justify-content-between">
 
     {{-- @if ($i < 4)
-        <button id="btnH-rowS" type="button" class="btn btn-primary"
-            onclick="addrow1('High','S')">Add row H </button>
-    @else
-        <button disabled type="button" class="btn btn-primary" onclick="addrow1('High','S')">Add row
-            H </button>
-    @endif
+            <button id="btnH-rowS" type="button" class="btn btn-primary"
+                onclick="addrow1('High','S')">Add row H </button>
+        @else
+            <button disabled type="button" class="btn btn-primary" onclick="addrow1('High','S')">Add row
+                H </button>
+        @endif
 
-    @if ($j < 4)
-        <button id="btnH-rowS" type="button" class="btn btn-primary"
-            onclick="addrow1('Low','S')">Add row L</button>
-    @else
-        <button disabled type="button" class="btn btn-primary" onclick="addrow1('Low','S')">Add row
-            L</button>
-    @endif --}}
+        @if ($j < 4)
+            <button id="btnH-rowS" type="button" class="btn btn-primary"
+                onclick="addrow1('Low','S')">Add row L</button>
+        @else
+            <button disabled type="button" class="btn btn-primary" onclick="addrow1('Low','S')">Add row
+                L</button>
+        @endif --}}
 
     <button id="row-SH" type="button" class="btn btn-primary">Add row H</button>
     <button id="row-SL" type="button" class="btn btn-primary">Add row L</button>
@@ -271,12 +277,13 @@
 
 </div>
 </div>
+</div>
 </form>
 <form action="{{ route('tempstore') }}" method="post" id="form_template">
 @csrf
 <input type="hidden" name="style" value="C">
 
-<div style="display: none" id="tab-C" class="card title2 col-10 mx-auto mb-3">
+<div style="display: none " id="tab-C" class="card title2 col-10 mx-auto mb-3">
 <div class="card-header">
 <h3 class="text-primary">Behaviour Template</h3>
 </div>
@@ -292,6 +299,9 @@
         <input id="chC" type="hidden" value="{{ $Ccount }}">
 
         @foreach ($Chigh as $i => $Chigh)
+                    @if ($i > 4)
+                        @break
+                    @endif
             <p id="diCH{{ $i }}"></p>
             <div class="mb-3">
                 <input type="text" value="{{ $Chigh }}" class="form-control inputCH"
@@ -308,10 +318,11 @@
         <input id="clC" type="hidden" value="{{ $Clcount }}">
 
         @foreach ($CLow as $j => $CLow)
-            <div class="mb-3">
                 @if ($j > 4)
-                @break
-            @endif
+                    @break
+                @endif
+            
+            
             <p id="diCL{{ $j }}"></p>
             <div class="mb-3">
                 <input type="text" value="{{ $CLow }}" class="form-control inputCL"
@@ -319,27 +330,27 @@
                     maxlength="100">
             </div>
 
-        </div>
+        
     @endforeach
 </div>
 </div>
 <div class="d-flex justify-content-between">
 {{-- 
-@if ($i < 5)
-    <button id="btnH-rowC" type="button" class="btn btn-primary"
-        onclick="addrow1('High','C')">Add row H </button>
-@else
-    <button disabled type="button" class="btn btn-primary" onclick="addrow1('High','C')">Add row
-        H </button>
-@endif
+    @if ($i < 5)
+        <button id="btnH-rowC" type="button" class="btn btn-primary"
+            onclick="addrow1('High','C')">Add row H </button>
+    @else
+        <button disabled type="button" class="btn btn-primary" onclick="addrow1('High','C')">Add row
+            H </button>
+    @endif
 
-@if ($j < 5)
-    <button id="btnL-rowC" type="button" class="btn btn-primary"
-        onclick="addrow1('Low','C')">Add row L</button>
-@else
-    <button disabled type="button" class="btn btn-primary" onclick="addrow1('Low','C')">Add row
-        L</button>
-@endif --}}
+    @if ($j < 5)
+        <button id="btnL-rowC" type="button" class="btn btn-primary"
+            onclick="addrow1('Low','C')">Add row L</button>
+    @else
+        <button disabled type="button" class="btn btn-primary" onclick="addrow1('Low','C')">Add row
+            L</button>
+    @endif --}}
 
 <button id="row-CH" type="button" class="btn btn-primary">Add row H</button>
 <button id="row-CL" type="button" class="btn btn-primary">Add row L</button>
@@ -353,6 +364,7 @@
 
 </div>
 </div>
+</div>
 </form>
 
 
@@ -360,7 +372,7 @@
 
 
 {{-- end form --}}
-</form>
+{{-- </form> --}}
 
 
 {{-- <x-t_function/> --}}

@@ -65,6 +65,7 @@ $(document).ready(function () {
         console.log('tab D');
         if ($("#tab-D").is(":hidden")) {
             $("#tab-D").fadeIn();
+            $(".tab-d").fadeIn();
             $("#tab-i").fadeOut();
             $("#tab-i").hide();
             $("#tab-S").fadeOut();
@@ -74,11 +75,13 @@ $(document).ready(function () {
         }
     });
     $("#btn-i").click(function () {
-        console.log("I");
+        console.log("tab I");
         if ($("#tab-i").is(":hidden")) {
+            console.log("I hiddens clicked");
             $("#tab-i").fadeIn();
             $("#tab-D").fadeOut();
             $("#tab-D").hide();
+            $(".tab-d").hide();
             $("#tab-S").fadeOut();
             $("#tab-S").hide();
             $("#tab-C").fadeOut();
@@ -87,7 +90,9 @@ $(document).ready(function () {
     });
 
     $("#btn-S").click(function () {
+        
         if ($("#tab-S").is(":hidden")) {
+            console.log("S hiddens clicked");
             $("#tab-S").fadeIn();
             $("#tab-D").fadeOut();
             $("#tab-D").hide();
