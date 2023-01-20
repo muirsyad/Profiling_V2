@@ -422,10 +422,17 @@
         .text-bolder {
             font-weight: bolder
         }
+        .logo{
+            position: absolute;
+            top: 10%;
+            left: 5%;
+
+        }
     </style>
     {{-- page 1     --}}
     <div class="page-break">
         <img src="{{ public_path('assets/img/report/1.png') }}" width="800px" height="1100px">
+        <img class="logo" src="{{ public_path('images/2_ttbung.jpg') }}" width="200x" height="200px">
         <span class="name text-bolder" style="color: #05572f">{{ $users->name }}</span>
         <span class="department text-bolder" style="color: #05572f">{{ $users->department }}</span>
 

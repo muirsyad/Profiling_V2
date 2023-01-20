@@ -141,7 +141,7 @@ class adminController extends Controller
                 $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
                 $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
 
-                dump($client->client, $userdone, $all, "ANSWERCOUNT", $answercount);
+                // dump($client->client, $userdone, $all, "ANSWERCOUNT", $answercount);
 
                 //change status if all user answer
                 if ($userdone == $all) {
@@ -844,6 +844,22 @@ class adminController extends Controller
         return redirect(route('Cview'));
         //dd($update);
 
+
+    }
+
+    public function storeImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+        ]);
+        
+        $imageName = time().'.'.$request->image->extension();
+        $imageName = $request->client."_".$request->name.".".$request->image->extension();
+
+        // Public Folder
+        $request->image->move(public_path('images'), $imageName);
+
+        return redirect(route('Cview'));
 
     }
     public function uptemplate2(Request $request)

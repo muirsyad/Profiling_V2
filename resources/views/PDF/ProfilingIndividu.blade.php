@@ -157,7 +157,7 @@
         <img class="top-1" src="{{ $personalchart }}" alt="chart">
         <img class="top-2" src="{{ $teamChart }}" alt="chart">
         <img class="top-3" src="{{ $companyChart }}" alt="chart">
-        <div class="box-number" style="color: red"><span class="big-text">100%</span></div>
+        <div class="box-number" style="color: red"><span class="big-text">{{$percent}}%</span></div>
         <div class="box-key" style="color: rgb(0, 0, 0)">
             <ul>
                 @foreach ($keywords as $i => $key)

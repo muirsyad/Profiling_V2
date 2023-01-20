@@ -11,7 +11,7 @@
                 @if ($user->status === 1)
                     <h1>Complete Assasment : <span class="done">Complete</span> </h1>
                 @else
-                <h1>Complete Assasment : <span class="undone">Uncomplete</span> </h1>
+                    <h1>Complete Assasment : <span class="undone">Uncomplete</span> </h1>
                 @endif
 
             </div>
@@ -38,6 +38,28 @@
         </div>
     </div>
 
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Modal -->
     <div class="modal fade color-black" id="remarks1Modal" tabindex="-1" aria-labelledby="remarks1ModalLabel"
         aria-hidden="true">
@@ -48,7 +70,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Remarks 1
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Example
+                    </button>
+                    <span>Remarks 1</span>
+                    
+
+                    
 
                     <form action="{{ route('Remup1') }}" method="POST" id="elementId">
 

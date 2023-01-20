@@ -17,7 +17,7 @@
                                         </thead>
                                         <tbody class="text-center">
 
-                                            @foreach ( $questions as $questions )
+                                            @foreach ( $questions as $i => $questions )
                                                 <tr>
                                                     <td>{{ $questions->id }}</td>
                                                     <td>{{ $questions->question }}</td>

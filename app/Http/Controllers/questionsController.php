@@ -222,207 +222,6 @@ class questionsController extends Controller
         $b_val = $this->max($value, $max);
 
 
-
-
-        // if ($record->D > $high) {
-        //     $high = $record->D;
-        //     $highV = 'D';
-        // }
-        // if ($record->I > $high) {
-        //     $high = $record->I;
-        //     $highV = 'I';
-        // }
-        // if ($record->S > $high) {
-        //     $high = $record->S;
-        //     $highV = 'S';
-        // }
-        // if ($record->C > $high) {
-        //     $high = $record->C;
-        //     $highV = 'C';
-        // }
-
-        // $plot = array();
-
-        // switch ($record->D) {
-        //     case 0;
-        //         array_push($plot, 2);
-        //         break;
-        //     case 1;
-        //         array_push($plot, 5);
-        //         break;
-        //     case 2;
-        //         array_push($plot, 9);
-        //         break;
-        //     case 3;
-        //         array_push($plot, 12);
-        //         break;
-        //     case 4;
-        //         array_push($plot, 14);
-        //         break;
-        //     case 5;
-        //         array_push($plot, 17);
-        //         break;
-        //     case 6;
-        //         array_push($plot, 19);
-        //         break;
-        //     case 7;
-        //         array_push($plot, 21);
-        //         break;
-        //     case 8;
-        //         array_push($plot, 24);
-        //         break;
-        //     case 9;
-        //         array_push($plot, 27);
-        //         break;
-        //     case 10;
-        //         array_push($plot, 32);
-        //         break;
-        //     case 11;
-        //         array_push($plot, 33);
-        //         break;
-        //     case 12;
-        //         array_push($plot, 34);
-        //         break;
-        //     case 13;
-        //         array_push($plot, 36);
-        //         break;
-        //     case 14;
-        //         array_push($plot, 38);
-        //         break;
-        //     case 15;
-        //         array_push($plot, 44);
-        //         break;
-        //     case 16;
-        //         array_push($plot, 45);
-        //         break;
-        //     default:
-        //         array_push($plot, 46);
-        // }
-
-        // switch ($record->I) {
-        //     case 0;
-        //         array_push($plot, 3);
-        //         break;
-        //     case 1;
-        //         array_push($plot, 6);
-        //         break;
-        //     case 2;
-        //         array_push($plot, 13);
-        //         break;
-        //     case 3;
-        //         array_push($plot, 16);
-        //         break;
-        //     case 4;
-        //         array_push($plot, 23);
-        //         break;
-        //     case 5;
-        //         array_push($plot, 28);
-        //         break;
-        //     case 6;
-        //         array_push($plot, 31);
-        //         break;
-        //     case 7;
-        //         array_push($plot, 37);
-        //         break;
-        //     case 8;
-        //         array_push($plot, 40);
-        //         break;
-        //     case 9;
-        //         array_push($plot, 43);
-        //         break;
-        //     case 10;
-        //         array_push($plot, 45);
-        //         break;
-        //     default:
-        //         array_push($plot, 46);
-        // }
-
-        // switch ($record->S) {
-        //     case 0;
-        //         array_push($plot, 4);
-        //         break;
-        //     case 1;
-        //         array_push($plot, 8);
-        //         break;
-        //     case 2;
-        //         array_push($plot, 10);
-        //         break;
-        //     case 3;
-        //         array_push($plot, 14);
-        //         break;
-        //     case 4;
-        //         array_push($plot, 18);
-        //         break;
-        //     case 5;
-        //         array_push($plot, 22);
-        //         break;
-        //     case 6;
-        //         array_push($plot, 25);
-        //         break;
-        //     case 7;
-        //         array_push($plot, 29);
-        //         break;
-        //     case 8;
-        //         array_push($plot, 31);
-        //         break;
-        //     case 9;
-        //         array_push($plot, 35);
-        //         break;
-        //     case 10;
-        //         array_push($plot, 39);
-        //         break;
-        //     case 11;
-        //         array_push($plot, 42);
-        //         break;
-        //     case 12;
-        //         array_push($plot, 45);
-        //         break;
-        //     default:
-        //         array_push($plot, 46);
-        // }
-
-        // switch ($record->C) {
-        //     case 0;
-        //         array_push($plot, 1);
-        //         break;
-        //     case 1;
-        //         array_push($plot, 7);
-        //         break;
-        //     case 2;
-        //         array_push($plot, 11);
-        //         break;
-        //     case 3;
-        //         array_push($plot, 15);
-        //         break;
-        //     case 4;
-        //         array_push($plot, 23);
-        //         break;
-        //     case 5;
-        //         array_push($plot, 26);
-        //         break;
-        //     case 6;
-        //         array_push($plot, 30);
-        //         break;
-        //     case 7;
-        //         array_push($plot, 37);
-        //         break;
-        //     case 8;
-        //         array_push($plot, 41);
-        //         break;
-        //     case 9;
-        //         array_push($plot, 45);
-        //         break;
-        //     default:
-        //         array_push($plot, 46);
-        // }
-        // dd($record,$max,$value,$highV,$high);
-
-
-        //dd($plot, $record->D,$record->I, $record->S,$record->C);
-
-        //dd($record->D,$record->I,$record->S,$record->C,$high,$highV);
-        //dd(auth()->user()->id);
-
         $darray = $value;
         // $integerIDs = array_map('intval', $darray);
         //sort
@@ -456,7 +255,7 @@ class questionsController extends Controller
 
 
 
-
+       
         return view('user.results', [
             'record' => $record,
             'high' => $highV,
@@ -1529,9 +1328,14 @@ class questionsController extends Controller
         $companyvalue = $companyChart;
         $companyChart = $this->getURLchart($companyChart);
 
+        //dd($ans->D." ". $ans->I." ".$ans->S." ".$ans->C,$teamvalue,$companyvalue);
+
         
         $u_among = $this->comteam($join->id);
-        $u_among = $this->percentageamong($u_among);
+       
+        
+
+        
         
 
         $pdf = pdf::loadView('PDF.ProfilingIndividu', [
@@ -1555,7 +1359,8 @@ class questionsController extends Controller
             'Svalues' => $S_value,
             'Cvalues' => $C_value,
             'remarks' => $remarks,
-            'cremarks' => $cremarks
+            'cremarks' => $cremarks,
+            'percent' => $u_among,
 
 
         ]);
@@ -3801,6 +3606,7 @@ class questionsController extends Controller
             ->get();
 
         $count = count($qdept);
+        // dd($count);
         foreach ($qdept as $dept) {
             $user = DB::table('answer_records')
                 ->where('user_id', $dept->user_id)
@@ -3857,38 +3663,63 @@ class questionsController extends Controller
         $query = DB::table('answer_records')
             ->where('user_id', $uid)
             ->first();
-        $high = $query->High;
-
-        $dept = $this->seldept($query->department_id);
-
+        
+        $H_ish = $query->High;
+        
+        $dept = $this->selcom($query->client_id);
+        
+        // $dept = $this->seldept($query->department_id);
         $count = count($dept);
+        // dd($dept,$count);
+        
+        // dd($dept,$count);
+
+        // foreach ($dept as $dept) {
+        //     $High = $dept->High;
+        //     switch ($High) {
+        //         case 'D':
+        //             $sumD = $sumD + 1;
+        //             break;
+        //         case 'I':
+        //             $sumi = $sumi + 1;
+        //             break;
+        //         case 'S':
+        //             $sumS = $sumS + 1;
+        //             break;
+        //         case 'C':
+        //             $sumC = $sumC + 1;
+        //             break;
+        //         default:
+        //             dd("some error occured");
+        //     }
+        //     $value = array();
+        //     array_push($value, $sumD, $sumi, $sumS, $sumC);
+        // }
+        $same=0;
+        // dd($H_ish);
         foreach ($dept as $dept) {
             $High = $dept->High;
+           
             switch ($High) {
-                case 'D':
-                    $sumD = $sumD + 1;
+                case $H_ish:
+                    $same++;
                     break;
-                case 'I':
-                    $sumi = $sumi + 1;
-                    break;
-                case 'S':
-                    $sumS = $sumS + 1;
-                    break;
-                case 'C':
-                    $sumC = $sumC + 1;
-                    break;
+                
                 default:
-                    dd("some error occured");
+                    $same=$same;
             }
-            $value = array();
-            array_push($value, $sumD, $sumi, $sumS, $sumC);
+           
         }
+        $same = intval($same/$count*100);
+        
+        
 
 
-        return $value;
+        return $same;
     }
-    public function percentageamong($value)
+    public function percentageamong($value,$client,$dept)
     {
+       
     }
     public function seldept($did)
     {
@@ -3898,6 +3729,196 @@ class questionsController extends Controller
         return $dept;
     }
 
+    public function selcom($cid)
+    {
+        $dept = DB::table('answer_records')
+            ->where('client_id', $cid)
+            ->get();
+        return $dept;
+    }
+
+    // public function splot($value)
+    // {
+
+    //     $plot = array();
+
+    //     switch ($value[0]) {
+    //         case 0;
+    //             array_push($plot, 2);
+    //             break;
+    //         case 1;
+    //             array_push($plot, 5);
+    //             break;
+    //         case 2;
+    //             array_push($plot, 9);
+    //             break;
+    //         case 3;
+    //             array_push($plot, 12);
+    //             break;
+    //         case 4;
+    //             array_push($plot, 14);
+    //             break;
+    //         case 5;
+    //             array_push($plot, 17);
+    //             break;
+    //         case 6;
+    //             array_push($plot, 19);
+    //             break;
+    //         case 7;
+    //             array_push($plot, 21);
+    //             break;
+    //         case 8;
+    //             array_push($plot, 24);
+    //             break;
+    //         case 9;
+    //             array_push($plot, 27);
+    //             break;
+    //         case 10;
+    //             array_push($plot, 32);
+    //             break;
+    //         case 11;
+    //             array_push($plot, 33);
+    //             break;
+    //         case 12;
+    //             array_push($plot, 34);
+    //             break;
+    //         case 13;
+    //             array_push($plot, 36);
+    //             break;
+    //         case 14;
+    //             array_push($plot, 38);
+    //             break;
+    //         case 15;
+    //             array_push($plot, 44);
+    //             break;
+    //         case 16;
+    //             array_push($plot, 45);
+    //             break;
+    //         default:
+    //             array_push($plot, 46);
+    //     }
+
+    //     switch ($value[1]) {
+    //         case 0;
+    //             array_push($plot, 3);
+    //             break;
+    //         case 1;
+    //             array_push($plot, 6);
+    //             break;
+    //         case 2;
+    //             array_push($plot, 13);
+    //             break;
+    //         case 3;
+    //             array_push($plot, 16);
+    //             break;
+    //         case 4;
+    //             array_push($plot, 23);
+    //             break;
+    //         case 5;
+    //             array_push($plot, 28);
+    //             break;
+    //         case 6;
+    //             array_push($plot, 31);
+    //             break;
+    //         case 7;
+    //             array_push($plot, 37);
+    //             break;
+    //         case 8;
+    //             array_push($plot, 40);
+    //             break;
+    //         case 9;
+    //             array_push($plot, 43);
+    //             break;
+    //         case 10;
+    //             array_push($plot, 45);
+    //             break;
+    //         default:
+    //             array_push($plot, 46);
+    //     }
+
+    //     switch ($value[2]) {
+    //         case 0;
+    //             array_push($plot, 4);
+    //             break;
+    //         case 1;
+    //             array_push($plot, 8);
+    //             break;
+    //         case 2;
+    //             array_push($plot, 10);
+    //             break;
+    //         case 3;
+    //             array_push($plot, 14);
+    //             break;
+    //         case 4;
+    //             array_push($plot, 18);
+    //             break;
+    //         case 5;
+    //             array_push($plot, 22);
+    //             break;
+    //         case 6;
+    //             array_push($plot, 25);
+    //             break;
+    //         case 7;
+    //             array_push($plot, 29);
+    //             break;
+    //         case 8;
+    //             array_push($plot, 31);
+    //             break;
+    //         case 9;
+    //             array_push($plot, 35);
+    //             break;
+    //         case 10;
+    //             array_push($plot, 39);
+    //             break;
+    //         case 11;
+    //             array_push($plot, 42);
+    //             break;
+    //         case 12;
+    //             array_push($plot, 45);
+    //             break;
+    //         default:
+    //             array_push($plot, 46);
+    //     }
+
+    //     switch ($value[3]) {
+    //         case 0;
+    //             array_push($plot, 1);
+    //             break;
+    //         case 1;
+    //             array_push($plot, 7);
+    //             break;
+    //         case 2;
+    //             array_push($plot, 11);
+    //             break;
+    //         case 3;
+    //             array_push($plot, 15);
+    //             break;
+    //         case 4;
+    //             array_push($plot, 23);
+    //             break;
+    //         case 5;
+    //             array_push($plot, 26);
+    //             break;
+    //         case 6;
+    //             array_push($plot, 30);
+    //             break;
+    //         case 7;
+    //             array_push($plot, 37);
+    //             break;
+    //         case 8;
+    //             array_push($plot, 41);
+    //             break;
+    //         case 9;
+    //             array_push($plot, 45);
+    //             break;
+    //         default:
+    //             array_push($plot, 46);
+    //     }
+
+
+    //     return $plot;
+    // }
+
     public function splot($value)
     {
 
@@ -3905,43 +3926,43 @@ class questionsController extends Controller
 
         switch ($value[0]) {
             case 0;
-                array_push($plot, 2);
+                array_push($plot, 3);
                 break;
             case 1;
-                array_push($plot, 5);
+                array_push($plot, 6);
                 break;
             case 2;
-                array_push($plot, 9);
+                array_push($plot, 10);
                 break;
             case 3;
-                array_push($plot, 12);
-                break;
-            case 4;
                 array_push($plot, 14);
                 break;
+            case 4;
+                array_push($plot, 16);
+                break;
             case 5;
-                array_push($plot, 17);
+                array_push($plot, 18);
                 break;
             case 6;
-                array_push($plot, 19);
+                array_push($plot, 20);
                 break;
             case 7;
-                array_push($plot, 21);
-                break;
-            case 8;
                 array_push($plot, 24);
                 break;
-            case 9;
+            case 8;
                 array_push($plot, 27);
                 break;
-            case 10;
-                array_push($plot, 32);
+            case 9;
+                array_push($plot, 30);
                 break;
-            case 11;
+            case 10;
                 array_push($plot, 33);
                 break;
-            case 12;
+            case 11;
                 array_push($plot, 34);
+                break;
+            case 12;
+                array_push($plot, 35);
                 break;
             case 13;
                 array_push($plot, 36);
@@ -3961,25 +3982,25 @@ class questionsController extends Controller
 
         switch ($value[1]) {
             case 0;
-                array_push($plot, 3);
+                array_push($plot, 4);
                 break;
             case 1;
-                array_push($plot, 6);
+                array_push($plot, 7);
                 break;
             case 2;
-                array_push($plot, 13);
+                array_push($plot, 15);
                 break;
             case 3;
-                array_push($plot, 16);
+                array_push($plot, 18);
                 break;
             case 4;
-                array_push($plot, 23);
+                array_push($plot, 26);
                 break;
             case 5;
-                array_push($plot, 28);
+                array_push($plot, 31);
                 break;
             case 6;
-                array_push($plot, 31);
+                array_push($plot, 32);
                 break;
             case 7;
                 array_push($plot, 37);
@@ -3999,31 +4020,31 @@ class questionsController extends Controller
 
         switch ($value[2]) {
             case 0;
-                array_push($plot, 4);
+                array_push($plot, 5);
                 break;
             case 1;
-                array_push($plot, 8);
+                array_push($plot, 9);
                 break;
             case 2;
-                array_push($plot, 10);
+                array_push($plot, 12);
                 break;
             case 3;
-                array_push($plot, 14);
+                array_push($plot, 16);
                 break;
             case 4;
-                array_push($plot, 18);
+                array_push($plot, 19);
                 break;
             case 5;
-                array_push($plot, 22);
-                break;
-            case 6;
                 array_push($plot, 25);
                 break;
+            case 6;
+                array_push($plot, 28);
+                break;
             case 7;
-                array_push($plot, 29);
+                array_push($plot, 31);
                 break;
             case 8;
-                array_push($plot, 31);
+                array_push($plot, 33);
                 break;
             case 9;
                 array_push($plot, 35);
@@ -4043,25 +4064,25 @@ class questionsController extends Controller
 
         switch ($value[3]) {
             case 0;
-                array_push($plot, 1);
+                array_push($plot, 2);
                 break;
             case 1;
-                array_push($plot, 7);
+                array_push($plot, 8);
                 break;
             case 2;
-                array_push($plot, 11);
+                array_push($plot, 13);
                 break;
             case 3;
-                array_push($plot, 15);
+                array_push($plot, 17);
                 break;
             case 4;
-                array_push($plot, 23);
-                break;
-            case 5;
                 array_push($plot, 26);
                 break;
+            case 5;
+                array_push($plot, 29);
+                break;
             case 6;
-                array_push($plot, 30);
+                array_push($plot, 32);
                 break;
             case 7;
                 array_push($plot, 37);

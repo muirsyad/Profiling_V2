@@ -76,6 +76,7 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::post('/admin/clients/details/upload', [adminController::class, 'uploadPax'])->name('upload');
     Route::get('/admin/clients/delete/{clients}', [adminController::class, 'Cdelete'])->name('Cdelete');
     Route::post('/admin/clients/change/{clients}', [adminController::class, 'change'])->name('Cupdate');
+    Route::post('/admin/clients/logo/{clients}', [adminController::class, 'storeImage'])->name('image.store');
     Route::get('/admin/questions', [adminController::class, 'vquest'])->name('vquest');
     Route::get('/admin/department', [adminController::class, 'department'])->name('depart');
     Route::post('/admin/department/add', [adminController::class, 'department_add'])->name('depart_add');

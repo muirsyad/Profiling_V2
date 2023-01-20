@@ -38,7 +38,6 @@
 
         .chartb {}
 
-        /* screen mobile < */
         @media screen and (min-width: 300px) {
             .chartb {
                 width: 100%;
@@ -47,10 +46,9 @@
             }
         }
 
-        /* screen L */
         @media screen and (min-width: 800px) {
             .chartb {
-                width: 25%;
+                width: 50%;
                 height: 650px;
                 margin-top: -5%;
             }
@@ -115,7 +113,7 @@
             <label class="px-3 display-1">{{ $Hvalue }}</label>
             DiSC Style:
         </div>
-
+        
 
     </div>
 
@@ -299,20 +297,6 @@
             // const labels = Utils.months({
             //     count: 7
             // });
-            const plugin = {
-                    id: 'customCanvasBackgroundColor',
-                    beforeDraw: (chart, args, options) => {
-                        const {
-                            ctx, chartArea:{top, bottom, left, right,width},scales:{x,y}
-                        } = chart;
-                        ctx.save();
-                        ctx.globalCompositeOperation = 'destination-over';
-                        ctx.fillStyle = options.color || '#99ffff';
-                        // ctx.fillRect(3, 3, chart.width, chart.height);
-                        ctx.fillRect(left, y.getPixelForValue(48), width, y.getPixelForValue(10));
-                        ctx.restore();
-                    }
-                };
 
             const data = {
 
@@ -323,14 +307,13 @@
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1,
-                        pointRadius: 5,
-                        borderWidth: 4,
-                        pointBorderColor: 'rgb(0, 255, 94)'
+                        pointRadius: 0,
+                        borderWidth: 4
                     },
                     {
 
                         label: 'Behaviour type',
-                        data: [22, 22, 22, 22, 22, 22],
+                        data: [20, 20, 20, 20, 20, 20],
                         fill: false,
                         borderColor: 'rgb(40, 40, 41)',
                         tension: 0.1,
@@ -348,22 +331,17 @@
                 type: 'line',
                 data: data,
                 options: {
-                    backgroundColor: 'black',
-                    // chartArea: {
-                    //     backgroundColor: 'black',
-                    // },
                     // responsive: true,
 
-
+                    
                     plugins: {
                         title: {
                             display: true,
                             text: 'DiSC Profiing Graphs'
                         },
                         legend: {
-                            display: false
-                        },
-
+                        display: false
+                    },
                     },
                     maintainAspectRatio: false,
                     layout: {
@@ -371,39 +349,16 @@
                     },
                     scales: {
                         y: {
-                            max: 48,
-                            min: 0,
-                            display: false,
                             beginAtZero: true,
-
-
                             ticks: {
                                 display: false,
                             }
                         },
-                        x: {
-
-                            weight: 4,
-                            position: 'top',
-                            grid: {
-                                color: 'black',
-                                borderColor: 'grey',
-                                tickColor: 'grey'
-                            },
-                            border: {
-                                color: 'black',
-                            },
-
-
-                        }
-
 
                     }
-                },
-                plugins: [plugin],
+                }
             };
             // </block:config>
-
 
 
             const myChart = new Chart(ctx, config);

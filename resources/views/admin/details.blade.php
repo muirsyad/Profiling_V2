@@ -63,7 +63,43 @@
 
         <a href="{{ route('remainder', $client->link_code) }}" class="btn btn-success text-decoration-none">Notification</a>
 
+            <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#upload">
+            upload Logo
+        </button>
+
     </div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="upload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="POST" action="{{ route('image.store',$client->id) }}" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+                @csrf
+                <input type="file" class="form-control" name="image" />
+                <input type="hidden" name="client" value={{$client->id}}>
+                <input type="hidden" name="name" value={{$client->client}}>
+    
+                <button type="submit" class="btn btn-sm">Upload</button>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+  
 
 
 
