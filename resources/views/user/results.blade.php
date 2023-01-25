@@ -39,12 +39,54 @@
         .chartb {}
 
         /* screen mobile < */
-        @media screen and (min-width: 300px) {
+        @media screen and (min-width: 320px) {
             .chartb {
                 width: 100%;
-                height: 400px;
+                height: 500px;
                 margin-top: -20%;
             }
+        }
+
+        @media screen and (min-width: 360px) {
+            .chartb {
+                width: 85%;
+                height: 500px;
+                margin-top: -20%;
+            }
+        }
+
+        @media screen and (min-width: 375px) {
+            .chartb {
+                width: 80%;
+                height: 500px;
+                margin-top: -20%;
+            }
+        }
+
+        @media screen and (min-width: 393px) {
+            .chartb {
+                width: 80%;
+                height: 500px;
+                margin-top: -20%;
+            }
+        }
+
+        @media screen and (min-width: 425px) {
+            .chartb {
+                width: 70%;
+                height: 500px;
+                margin-top: -20%;
+            }
+        }
+
+        /* screen L */
+        @media screen and (min-width: 700px) {
+            .chartb {
+                width: 50%;
+                height: 650px;
+                margin-top: -5%;
+            }
+
         }
 
         /* screen L */
@@ -196,7 +238,7 @@
                     <div class="col text center">
 
                         <a href="{{ route('Qhome') }}" class="btn btn-primary">Home</a>
-                        <a href="{{ route('inv3') }}" class="btn btn-primary">Download Individual</a>
+                        {{-- <a href="{{ route('inv3') }}" class="btn btn-primary">Download Individual</a> --}}
 
                     </div>
                 @endif
@@ -300,19 +342,32 @@
             //     count: 7
             // });
             const plugin = {
-                    id: 'customCanvasBackgroundColor',
-                    beforeDraw: (chart, args, options) => {
-                        const {
-                            ctx, chartArea:{top, bottom, left, right,width},scales:{x,y}
-                        } = chart;
-                        ctx.save();
-                        ctx.globalCompositeOperation = 'destination-over';
-                        ctx.fillStyle = options.color || '#99ffff';
-                        // ctx.fillRect(3, 3, chart.width, chart.height);
-                        ctx.fillRect(left, y.getPixelForValue(48), width, y.getPixelForValue(10));
-                        ctx.restore();
-                    }
-                };
+                id: 'customCanvasBackgroundColor',
+                beforeDraw: (chart, args, options) => {
+                    const {
+                        ctx,
+                        chartArea: {
+                            top,
+                            bottom,
+                            left,
+                            right,
+                            width
+                        },
+                        scales: {
+                            x,
+                            y
+                        }
+                    } = chart;
+                    ctx.save();
+                    ctx.globalCompositeOperation = 'destination-over';
+                    ctx.fillStyle = options.color || '#99ffff';
+                    // ctx.fillRect(3, 3, chart.width, chart.height);
+                    // ctx.fillRect(left, y.getPixelForValue(48), width, y.getPixelForValue(23));
+                    ctx.fillRect(left, y.getPixelForTick(10), width, y.getPixelForTick(0) - y.getPixelForTick(10));
+
+                    ctx.restore();
+                }
+            };
 
             const data = {
 
@@ -348,6 +403,7 @@
                 type: 'line',
                 data: data,
                 options: {
+
                     backgroundColor: 'black',
                     // chartArea: {
                     //     backgroundColor: 'black',
@@ -357,12 +413,21 @@
 
                     plugins: {
                         title: {
-                            display: true,
+                            display: false,
                             text: 'DiSC Profiing Graphs'
                         },
                         legend: {
-                            display: false
+                            display: false,
+                            // labels: {
+                            //     // This more specific font property overrides the global property
+                            //     font: {
+                            //         size: 30,
+                            //     }
+                            // },
                         },
+
+
+
 
                     },
                     maintainAspectRatio: false,
@@ -382,6 +447,12 @@
                             }
                         },
                         x: {
+                            ticks: {
+                                font: {
+                                    size: 20,
+                                    weight: 'bolder',
+                                }
+                            },
 
                             weight: 4,
                             position: 'top',
@@ -401,11 +472,16 @@
                     }
                 },
                 plugins: [plugin],
+                // plugins: ['chartjs-plugin-annotation'],
             };
             // </block:config>
 
 
 
             const myChart = new Chart(ctx, config);
+            window.onload = function() {
+                console.log(window.innerWidth);
+                Chart.defaults.font.size = 40;
+            }
         </script>
     @endsection

@@ -1309,29 +1309,47 @@ class questionsController extends Controller
 
 
         // $personchart = $this->getURLchart();
+        // dd($join);
+
         $personalchart = [];
         array_push($personalchart, $ans->D, $ans->I,$ans->S,$ans->C);
+        $pervalue = $personalchart;
         $personalchart = $this->getURLchart($personalchart);
         
 
         
         
-
-        $teamChart = $this->bydepart($join->department_id, 'department_id');
+        
+        $teamChart = $this->bydepart($join->department_id, 'department_id',$ans->client_id);
         $teamvalue = $teamChart;
         
 
 
         $teamChart = $this->getURLchart($teamChart);
 
-        $companyChart = $this->bydepart($join->client_id, 'client_id');
+        $companyChart = $this->byclient($join->client_id, 'client_id');
         $companyvalue = $companyChart;
+        // dd($companyvalue);
         $companyChart = $this->getURLchart($companyChart);
+
+
+        //dd($companyvalue,$teamvalue,$pervalue);
+
+        
+
+        
 
         //dd($ans->D." ". $ans->I." ".$ans->S." ".$ans->C,$teamvalue,$companyvalue);
 
         
         $u_among = $this->comteam($join->id);
+        // dd($join);
+        $cname = DB::table('clients')->where('id',$join->client_id)->first();
+        
+
+        $logo = "images/".$join->client_id."_".$cname->client.".png";
+
+        // dd($logo);
        
         
 
@@ -1339,6 +1357,7 @@ class questionsController extends Controller
         
 
         $pdf = pdf::loadView('PDF.ProfilingIndividu', [
+            'logo' => $logo,
             'personalchart' =>$personalchart,
             'teamChart' => $teamChart,
             'companyChart' => $companyChart,
@@ -3593,7 +3612,7 @@ class questionsController extends Controller
     }
 
     //To get averange value from style
-    public function bydepart($d_id, $qury)
+    public function bydepart($d_id, $qury,$cid)
     {
 
         $sumD = 0;
@@ -3602,9 +3621,9 @@ class questionsController extends Controller
         $sumC = 0;
 
         $qdept = DB::table('answer_records')
-            ->where($qury, $d_id)
+            ->where($qury, $d_id)->where('client_id',$cid)
             ->get();
-
+        // dd($qdept);
         $count = count($qdept);
         // dd($count);
         foreach ($qdept as $dept) {
@@ -3639,10 +3658,59 @@ class questionsController extends Controller
         return $teamvalue;
     }
 
+    public function byclient($d_id, $qury)
+    {
+
+        $sumD = 0;
+        $sumi = 0;
+        $sumS = 0;
+        $sumC = 0;
+
+        $qdept = DB::table('answer_records')
+            ->where($qury, $d_id)
+            ->get();
+        // dd($qdept);
+        $count = count($qdept);
+        // dd($count);
+        foreach ($qdept as $dept) {
+            $user = DB::table('answer_records')
+                ->where('user_id', $dept->user_id)
+                ->first();
+
+            $sumD = $sumD + $user->D;
+            $sumi = $sumi + $user->I;
+            $sumS = $sumS + $user->S;
+            $sumC = $sumC + $user->C;
+
+
+            $query = $this->chartvalue($qdept);
+
+            //dd($query);
+        }
+        // dd($sumD,$sumi,$sumS,$sumC);
+        //average
+        $sumD = intval(round($sumD / $count));
+        $sumi = intval(round($sumi / $count));
+        $sumS = intval(round($sumS / $count));
+        $sumC = intval(round($sumC / $count));
+
+        //dd($sumD,$sumi,$sumS,$sumC);
+        $teamvalue = array();
+        array_push($teamvalue, $sumD, $sumi, $sumS, $sumC);
+
+        // $plot = $this->splot($sumD,$sumi,$sumS,$sumC);
+        // //dd($plot);
+        // $teamUrl = $this->Linequick("team" ,$plot,150,200);
+        // dd($teamvalue);
+
+        return $teamvalue;
+    }
+
     //get URL For Chart
     public function getURLchart($plot)
     {
         $url = $this->splot($plot);
+        // dump($url);
         $url = $this->Linequick("team", $url, 150, 380);
         return $url;
     }

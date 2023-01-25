@@ -2,6 +2,9 @@
 @section('content')
 
 <style>
+    body{
+        overflow: hidden;
+    }
     .card{
         
         width: 50%;
@@ -47,12 +50,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="************"
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="************"
                         name="password">
 
                     @error('password')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                    <span>Show Password</span>
                 </div>
 
                 <div class="mb-3">
@@ -61,4 +69,25 @@
             </form>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $("#vehicle1").click(function() {
+            // console.log("click");
+            // $('#floatingPassword').attr('type', 'text');
+            if ($(this).is(':checked')) {
+                // Changing type attribute
+                // $("#password").attr("type", "text");
+                console.log('checkked');
+                $("#floatingPassword").attr("type", "text");
+               
+            }
+            else{
+                console.log('unckecked');
+                $("#floatingPassword").attr("type", "password");
+                
+            }
+
+        });
+    </script>
 @endsection

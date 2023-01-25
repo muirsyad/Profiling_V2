@@ -11,7 +11,11 @@
     <center>
         <h1>Accessor</h1>
     </center>
-<h1>{{$var}}</h1>
+
+    
+    <input id="myInput" type="text" placeholder="Search by name..">
+    <br><br>
+    <h1>{{ $var }}</h1>
     <div class="progress mb-3" style="margin-bottom: 20px; margin-top: 20px;">
         <div id="progress" class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 25%;"
             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $var }}</div>
@@ -82,15 +86,15 @@
 
                     <td>
                         <div class="row">
-                            @if ($var === "100%")
-                            <div class="col"><a href="{{ route('report_inv', $pax->id) }}" aria-disabled="true"><i
-                                class="fas fa-download "></i></a></div>
+                            @if ($var === '100%')
+                                <div class="col"><a href="{{ route('report_inv', $pax->id) }}" aria-disabled="true"><i
+                                            class="fas fa-download "></i></a></div>
                             @else
-                            <div class="col"><a href="{{ route('report_inv', $pax->id) }}" class="dis-icon" aria-disabled="true"><i
-                                class="fas fa-download dis-icon "></i></a></div>
+                                <div class="col"><a href="{{ route('report_inv', $pax->id) }}" class="dis-icon"
+                                        aria-disabled="true"><i class="fas fa-download dis-icon "></i></a></div>
                             @endif
                             <div class="col"><a href="{{ route('remarks', $pax->id) }}" aria-disabled="true"><i
-                                class="	fas fa-edit"></i></a></div>
+                                        class="	fas fa-edit"></i></a></div>
                             <div class="col"><a href="#"><i class="fas fa-trash-alt igreen"></i></a></div>
 
 
@@ -105,6 +109,14 @@
     <script>
         $(document).ready(function() {
             $("#progress").css('width', "<?php echo $var; ?>");
+
+            //cont
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myList3 tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
 
         });
     </script>

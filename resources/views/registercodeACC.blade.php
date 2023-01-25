@@ -80,11 +80,16 @@
                                 @enderror
                                 <div class="form-floating mb-3">
                                     <input name="password_confirmation" type="password" class="form-control"
-                                        id="floatingPassword" placeholder="Password">
+                                        id="pass" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                     @error('password_confirmation')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                    <span>Show Password</span>
                                 </div>
                                 <input type="hidden" name="client_id" value='{{ $clients->id }}'>
                                 {{-- <input type="hidden" name="department_id" value="1"> --}}
@@ -108,23 +113,43 @@
             </form>
         </div>
     </form>
-    <script>
-        function showPass() {
-            var x = document.getElementById("pass");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
 
-        function showPass2() {
-            var x = document.getElementById("pass2");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // function showPass() {
+        //     var x = document.getElementById("pass");
+        //     if (x.type === "password") {
+        //         x.type = "text";
+        //     } else {
+        //         x.type = "password";
+        //     }
+        // }
+
+        // function showPass2() {
+        //     var x = document.getElementById("pass2");
+        //     if (x.type === "password") {
+        //         x.type = "text";
+        //     } else {
+        //         x.type = "password";
+        //     }
+        // }
+
+        $("#vehicle1").click(function() {
+            // console.log("click");
+            // $('#floatingPassword').attr('type', 'text');
+            if ($(this).is(':checked')) {
+                // Changing type attribute
+                // $("#password").attr("type", "text");
+                console.log('checkked');
+                $("#floatingPassword").attr("type", "text");
+                $("#pass").attr("type", "text");
             }
-        }
+            else{
+                console.log('unckecked');
+                $("#floatingPassword").attr("type", "password");
+                $("#pass").attr("type", "password");
+            }
+
+        });
     </script>
 @endsection

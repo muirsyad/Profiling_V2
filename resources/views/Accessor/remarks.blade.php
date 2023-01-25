@@ -40,16 +40,19 @@
 
 
 
+    {{-- Remarks 1 --}}
+
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleRemarks_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Example remarks by accesor</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <img class="" src="{{ URL::asset('assets/img/report/remarks_1.png') }}" alt="logo"
+                        style="width: 100%; height: 100%;">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -59,6 +62,52 @@
         </div>
     </div>
 
+
+    {{-- Remarks 2 --}}
+    <!-- Modal -->
+    <div class="modal fade" id="exampleRemarks2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img class="" src="{{ URL::asset('assets/img/report/remarks_2.png') }}"
+                        alt="logo"style="width: 100%; height: 100%;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- Remarks 3 --}}
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleRemarks3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img class="" src="{{ URL::asset('assets/img/report/remarks_3.png') }}"
+                        alt="logo"style="width: 100%; height: 100%;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade color-black" id="remarks1Modal" tabindex="-1" aria-labelledby="remarks1ModalLabel"
@@ -72,13 +121,14 @@
                 <div class="modal-body">
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleRemarks_1">
                         Example
                     </button>
                     <span>Remarks 1</span>
-                    
 
-                    
+
+
 
                     <form action="{{ route('Remup1') }}" method="POST" id="elementId">
 
@@ -127,6 +177,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleRemarks2">
+                        EXAMPLE 2
+                    </button>
                     Remarks 2
                     <form action="{{ route('Remup2') }}" method="POST" id="elementId2">
                         @csrf
@@ -171,6 +226,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleRemarks3">
+                        EXAMPLE 3
+                    </button>
                     Remarks 3
                     <form action="{{ route('Remup3') }}" method="POST" id="elementId3">
                         @csrf

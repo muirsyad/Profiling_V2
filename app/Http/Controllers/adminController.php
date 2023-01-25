@@ -49,28 +49,36 @@ class adminController extends Controller
 
         //dd($recent);
         //dd($count);
-        $clients = Clients::all()->where('is_delete', '0');
+        $clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0');
+        
         $totClients = $clients->count();
 
         foreach ($clients as $i => $client) {
+            $answercount = DB::table('answer_records')->where('client_id', $client->id)->count();
             $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
             $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
 
-            //change status if all user answer
-            if ($userdone == $all) {
+            if ($answercount > 0) {
+                //change status if all user answer
+                if ($userdone == $all) {
 
-                $affected = DB::table('clients')
-                    ->where('id', $client->id)
-                    ->update(['status' => 1]);
+                    $affected = DB::table('clients')
+                        ->where('id', $client->id)
+                        ->update(['status' => 1]);
+                } else {
+
+                    //stay value 0 if not all user answer
+                    $affected = DB::table('clients')
+                        ->where('id', $client->id)
+                        ->update(['status' => 0]);
+                }
             } else {
-
-                //stay value 0 if not all user answer
-                $affected = DB::table('clients')
+                $unffected = DB::table('clients')
                     ->where('id', $client->id)
                     ->update(['status' => 0]);
             }
         }
-        $clients = Clients::all()->where('is_delete', '0')->where('status', 0);
+        $clients = Clients::all()->where('is_delete', '0')->where('is_admin','0')->where('status', 0);
         $uncomplete = $clients->count();
         $c_complete  = Clients::all()->where('is_delete', '0')->where('status', 1)->count();
         $total = User::where('role_id', 2)->count();
@@ -132,9 +140,9 @@ class adminController extends Controller
 
     public function view()
     {
-        $select = Clients::all()->where('is_delete', '0');
+        // $select = Clients::all()->where('is_delete', '0');
 
-        $clients = Clients::all()->where('is_delete', '0');
+        $clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0');
         foreach ($clients as $i => $client) {
             $answercount = DB::table('answer_records')->where('client_id', $client->id)->count();
             if ($answercount > 0) {
@@ -144,6 +152,7 @@ class adminController extends Controller
                 // dump($client->client, $userdone, $all, "ANSWERCOUNT", $answercount);
 
                 //change status if all user answer
+                // dump($userdone,$all);
                 if ($userdone == $all) {
 
                     $affected = DB::table('clients')
@@ -156,11 +165,11 @@ class adminController extends Controller
                         ->where('id', $client->id)
                         ->update(['status' => 0]);
                 }
-            } else{
+            } else {
                 //stay value 0 if not all user answer
                 $unffected = DB::table('clients')
-                ->where('id', $client->id)
-                ->update(['status' => 0]);
+                    ->where('id', $client->id)
+                    ->update(['status' => 0]);
             }
         }
         $random = Str::random(8);
@@ -177,7 +186,7 @@ class adminController extends Controller
         }
 
         return view('admin.view_clients', [
-            'clients' => $select,
+            'clients' => $clients,
             'code' => $code,
 
         ]);
@@ -852,15 +861,14 @@ class adminController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ]);
-        
-        $imageName = time().'.'.$request->image->extension();
-        $imageName = $request->client."_".$request->name.".".$request->image->extension();
+
+        $imageName = time() . '.' . $request->image->extension();
+        $imageName = $request->client . "_" . $request->name . "." . $request->image->extension();
 
         // Public Folder
         $request->image->move(public_path('images'), $imageName);
 
         return redirect(route('Cview'));
-
     }
     public function uptemplate2(Request $request)
     {

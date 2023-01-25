@@ -10,7 +10,8 @@
                 margin-top: 45px;
 
             }
-            .card-body{
+
+            .card-body {
                 padding: 5%;
             }
         }
@@ -20,7 +21,8 @@
                 margin-top: 100px;
 
             }
-            .card-body{
+
+            .card-body {
                 padding: 5%;
             }
         }
@@ -57,14 +59,14 @@
                                     </select>
                                     <label for="floatingSelect">Your departments</label>
                                     @error('department_id')
-                                    <p class="text-danger">{{ "Please select your departments" }}</p>
-                                @enderror
+                                        <p class="text-danger">{{ 'Please select your departments' }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input name="email" type="email" class="form-control" id="floatingInput"
                                         placeholder="name@example.com">
                                     <label for="floatingInput">Email address</label>
-                                    
+
                                 </div>
                                 @error('email')
                                     <p class="text-danger">{{ $message }}</p>
@@ -80,15 +82,20 @@
                                 @enderror
                                 <div class="form-floating mb-3">
                                     <input name="password_confirmation" type="password" class="form-control"
-                                        id="floatingPassword" placeholder="Password">
+                                        id="pass" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                     @error('password_confirmation')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                    <span>Show Password</span>
+                                </div>
                                 <input type="hidden" name="client_id" value='{{ $clients->id }}'>
                                 {{-- <input type="hidden" name="department_id" value="1"> --}}
-                                
+
                                 <input type="hidden" name="role_id" value="2">
                                 <input type="hidden" name="status" value="2">
                                 <input type="hidden" name="created_at" value="{{ date('Y-m-d') }}">
@@ -108,23 +115,43 @@
             </form>
         </div>
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        function showPass() {
-            var x = document.getElementById("pass");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
+        // function showPass() {
+        //     var x = document.getElementById("pass");
+        //     if (x.type === "password") {
+        //         x.type = "text";
+        //     } else {
+        //         x.type = "password";
+        //     }
+        // }
 
-        function showPass2() {
-            var x = document.getElementById("pass2");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
+        // function showPass2() {
+        //     var x = document.getElementById("pass2");
+        //     if (x.type === "password") {
+        //         x.type = "text";
+        //     } else {
+        //         x.type = "password";
+        //     }
+        // }
+
+
+        $("#vehicle1").click(function() {
+            // console.log("click");
+            // $('#floatingPassword').attr('type', 'text');
+            if ($(this).is(':checked')) {
+                // Changing type attribute
+                // $("#password").attr("type", "text");
+                console.log('checkked');
+                $("#floatingPassword").attr("type", "text");
+                $("#pass").attr("type", "text");
             }
-        }
+            else{
+                console.log('unckecked');
+                $("#floatingPassword").attr("type", "password");
+                $("#pass").attr("type", "password");
+            }
+
+        });
     </script>
 @endsection

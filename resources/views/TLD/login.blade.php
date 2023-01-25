@@ -15,7 +15,11 @@
                 </div>
                 <div class="mb-4 ">
                     <p for="#" class="font-bold mb-2.5 ml-4">Password</p>
-                    <input name="password" class="w-full border-2 border-emerald-800 rounded-full p-3" type="password" placeholder="**************************">
+                    <input id="floatingPassword" name="password" class="w-full border-2 border-emerald-800 rounded-full p-3" type="password" placeholder="**************************">
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                    <span>Show Password</span>
                 </div>
                 <div>
                     <input id="shcheck" type="checkbox">
@@ -27,4 +31,23 @@
             </form>
         </div>
     </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#vehicle1").click(function() {
+            
+            if ($(this).is(':checked')) {
+               
+                console.log('checkked');
+                $("#floatingPassword").attr("type", "text");
+                
+            }
+            else{
+                console.log('unckecked');
+                $("#floatingPassword").attr("type", "password");
+               
+            }
+
+        });
+</script>
 @endsection
