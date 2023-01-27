@@ -18,15 +18,20 @@
 
             <!-- Button trigger modal -->
 
+            <div class="mb-3">
+                <span style="color: red">**Click button below to add remarks by accesor</span>
+            </div>
+            
+
             <div class="d-flex justify-content-around">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#remarks1Modal">
-                    Add remarks1
+                    Remarks page 1
                 </button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#remarks2Modal">
-                    Add remarks2
+                    Remarks page 2
                 </button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#remarks3Modal">
-                    Add remarks3
+                    Remarks page 3
                 </button>
 
 
@@ -115,17 +120,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="remarks1ModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="remarks1ModalLabel">Remarks page 1</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                         data-bs-target="#exampleRemarks_1">
-                        Example
-                    </button>
-                    <span>Remarks 1</span>
+                        Show example
+                    </button><br>
+                    
 
 
 
@@ -173,16 +178,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="remarks2ModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="remarks2ModalLabel">Remarks page 2</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                         data-bs-target="#exampleRemarks2">
-                        EXAMPLE 2
+                        Show Example
                     </button>
-                    Remarks 2
+                    
                     <form action="{{ route('Remup2') }}" method="POST" id="elementId2">
                         @csrf
 
@@ -222,16 +227,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="remarks3ModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="remarks3ModalLabel">Remarks page 3</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                         data-bs-target="#exampleRemarks3">
-                        EXAMPLE 3
+                        Show Example
                     </button>
-                    Remarks 3
+                   
                     <form action="{{ route('Remup3') }}" method="POST" id="elementId3">
                         @csrf
 
