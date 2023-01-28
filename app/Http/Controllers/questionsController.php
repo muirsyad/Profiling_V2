@@ -1278,6 +1278,12 @@ class questionsController extends Controller
         $S_value = $this->compareHL($S_value,"S");
         $C_value = $array_plot[3];
         $C_value = $this->compareHL($C_value,"C");
+
+        // dd($D_value,$S_value,$C_value,$I_value);
+        $HL_D = $D_value;
+        $HL_I= $I_value;
+        $HL_S = $S_value;
+        $HL_C = $C_value;
         
 
         $D_value = $this->styleTemplate("D",$D_value);
@@ -1347,7 +1353,7 @@ class questionsController extends Controller
         $cname = DB::table('clients')->where('id',$join->client_id)->first();
         
 
-        $logo = "images/".$join->client_id."_".$cname->client.".png";
+        $logo = "images/".$join->client_id.".png";
 
         // dd($logo);
        
@@ -1355,7 +1361,16 @@ class questionsController extends Controller
 
         
         
-
+        $best = array_filter($best);
+        $motivate = array_filter($motivate);
+        $demotive = array_filter($demotive);
+        $worst = array_filter($worst);
+        $improve = array_filter($improve);
+        $better = array_filter($better);
+        $avoid = array_filter($avoid);
+        $environment = array_filter($environment);
+        
+        
         $pdf = pdf::loadView('PDF.ProfilingIndividu', [
             'logo' => $logo,
             'personalchart' =>$personalchart,
@@ -1380,6 +1395,10 @@ class questionsController extends Controller
             'remarks' => $remarks,
             'cremarks' => $cremarks,
             'percent' => $u_among,
+            'HLD' => $HL_D,
+            'HLI' => $HL_I,
+            'HLS' => $HL_S,
+            'HLC' => $HL_C,
 
 
         ]);

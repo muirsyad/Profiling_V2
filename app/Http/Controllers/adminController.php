@@ -863,7 +863,9 @@ class adminController extends Controller
         ]);
 
         $imageName = time() . '.' . $request->image->extension();
-        $imageName = $request->client . "_" . $request->name . "." . $request->image->extension();
+        $imageName = $request->client . "_" . $request->name. "." . $request->image->extension();
+        $imageName = $request->client ."." . $request->image->extension();
+
 
         // Public Folder
         $request->image->move(public_path('images'), $imageName);

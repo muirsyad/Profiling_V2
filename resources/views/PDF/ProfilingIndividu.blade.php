@@ -132,6 +132,22 @@
             word-wrap: break-word;
             
         }
+        .hl-1 {
+            position: absolute;
+            top: -1.2%;
+            left: 53%;
+            font-weight: bold;
+            font-size: 17px;
+            
+        }
+        .hl-2 {
+            position: absolute;
+            top: 10%;
+            left: 53%;
+            font-weight: bold;
+            font-size: 17px;
+            color: #d54ce6;
+        }
     </style>
     <div class="container page-break">
         @switch($High)
@@ -217,6 +233,17 @@
     </ul>
     </div>
 <div class="row-1">
+    @switch($HLD)
+        @case("High")
+        <span style="color: #d54ce6;" class="hl-1">High</span>
+            @break
+        @case("Low")
+        <span style="color: #d54ce6;" class="hl-1">Low</span>
+            @break
+        @default
+            
+    @endswitch
+
 <ul class="smm-text">
 @foreach ($Dvalues as $d)
     <li>{{ $d }}</li>
@@ -224,6 +251,17 @@
 </ul>
 </div>
 <div class="row-2">
+    @switch($HLI)
+        @case("High")
+        <span style="color: #ffcc16;" class="hl-1">High</span>
+            @break
+        @case("Low")
+        <span style="color: #ffcc16;" class="hl-1">Low</span>
+            @break
+        @default
+            
+    @endswitch
+    
 <ul class="smm-text">
 @foreach ($Ivalues as $I)
     <li>{{ $I }}</li>
@@ -231,6 +269,17 @@
 </ul>
 </div>
 <div class="row-3">
+    @switch($HLS)
+        @case("High")
+        <span style="color: #1c8638;" class="hl-1">High</span>
+            @break
+        @case("Low")
+        <span style="color: #1c8638;" class="hl-1">Low</span>
+            @break
+        @default
+            
+    @endswitch
+    
 <ul class="smm-text">
 @foreach ($Svalues as $S)
     <li>{{ $S }}</li>
@@ -238,6 +287,17 @@
 </ul>
 </div>
 <div class="row-4">
+    @switch($HLC)
+        @case("High")
+        <span style="color: #024cad;" class="hl-1">High</span>
+            @break
+        @case("Low")
+        <span style="color: #024cad;" class="hl-1">Low</span>
+            @break
+        @default
+            
+    @endswitch
+    
 <ul class="smm-text">
 @foreach ($Cvalues as $C)
     <li>{{ $C }}</li>

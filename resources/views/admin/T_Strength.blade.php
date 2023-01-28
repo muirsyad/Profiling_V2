@@ -44,7 +44,7 @@
                             @endif
                             <p id="diD{{ $i }}"></p>
                             <div class="mb-3">
-                                <input maxlength="80" type="text" value="{{ $Dhigh }}" class="form-control inputDD"
+                                <input maxlength="30" type="text" value="{{ $Dhigh }}" class="form-control inputDD"
                                     id="inputIDD{{ $i }}" placeholder="soalan" name="value[]">
 
                             </div>
@@ -101,7 +101,7 @@
                         @endif
                         <p id="diI{{ $i }}"></p>
                         <div class="mb-3">
-                            <input maxlength="80" type="text" value="{{ $Ihigh }}" class="form-control  inputDI"
+                            <input maxlength="30" type="text" value="{{ $Ihigh }}" class="form-control  inputDI"
                                 id="inputIDI{{ $i }}" {{-- id="I_High{{ $i+1 }}" --}} placeholder="soalan"
                                 name="value[]">
 
@@ -153,7 +153,7 @@
                     @endif
                     <p id="diS{{ $i }}"></p>
                     <div class="mb-3">
-                        <input maxlength="80" type="text" value="{{ $Shigh }}" class="form-control  inputDS"
+                        <input maxlength="30" type="text" value="{{ $Shigh }}" class="form-control  inputDS"
                             id="inputIDS{{ $i }}" placeholder="soalan" name="value[]">
                         <input type="hidden" name="style" value="S">
 
@@ -207,7 +207,7 @@
                 @endif
                 <p id="diC{{ $i }}"></p>
                 <div class="mb-3">
-                    <input maxlength="80" type="text" value="{{ $Chigh }}" class="form-control  inputDC"
+                    <input maxlength="30" type="text" value="{{ $Chigh }}" class="form-control  inputDC"
                         id="inputIDC{{ $i }}" placeholder="soalan" name="value[]">
 
                     <input type="hidden" name="style" value="C">

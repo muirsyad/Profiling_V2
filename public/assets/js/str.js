@@ -37,8 +37,8 @@ $(document).ready(function () {
 
     $("#row-D").click(function () {
 
-        // $("#inputconD").append("<p id='diD"+inputCount1+"'>(0/80)</p><div class='mb-3'><input maxlength='110' class='form-control inputDD' id='inputIDD"+inputCount1+"' name='value[]' placeholder='soalan'></input></div>");
-        $("#inputconD").append("<p id='diD"+inputCount1+"'>(0/80)</p><div class='mb-3'><input maxlength='80' type='text'  class='form-control inputDD' id='inputIDD"+inputCount1+"' placeholder='soalan' name='value[]'></div>");
+        // $("#inputconD").append("<p id='diD"+inputCount1+"'>(0/30)</p><div class='mb-3'><input maxlength='110' class='form-control inputDD' id='inputIDD"+inputCount1+"' name='value[]' placeholder='soalan'></input></div>");
+        $("#inputconD").append("<p id='diD"+inputCount1+"'>(0/30)</p><div class='mb-3'><input maxlength='30' type='text'  class='form-control inputDD' id='inputIDD"+inputCount1+"' placeholder='soalan' name='value[]'></div>");
 
         console.log("CLICL BUTTON");
         inputCount1++;
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
     $("#row-I").click(function () {
 
-        $("#inputconI").append("<p id='diI"+inputCount2+"'>(0/80)</p><div class='mb-3'><input maxlength='80' type='text'  class='form-control inputDI' id='inputIDI"+inputCount2+"' placeholder='soalan' name='value[]'></div>");
+        $("#inputconI").append("<p id='diI"+inputCount2+"'>(0/30)</p><div class='mb-3'><input maxlength='30' type='text'  class='form-control inputDI' id='inputIDI"+inputCount2+"' placeholder='soalan' name='value[]'></div>");
         console.log("CLICL BUTTON 2222");
         inputCount2++;
         console.log("COUNT INPUT" + inputCount2);
@@ -65,7 +65,7 @@ $(document).ready(function () {
 
     $("#row-S").click(function () {
 
-        $("#inputconS").append("<p id='diS"+inputCount3+"'>(0/80)</p><div class='mb-3'><input maxlength='80' type='text'  class='form-control inputDS' id='inputIDS"+inputCount3+"' placeholder='soalan' name='value[]'></div>");
+        $("#inputconS").append("<p id='diS"+inputCount3+"'>(0/30)</p><div class='mb-3'><input maxlength='30' type='text'  class='form-control inputDS' id='inputIDS"+inputCount3+"' placeholder='soalan' name='value[]'></div>");
         console.log("CLICL BUTTON 33333");
         inputCount3++;
         console.log("COUNT INPUT 3 =" + inputCount3);
@@ -77,7 +77,7 @@ $(document).ready(function () {
 
     $("#row-C").click(function () {
 
-        $("#inputconC").append("<p id='diC"+inputCount4+"'>(0/80)</p><div class='mb-3'><input maxlength='80' type='text'  class='form-control inputDC' id='inputIDC"+inputCount4+"' placeholder='soalan' name='value[]'></div>");
+        $("#inputconC").append("<p id='diC"+inputCount4+"'>(0/30)</p><div class='mb-3'><input maxlength='30' type='text'  class='form-control inputDC' id='inputIDC"+inputCount4+"' placeholder='soalan' name='value[]'></div>");
         console.log("CLICL BUTTON 33333");
         inputCount4++;
         console.log("COUNT INPUT" + inputCount4);
@@ -139,7 +139,7 @@ $(document).ready(function () {
             
             arr1[i] = $("#inputID"+style + i).val().length;
             // console.log("length" + input1Length);
-            $("#di"+style + i).text("(" + arr1[i] + "/80)");
+            $("#di"+style + i).text("(" + arr1[i] + "/30)");
 
 
         }
@@ -151,7 +151,7 @@ $(document).ready(function () {
                 
                 arr2[i] = $("#inputID"+style + i).val().length;
                 console.log(arr2[i]);
-                $("#di"+style + i).text("(" + arr2[i] + "/80)");
+                $("#di"+style + i).text("(" + arr2[i] + "/30)");
             }
            
 
