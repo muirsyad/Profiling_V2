@@ -75,6 +75,8 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/admin/clients/details/{clients}', [adminController::class, 'details'])->name('Cdetails');
     Route::post('/admin/clients/details/upload', [adminController::class, 'uploadPax'])->name('upload');
     Route::get('/admin/clients/delete/{clients}', [adminController::class, 'Cdelete'])->name('Cdelete');
+    Route::get('/admin/clients/Ddelete/{clients}', [adminController::class, 'CDdelete'])->name('CDdelete');
+    Route::get('/admin/clients/restore/{clients}', [adminController::class, 'Crestore'])->name('Crestore');
     Route::post('/admin/clients/change/{clients}', [adminController::class, 'change'])->name('Cupdate');
     Route::post('/admin/clients/logo/{clients}', [adminController::class, 'storeImage'])->name('image.store');
     Route::get('/admin/questions', [adminController::class, 'vquest'])->name('vquest');
@@ -114,6 +116,9 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
 //accesor route
 Route::middleware(['auth', 'is_accesor'])->group(function () {
     route::get('/AC-index', [adminController::class, 'ac_index'])->name('acindex');
+    Route::get('/pax/delete/{users}', [adminController::class, 'Udelete'])->name('Udelete');
+    Route::get('/pax/restore/{users}', [adminController::class, 'Urestore'])->name('Urestore');
+    Route::get('/pax/DDdelete/{users}', [adminController::class, 'UDdelete'])->name('UDdelete');
     route::get('/remarks/{users}', [adminController::class, 'remarks'])->name('remarks');
     route::post('/remarks/update', [adminController::class, 'updateRemarks1'])->name('Remup1');
     route::post('/remarks2/update', [adminController::class, 'updateRemarks2'])->name('Remup2');

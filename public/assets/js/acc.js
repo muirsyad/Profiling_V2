@@ -26,7 +26,7 @@ $(document).ready(function () {
     
     $("#row1").click(function () {
 
-        $("#elementId").append("<div class='mb-3'><textarea maxlength='110' class='form-control' id='rem1inputId' name='value[]' placeholder='remarks' rows='2'></textarea></div>");
+        $("#elementId").append("<div class='mb-3'><textarea maxlength='80' class='form-control' id='rem1inputId' name='value[]' placeholder='remarks' rows='2'></textarea></div>");
         console.log("CLICL BUTTON");
         inputCount1++;
         console.log("COUNT INPUT" + inputCount1);
@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     $("#row2").click(function () {
 
-        $("#elementId2").append("<div class='mb-3'><textarea maxlength='110' class='form-control' id='rem2inputId' name='value[]' placeholder='remarks' rows='2'></textarea></div>");
+        $("#elementId2").append("<div class='mb-3'><textarea maxlength='80' class='form-control' id='rem2inputId' name='value[]' placeholder='remarks' rows='2'></textarea></div>");
         console.log("CLICL BUTTON 2222");
         inputCount2++;
         console.log("COUNT INPUT" + inputCount2);
@@ -48,7 +48,7 @@ $(document).ready(function () {
 
     $("#row3").click(function () {
 
-         $("#elementId3").append("<div class='mb-3'><textarea maxlength='110' class='form-control' id='rem2inputId' name='value[]' placeholder='remarks' rows='2'></textarea></div>");
+         $("#elementId3").append("<div class='mb-3'><textarea maxlength='80' class='form-control' id='rem2inputId' name='value[]' placeholder='remarks' rows='2'></textarea></div>");
         console.log("CLICL BUTTON 33333");
         inputCount3++;
         console.log("COUNT INPUT" + inputCount3);

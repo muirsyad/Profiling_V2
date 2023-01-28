@@ -15,6 +15,7 @@ use App\Imports\UsersImport;
 use App\Models\Users;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Mail\Signup;
+use App\Models\Answer_records;
 use App\Models\Remarks;
 use Illuminate\Support\Facades\Mail;
 
@@ -143,6 +144,7 @@ class adminController extends Controller
         // $select = Clients::all()->where('is_delete', '0');
 
         $clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0');
+        $deleted = Clients::all()->where('is_delete', 1)->where('is_admin',0);
         foreach ($clients as $i => $client) {
             $answercount = DB::table('answer_records')->where('client_id', $client->id)->count();
             if ($answercount > 0) {
@@ -185,9 +187,12 @@ class adminController extends Controller
             $x = 1;
         }
 
+         
+        
         return view('admin.view_clients', [
             'clients' => $clients,
             'code' => $code,
+            'delete' => $deleted,
 
         ]);
     }
@@ -617,14 +622,17 @@ class adminController extends Controller
         $current = auth()->user()->client_id;
         // $pax = DB::table('users')->where('client_id', $current)->where('role_id',2)->get();
         $clients = DB::table('clients')->where('id', $current)->first();
-        $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->get();
+        $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete',0)->get();
 
 
 
 
         $department = DB::table('departments')->get();
-        $countre = DB::table('answer_records')->where('client_id', $clients->id)->count();
+        $countre = DB::table('answer_records')->where('client_id', $clients->id)->where('is_delete',0)->count();
         $countall = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->count();
+
+        
+        
 
         $allc = count($participants);
         if ($allc > 0) {
@@ -638,11 +646,13 @@ class adminController extends Controller
         $valuevar = $progress . "%";
 
         $update = $this->updatestts($participants);
+        $deleted = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete',1)->get();
 
 
         return view('Accessor\index', [
             'pax' => $participants,
             'var' => $valuevar,
+            'delete' => $deleted,
         ]);
     }
 
@@ -820,12 +830,65 @@ class adminController extends Controller
 
     public function Cdelete(Clients $clients)
     {
-        //$delete = DB::table('clients')->where('id', $clients->id)->delete();
-        // $delete = Clients::find($clients->id)->delete();
+        // dd($clients->id);
         $delete = Clients::find($clients->id)->update(['is_delete' => '1']);
-        // $delete = Clients::find($clients->id)->get();
-        // dd($delete);
+        
         return redirect('/admin/clients/view')->with('message', 'Departments deleted successfully');
+    }
+    public function CDdelete(Clients $clients)
+    {
+        
+        // $delete = Clients::find($clients->id)->delete();
+        $pax = User::where('client_id',$clients->id)->get();
+        // dd($pax);
+        // dd($pax);
+        foreach($pax as $pax){
+            // dump($pax->id);
+            
+            $anscount = Answer_records::where('user_id',$pax->id)->count();
+            
+            if($anscount > 0){
+                $ans = Answer_records::where('user_id',$pax->id)->delete();
+            }
+            $pax = User::where('id',$pax->id)->delete();
+        }
+        $delete = Clients::find($clients->id)->delete();
+
+        
+        return redirect('/admin/clients/view')->with('message', 'Departments deleted successfully');
+    }
+    public function Crestore(Clients $clients)
+    {
+        // dd($clients->id);
+        $delete = Clients::find($clients->id)->update(['is_delete' => '0']);
+        
+        return redirect('/admin/clients/view')->with('message', 'Departments deleted successfully');
+    }
+    public function Udelete(User $users)
+    {
+        
+        
+        $delete = User::find($users->id)->update(['is_delete' => '1']);
+        $delete = Answer_records::where('user_id',$users->id)->update(['is_delete' => '1']);
+        return redirect(route('acindex'))->with('message', 'Departments deleted successfully');
+    }
+    public function Urestore(User $users)
+    {
+        
+        
+        $restore = User::find($users->id)->update(['is_delete' => '0']);
+        $restore = Answer_records::where('user_id',$users->id)->update(['is_delete' => '0']);
+        return redirect(route('acindex'))->with('message', 'Departments deleted successfully');
+    }
+
+    public function UDdelete(User $users)
+    {
+        
+        
+        
+        $restore = Answer_records::where('user_id',$users->id)->delete();
+        $restore = User::find($users->id)->delete();
+        return redirect(route('acindex'))->with('message', 'Departments deleted successfully');
     }
 
     public function update(Clients $clients)

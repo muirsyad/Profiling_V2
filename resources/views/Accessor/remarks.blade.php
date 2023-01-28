@@ -146,7 +146,7 @@
                                 <div class="mb-3">
                                     {{-- <input maxlength="90" value="{{$rem}}" type="text"class="form-control" placeholder="soalan" name="value[]"
                             id="inputId"> --}}
-                                    <textarea maxlength='110' class='form-control color-black' id='rem1inputId' name='value[]' placeholder='remarks'
+                                    <textarea maxlength='80' class='form-control color-black' id='rem1inputId' name='value[]' placeholder='remarks'
                                         rows='2'>{{ $rem }}</textarea>
 
                                 </div>
@@ -155,7 +155,7 @@
                             <div class="mb-3">
 
 
-                                <textarea maxlength="110" class="form-control color-black" name="value[]" id="exampleFormControlTextarea1"
+                                <textarea maxlength="80" class="form-control color-black" name="value[]" id="exampleFormControlTextarea1"
                                     rows="2" placeholder="remarks"></textarea>
                             </div>
                         @endif
@@ -197,7 +197,7 @@
                                 <div class="mb-3">
                                     {{-- <input maxlength="90" value="{{$rem}}" type="text"class="form-control" placeholder="soalan" name="value[]"
                             id="inputId"> --}}
-                                    <textarea maxlength='110' class='form-control color-black' id='rem2inputId' name='value[]' placeholder='remarks'
+                                    <textarea maxlength='80' class='form-control color-black' id='rem2inputId' name='value[]' placeholder='remarks'
                                         rows='2'>{{ $rem }}</textarea>
 
                                 </div>
@@ -206,7 +206,7 @@
                             <div class="mb-3">
 
 
-                                <textarea maxlength="110" class="form-control color-black" id="exampleFormControlTextarea1" rows="2"
+                                <textarea maxlength="80" class="form-control color-black" id="exampleFormControlTextarea1" rows="2"
                                     placeholder="remarks"></textarea>
                             </div>
                         @endif
@@ -246,7 +246,7 @@
                                 <div class="mb-3">
                                     {{-- <input maxlength="90" value="{{$rem}}" type="text"class="form-control" placeholder="soalan" name="value[]"
                             id="inputId"> --}}
-                                    <textarea maxlength='110' class='form-control color-black' id='rem3inputId' name='value[]' placeholder='remarks'
+                                    <textarea maxlength='80' class='form-control color-black' id='rem3inputId' name='value[]' placeholder='remarks'
                                         rows='2'>{{ $rem }}</textarea>
 
                                 </div>
@@ -255,7 +255,7 @@
                             <div class="mb-3">
 
 
-                                <textarea maxlength="110" class="form-control color-black" id="exampleFormControlTextarea1" rows="2"
+                                <textarea maxlength="80" class="form-control color-black" id="exampleFormControlTextarea1" rows="2"
                                     placeholder="remarks"></textarea>
                             </div>
                         @endif

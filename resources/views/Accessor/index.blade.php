@@ -12,9 +12,83 @@
         <h1>Accessor</h1>
     </center>
 
-    
-    <input id="myInput" type="text" placeholder="Search by name..">
-    <br><br>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span style="color: red">* please careful because if you delete from here it will delete from the database!!</span>
+                    <table id="participants">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>action</th>
+                            </tr>
+
+                        </thead>
+                        <tbody id="myList3">
+                            @php
+                                $i = 1;
+                            @endphp
+
+                            @foreach ($delete as $del)
+                                
+                                <tr>
+
+
+                                    <td>{{ $del->name }}</td>
+                                    <td>{{ $del->email }}</td>
+                                    
+
+
+                                    
+
+                                    <td>
+                                        <div class="row">
+                                           
+                                                <div class="col"><a href="{{ route('Urestore', $del->id) }}"
+                                                        aria-disabled="true"><i class="fas fa-trash-restore "></i></a></div>
+                                           
+                                            
+                                            <div class="col"><a href="{{ route('UDdelete', $del->id) }}"><i
+                                                        class="fas fa-trash-alt igreen"></i></a></div>
+
+
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-between">
+
+        <input id="myInput" type="text" placeholder="Search by name..">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Show deleted
+        </button>
+
+    </div>
+
     <h1>{{ $var }}</h1>
     <div class="progress mb-3" style="margin-bottom: 20px; margin-top: 20px;">
         <div id="progress" class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 25%;"
@@ -95,7 +169,8 @@
                             @endif
                             <div class="col"><a href="{{ route('remarks', $pax->id) }}" aria-disabled="true"><i
                                         class="	fas fa-edit"></i></a></div>
-                            <div class="col"><a href="#"><i class="fas fa-trash-alt igreen"></i></a></div>
+                            <div class="col"><a href="{{ route('Udelete', $pax->id) }}"><i
+                                        class="fas fa-trash-alt igreen"></i></a></div>
 
 
 

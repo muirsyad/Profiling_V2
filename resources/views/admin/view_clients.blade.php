@@ -57,10 +57,23 @@
         }
     </style>
     <h1 class="fw-bolder text-dark mb-3">List of Clients</h1>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add new Clients
+
+
+    <div class="d-flex justify-content-between">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add new Clients
+        </button>
+
+       <!-- Button trigger modal -->
+       <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#deleted">
+        show deleted
     </button>
+    </div>
+
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,20 +146,23 @@
                 @php
                     $i++;
                     
-                    
                 @endphp
                 <tr>
                     <td>{{ $i }}</td>
-                    <td>{{$clients->created_at}}</td>
+                    <td>{{ $clients->created_at }}</td>
                     <td>{{ $clients->client }}</td>
                     <td>{{ $clients->address }}</td>
-                   
+
                     @if ($clients->status == 1)
-                        <td><div class="done">Done</div></td>
+                        <td>
+                            <div class="done">Done</div>
+                        </td>
                     @else
-                    <td><div class="undone">Uncompleted</div></td>
+                        <td>
+                            <div class="undone">Uncompleted</div>
+                        </td>
                     @endif
-                    
+
                     <td>
 
                         <div class="row">
@@ -198,4 +214,65 @@
             @endforeach
         </tbody>
     </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleted" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <span  style="color: red">** please beware becasue if you delete here it will remove clients from database</span>
+                        <table id="participants" class="participants-view">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    
+                                    <th style="width: 50%">Name</th>
+                                   
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach ($delete as $del)
+                                    @php
+                                        $i++;
+                                        
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        
+                                        <td>{{ $del->client }}</td>
+                                        
+                    
+                                        
+                    
+                                        <td>
+                    
+                                            <div class="row">
+                                                <div class="col"><a href="{{ route('Crestore', $del->id) }}"><i
+                                                            class="fas fa-trash-restore igreen"></i></a></div>
+                    
+                                                <div class="col"><a href="{{ route('CDdelete', $del->id) }}"><i
+                                                            class="fas fa-trash-alt igreen"></i></a></div>
+                                            </div>
+                    
+                                        </td>
+                                        
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
