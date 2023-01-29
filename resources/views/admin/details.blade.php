@@ -1,6 +1,14 @@
 @extends('admin_template')
 @section('content')
 
+<style>
+  .dis-icon {
+            color: grey;
+            cursor: not-allowed;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+</style>
     {{-- {{ $clients->id }}
     {{ $clients->address }} --}}
 
@@ -119,6 +127,7 @@
         <div id="progress" class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 25%;"
             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ $var }}</div>
     </div>
+    
 
 
     <table id="participants">
@@ -128,6 +137,7 @@
                 <th>Email</th>
                 <th>Department</th>
                 <th>Status</th>
+                <th>action</th>
             </tr>
 
         </thead>
@@ -173,6 +183,14 @@
                     <div class="unregister">Unregister </div>
                 </td>
                 @endif
+
+                <td>  @if ($var === '100%')
+                  <div class="col"><a href="{{ route('report_inv', $participants->id) }}" aria-disabled="true"><i
+                              class="fas fa-download "></i></a></div>
+              @else
+                  <div class="col"><a href="{{ route('report_inv', $participants->id) }}" class="dis-icon"
+                          aria-disabled="true"><i class="fas fa-download dis-icon "></i></a></div>
+              @endif</td>
             </tr>
             
             @endforeach

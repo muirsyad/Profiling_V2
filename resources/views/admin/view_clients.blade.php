@@ -72,6 +72,8 @@
     </button>
     </div>
 
+    <input id="myInput" class="mb-3" type="text" placeholder="Search by name..">
+
 
 
 
@@ -138,7 +140,7 @@
                 <th>action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="myList3">
             @php
                 $i = 0;
             @endphp
@@ -275,4 +277,14 @@
                 </div>
             </div>
         </div>
+        <script>
+             $(document).ready(function() {
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myList3 tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+        </script>
 @endsection

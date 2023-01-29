@@ -8,6 +8,7 @@
 </head>
 <body class="h-screen m-0 bg-gradient-to-b from-green-500 to-green-900">
     <div class="md:container ">
+      
         @yield('content')
     </div>
 </body>

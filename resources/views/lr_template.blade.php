@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Test</title>
+    <title>DISC Profiling</title>
+    <link rel="icon" href="{{URL::asset('assets/img/headlogo.png')}}" type="image/icon type">
 
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ URL::asset('jquery\dist\jquery.js') }}"></script>

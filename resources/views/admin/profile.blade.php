@@ -62,7 +62,7 @@
                                 <div class="col-6">
 
                                     <div class="mb-3"><label class="form-label" for="first_name"><strong>Password</strong>
-                                        </label><input class="form-control" type="password" id="first_name"
+                                        </label><input class="form-control" type="password" id="password"
                                             placeholder="**********" name="password" autocomplete="new-password"> </div>
 
 
@@ -74,10 +74,15 @@
 
                                     <div class="mb-3"><label class="form-label" for="last_name"><strong>Confirm
                                                 password</strong></label> <input
-                                            class="form-control" type="password" id="last_name" placeholder="**********"
+                                            class="form-control" type="password" id="comfirmationpassword" placeholder="**********"
                                             name="comfirmationpassword"></div>
 
 
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                    <span>Show Password</span>
                                 </div>
 
                             </div>
@@ -93,6 +98,24 @@
     <script>
         $(document).ready(function() {
             $("#hideshow")
+        });
+
+        $("#vehicle1").click(function() {
+            // console.log("click");
+            // $('#floatingPassword').attr('type', 'text');
+            if ($(this).is(':checked')) {
+                // Changing type attribute
+                // $("#password").attr("type", "text");
+                console.log('checkked');
+                $("#password").attr("type", "text");
+                $("#comfirmationpassword").attr("type", "text");
+            }
+            else{
+                console.log('unckecked');
+                $("#password").attr("type", "password");
+                $("#comfirmationpassword").attr("type", "password");
+            }
+
         });
     </script>
 @endsection

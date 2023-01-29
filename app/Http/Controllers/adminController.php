@@ -56,8 +56,8 @@ class adminController extends Controller
 
         foreach ($clients as $i => $client) {
             $answercount = DB::table('answer_records')->where('client_id', $client->id)->count();
-            $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
-            $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
+            $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->where('is_delete', '0')->count();
+            $all = User::where('client_id', $client->id)->where('role_id', 2)->where('is_delete', '0')->count();
 
             if ($answercount > 0) {
                 //change status if all user answer
@@ -143,13 +143,17 @@ class adminController extends Controller
     {
         // $select = Clients::all()->where('is_delete', '0');
 
-        $clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0');
+        //$clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0')->orderBy('created_at')->get();
+        $clients = Clients::orderBy('created_at', 'DESC')->where('is_delete', '0')->where('is_admin', '0')->orderBy('created_at')->get();
+        // dd($clients);
         $deleted = Clients::all()->where('is_delete', 1)->where('is_admin', 0);
         foreach ($clients as $i => $client) {
             $answercount = DB::table('answer_records')->where('client_id', $client->id)->count();
             if ($answercount > 0) {
-                $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->count();
-                $all = User::where('client_id', $client->id)->where('role_id', 2)->count();
+                $userdone = User::where('client_id', $client->id)->where('status', 1)->where('role_id', 2)->where('is_delete', '0')->count();
+                $all = User::where('client_id', $client->id)->where('role_id', 2)->where('is_delete', '0')->count();
+
+                
 
                 // dump($client->client, $userdone, $all, "ANSWERCOUNT", $answercount);
 
@@ -579,7 +583,8 @@ class adminController extends Controller
 
 
         $clients = DB::table('clients')->where('id', $clients->id)->first();
-        $participants = DB::table('users')->where('client_id', $clients->id)->get();
+        //$participants = DB::table('users')->where('client_id', $clients->id)->get();
+        $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete', 0)->get();
         // $participants = Users::where('client_id', $clients->id)->get();
         //  dd($participants);
 
@@ -587,7 +592,7 @@ class adminController extends Controller
 
         $department = DB::table('departments')->get();
         $countre = DB::table('answer_records')->where('client_id', $clients->id)->count();
-        $countall = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->count();
+        $countall = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete', 0)->count();
         // dd($countall,$countre);
         // $allc = count($participants);
         if ($countall > 0) {
