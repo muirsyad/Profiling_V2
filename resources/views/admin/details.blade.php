@@ -1,5 +1,6 @@
 @extends('admin_template')
 @section('content')
+
     {{-- {{ $clients->id }}
     {{ $clients->address }} --}}
 

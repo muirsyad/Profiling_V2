@@ -43,6 +43,28 @@
                 {{-- top-nav --}}
                 <x-nav-top-ad />
                 <div class="container-fluid">
+                    @if (session()->has('message'))
+                        <script>
+                            Swal.fire({
+                                title: 'Success',
+                                text: '{{ session()->get('message') }}',
+                                icon: 'success',
+                                confirmButtonText: 'Cool'
+                            })
+                        </script>
+                    @endif
+
+                    @if (session()->has('error'))
+                        <script>
+                            Swal.fire({
+                                title: 'Not Allowed',
+                                text: '{{ session()->get('error') }}',
+                                icon: 'error',
+                                confirmButtonText: 'Cool'
+                            })
+                            console.log('error');
+                        </script>
+                    @endif
                     @yield('content')
                 </div>
             </div>

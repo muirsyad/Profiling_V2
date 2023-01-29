@@ -51,7 +51,7 @@ class adminController extends Controller
         //dd($recent);
         //dd($count);
         $clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0');
-        
+
         $totClients = $clients->count();
 
         foreach ($clients as $i => $client) {
@@ -79,7 +79,7 @@ class adminController extends Controller
                     ->update(['status' => 0]);
             }
         }
-        $clients = Clients::all()->where('is_delete', '0')->where('is_admin','0')->where('status', 0);
+        $clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0')->where('status', 0);
         $uncomplete = $clients->count();
         $c_complete  = Clients::all()->where('is_delete', '0')->where('status', 1)->count();
         $total = User::where('role_id', 2)->count();
@@ -144,7 +144,7 @@ class adminController extends Controller
         // $select = Clients::all()->where('is_delete', '0');
 
         $clients = Clients::all()->where('is_delete', '0')->where('is_admin', '0');
-        $deleted = Clients::all()->where('is_delete', 1)->where('is_admin',0);
+        $deleted = Clients::all()->where('is_delete', 1)->where('is_admin', 0);
         foreach ($clients as $i => $client) {
             $answercount = DB::table('answer_records')->where('client_id', $client->id)->count();
             if ($answercount > 0) {
@@ -187,8 +187,8 @@ class adminController extends Controller
             $x = 1;
         }
 
-         
-        
+
+
         return view('admin.view_clients', [
             'clients' => $clients,
             'code' => $code,
@@ -622,17 +622,17 @@ class adminController extends Controller
         $current = auth()->user()->client_id;
         // $pax = DB::table('users')->where('client_id', $current)->where('role_id',2)->get();
         $clients = DB::table('clients')->where('id', $current)->first();
-        $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete',0)->get();
+        $participants = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete', 0)->get();
 
 
 
 
         $department = DB::table('departments')->get();
-        $countre = DB::table('answer_records')->where('client_id', $clients->id)->where('is_delete',0)->count();
+        $countre = DB::table('answer_records')->where('client_id', $clients->id)->where('is_delete', 0)->count();
         $countall = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->count();
 
-        
-        
+
+
 
         $allc = count($participants);
         if ($allc > 0) {
@@ -646,7 +646,7 @@ class adminController extends Controller
         $valuevar = $progress . "%";
 
         $update = $this->updatestts($participants);
-        $deleted = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete',1)->get();
+        $deleted = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete', 1)->get();
 
 
         return view('Accessor\index', [
@@ -823,70 +823,79 @@ class adminController extends Controller
 
         // $client = Clients::where( 'client', $row[2])->first();
 
-        Excel::import(new UsersImport($request->cid), $request->file);
 
-        return redirect(route('Cview'))->with('success', 'All good!');
+        try {
+            //code...
+            Excel::import(new UsersImport($request->cid), $request->file);
+            return redirect(route('Cview'))->with('success', 'All good!');
+            
+        } catch (\Illuminate\Database\QueryException $th) {
+            return redirect(route('Cview'))->with('error', 'error insert may some duplication of email');
+            // Note any method of class PDOException can be called on $ex.
+        }
+
+        
     }
 
     public function Cdelete(Clients $clients)
     {
         // dd($clients->id);
         $delete = Clients::find($clients->id)->update(['is_delete' => '1']);
-        
+
         return redirect('/admin/clients/view')->with('message', 'Departments deleted successfully');
     }
     public function CDdelete(Clients $clients)
     {
-        
+
         // $delete = Clients::find($clients->id)->delete();
-        $pax = User::where('client_id',$clients->id)->get();
+        $pax = User::where('client_id', $clients->id)->get();
         // dd($pax);
         // dd($pax);
-        foreach($pax as $pax){
+        foreach ($pax as $pax) {
             // dump($pax->id);
-            
-            $anscount = Answer_records::where('user_id',$pax->id)->count();
-            
-            if($anscount > 0){
-                $ans = Answer_records::where('user_id',$pax->id)->delete();
+
+            $anscount = Answer_records::where('user_id', $pax->id)->count();
+
+            if ($anscount > 0) {
+                $ans = Answer_records::where('user_id', $pax->id)->delete();
             }
-            $pax = User::where('id',$pax->id)->delete();
+            $pax = User::where('id', $pax->id)->delete();
         }
         $delete = Clients::find($clients->id)->delete();
 
-        
+
         return redirect('/admin/clients/view')->with('message', 'Departments deleted successfully');
     }
     public function Crestore(Clients $clients)
     {
         // dd($clients->id);
         $delete = Clients::find($clients->id)->update(['is_delete' => '0']);
-        
+
         return redirect('/admin/clients/view')->with('message', 'Departments deleted successfully');
     }
     public function Udelete(User $users)
     {
-        
-        
+
+
         $delete = User::find($users->id)->update(['is_delete' => '1']);
-        $delete = Answer_records::where('user_id',$users->id)->update(['is_delete' => '1']);
+        $delete = Answer_records::where('user_id', $users->id)->update(['is_delete' => '1']);
         return redirect(route('acindex'))->with('message', 'Departments deleted successfully');
     }
     public function Urestore(User $users)
     {
-        
-        
+
+
         $restore = User::find($users->id)->update(['is_delete' => '0']);
-        $restore = Answer_records::where('user_id',$users->id)->update(['is_delete' => '0']);
+        $restore = Answer_records::where('user_id', $users->id)->update(['is_delete' => '0']);
         return redirect(route('acindex'))->with('message', 'Departments deleted successfully');
     }
 
     public function UDdelete(User $users)
     {
-        
-        
-        
-        $restore = Answer_records::where('user_id',$users->id)->delete();
+
+
+
+        $restore = Answer_records::where('user_id', $users->id)->delete();
         $restore = User::find($users->id)->delete();
         return redirect(route('acindex'))->with('message', 'Departments deleted successfully');
     }
@@ -926,8 +935,8 @@ class adminController extends Controller
         ]);
 
         $imageName = time() . '.' . $request->image->extension();
-        $imageName = $request->client . "_" . $request->name. "." . $request->image->extension();
-        $imageName = $request->client ."." . $request->image->extension();
+        $imageName = $request->client . "_" . $request->name . "." . $request->image->extension();
+        $imageName = $request->client . "." . $request->image->extension();
 
 
         // Public Folder
