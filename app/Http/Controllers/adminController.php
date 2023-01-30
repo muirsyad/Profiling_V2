@@ -654,7 +654,7 @@ class adminController extends Controller
         $deleted = DB::table('users')->where('client_id', $clients->id)->where('role_id', 2)->where('is_delete', 1)->get();
 
 
-        return view('Accessor\index', [
+        return view('Accessor.index', [
             'pax' => $participants,
             'var' => $valuevar,
             'delete' => $deleted,
