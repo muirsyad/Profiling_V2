@@ -59,9 +59,11 @@
 
     <div class="d-flex justify-content-between">
         <h1 class="fw-bolder text-dark mb-3">List of Participants</h1>
+        
         <div class="mb-3"><a href="{{ route('smail_csv', $client->link_code) }}" class="btn btn-primary text-decoration-none ">Send Mail
             </a></div>
     </div>
+    <h2 class="fw-bolder text-dark mb-3">Email: {{$client->email}}</h2>
     <h4 style="color: red; font-size:15px;">*Report can be genereted <strong>ONLY</strong> if all participants has answered
     </h4>
 

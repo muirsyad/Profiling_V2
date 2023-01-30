@@ -611,6 +611,7 @@ class adminController extends Controller
         // dd( $participants);
         $update = $this->updatestts($participants);
         //dd($participants);
+        
         return view('admin.details', [
             'client' => $clients,
             'participants' => $participants,
