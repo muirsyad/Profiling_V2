@@ -428,6 +428,13 @@
             left: 5%;
 
         }
+        .date{
+            position: absolute;
+            top: 84%;
+            left: 80%;
+            font-size: 25px;
+
+        }
     </style>
     {{-- page 1     --}}
     <div class="page-break">
@@ -436,6 +443,7 @@
         <img class="logo" src="{{ public_path($logo) }}" width="100px" height="100px">
         <span class="name text-bolder" style="color: #05572f">{{ $users->name }}</span>
         <span class="department text-bolder" style="color: #05572f">{{ $users->department }}</span>
+        <span class="date text-bolder" style="color: #05572f">{{$date}}</span>
 
     </div>
 

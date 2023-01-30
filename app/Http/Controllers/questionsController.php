@@ -1369,6 +1369,8 @@ class questionsController extends Controller
         $better = array_filter($better);
         $avoid = array_filter($avoid);
         $environment = array_filter($environment);
+        $date = date('d  M  Y');
+        
         
         
         $pdf = pdf::loadView('PDF.ProfilingIndividu', [
@@ -1399,6 +1401,7 @@ class questionsController extends Controller
             'HLI' => $HL_I,
             'HLS' => $HL_S,
             'HLC' => $HL_C,
+            'date' => $date,
 
 
         ]);
