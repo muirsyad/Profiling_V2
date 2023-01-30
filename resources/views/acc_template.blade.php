@@ -35,7 +35,7 @@
     </style>
     <div id="wrapper">
         {{-- navigation --}}
-        <x-navAcc />
+        <x-navaccer />
 
 
         <div class="d-flex flex-column" id="content-wrapper">
