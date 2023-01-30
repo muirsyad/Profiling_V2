@@ -30,7 +30,7 @@
         <div class="form-body">
 
             <div class="title  text-white text-center">
-                <h1 class="nomar fw-bold">Create an account</h1>
+                <h1 class="nomar fw-bold">Create an account1</h1>
                 <span>Complete registeration to take DiSC Assessments</span>
 
             </div>

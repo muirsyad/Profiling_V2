@@ -44,15 +44,20 @@ class userController extends Controller
     public function createcode_acc($name){
         $departments = DB::table('departments')->get();
         $code = DB::table('clients')->where('link_code', $name)->first();
-        //dd($departments);
-        return view(
-            'registercodeACC',
-            [
-                'clients' => $code,
-                'dp' => $departments,
-
-            ]
-        );
+        if ($code != null) {
+            return view(
+                'registercodeACC',
+                [
+                    'clients' => $code,
+                    'dp' => $departments,
+    
+                ]
+            );
+        }else{
+            return redirect('/')->with('error', 'Please contact administrator');
+        }
+       
+        
     }
     public function create2()
     {

@@ -76,7 +76,19 @@
                                                 confirmButtonText: 'Cool'
                                             })
                                         </script>
+                                
                                         @endif
+                                @if (session()->has('error'))
+                                        <script>
+                                            Swal.fire({
+                                                title: 'Not Allowed',
+                                                text: '{{ session()->get('error') }}',
+                                                icon: 'error',
+                                                confirmButtonText: 'Cool'
+                                            })
+                                            console.log('error');
+                                        </script>
+                                @endif
                                 {{-- </div>
                                 
                             </div>
