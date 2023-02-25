@@ -25,69 +25,46 @@
 
     
 
-    <form action="{{ route('tempstore') }}" method="post" id="form_template">
+    <form action="{{ route('fearstore') }}" method="post" id="form_template">
         @csrf
         <div id="tab-D" class="card title2 col-10 mx-auto mb-3 tab-d">
             <div class="card-header">
-                <h3 class="text-primary">Behaviour Template</h3>
+                <h3 class="text-primary">Fear & Motivation Template</h3>
             </div>
             <div class="card-body">
                 <h3 class="text-primary mb-3">Dominance (D)</h3>
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <p>Highest</p>
-                        {{-- <input type="hidden" name="style" value="D"> --}}
-                        <div id="inputconDHH" class="exampleDHH">
-                             <span id="chh">{{ $DHHcount }}</span>
-                           <input id="chhD" type="hidden" value="{{ $DHHcount }}">
-                            @foreach ($DHH as $i => $DHH)
-                                @if ($i > 4)
-                                    @break
-                                @endif
-                                <p id="diDHH{{ $i }}"></p>
-                                <div class="mb-3">
-                                    <input type="text" value="{{ $DHH }}" class="form-control inputDHH"
-                                    id="inDHH{{ $i }}" placeholder="soalan" name="valueHH[]" maxlength="100">
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button id="row-DHH" type="button" class="btn btn-primary">Add row HH</button>
-                        
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col">
-                        <p>High</p>
+                        <p>Fear</p>
                         <input type="hidden" name="style" value="D">
                         <div id="inputconDH" class="exampleDH">
-                            <span id="ch">{{ $Dcount }}</span>
-                            <input id="chD" type="hidden" value="{{ $Dcount }}">
-                            @foreach ($Dhigh as $i => $Dhigh)
+                            {{-- <span id="ch">{{ $Dcount }}</span> --}}
+                            {{-- <input id="chD" type="hidden" value="{{ $Dcount }}"> --}}
+                            @foreach ($Dfear as $i => $Dfear)
                                 @if ($i > 4)
                                     @break
                                 @endif
                                 <p id="diDH{{ $i }}"></p>
                                 <div class="mb-3">
-                                    <input type="text" value="{{ $Dhigh }}" class="form-control inputDH"
+                                    <input type="text" value="{{ $Dfear }}" class="form-control inputDH"
                                     id="inDH{{ $i }}" placeholder="soalan" name="valueH[]" maxlength="100">
                                 </div>
                             @endforeach
                         </div>
                     </div>
                     <div class="col">
-                        <p>Low</p>
+                        <p>Motivation</p>
                         <div id="inputconDL" class="exampleDL">
-                            <span id="cl">{{ $Dlcount }}</span>
-                            <input id="clD" type="hidden" value="{{ $Dlcount }}">
-                            @foreach ($DLow as $j => $DLow)
+                            {{-- <span id="cl">{{ $Dlcount }}</span> --}}
+                            {{-- <input id="clD" type="hidden" value="{{ $Dlcount }}"> --}}
+                            @foreach ($Dmot as $j => $Dmot)
                                 @if ($j > 4)
                                     @break
                                 @endif
                                 <p id="diDL{{ $j }}"></p>
                                 <div class="mb-3">
-                                    <input type="text" value="{{ $DLow }}" class="form-control inputDL"
+                                    <input type="text" value="{{ $Dmot }}" class="form-control inputDL"
                                         id="inDL{{ $j }}" placeholder="soalan" name="valueL[]"
                                         maxlength="100">
                                 </div>
@@ -110,52 +87,29 @@
 
     </form>
 
-    <form action="{{ route('tempstore') }}" method="post" id="form_template">
+    <form action="{{ route('fearstore') }}" method="post" id="form_template">
         @csrf
         <input type="hidden" name="style" value="I">
         <div style="display: none " id="tab-i" class="card title2 col-10 mx-auto mb-3">
             <div class="card-header">
-                <h3 class="text-primary">Behaviour Template</h3>
+                <h3 class="text-primary">Fear & Motivation Template</h3>
             </div>
             <div class="card-body">
                 <h3 class="text-primary mb-3">Influance (i)</h3>
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <p>Highest</p>
-                        {{-- <input type="hidden" name="style" value="D"> --}}
-                        <div id="inputconIHH" class="exampleIHH">
-                             <span id="chh">{{ $IHHcount }}</span>
-                           <input id="chhD" type="hidden" value="{{ $IHHcount }}">
-                            @foreach ($IHH as $i => $IHH)
-                                @if ($i > 4)
-                                    @break
-                                @endif
-                                <p id="diIHH{{ $i }}"></p>
-                                <div class="mb-3">
-                                    <input type="text" value="{{ $IHH }}" class="form-control inputIHH"
-                                    id="inIHH{{ $i }}" placeholder="soalan" name="valueHH[]" maxlength="100">
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button id="row-IHH" type="button" class="btn btn-primary">Add row HH</button>
-                        
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col">
-                        <p>High</p>
+                        <p>Fear</p>
                         <div id="inputconIH" class="exampleIH">
-                            <span id="ch">{{ $Icount }}</span>
-                            <input id="chI" type="hidden" value="{{ $Icount }}">
-                            @foreach ($Ihigh as $i => $Ihigh)
+                            {{-- <span id="ch">{{ $Icount }}</span>
+                            <input id="chI" type="hidden" value="{{ $Icount }}"> --}}
+                            @foreach ($Ifear as $i => $Ifear)
                                 @if ($i > 4)
                                     @break
                                 @endif
                                 <p id="diIH{{ $i }}"></p>
                                 <div class="mb-3">
-                                    <input type="text" value="{{ $Ihigh }}" class="form-control inputIH"
+                                    <input type="text" value="{{ $Ifear }}" class="form-control inputIH"
                                     id="inIH{{ $i }}" placeholder="soalan" name="valueH[]"
                                     maxlength="100">
                                 </div>
@@ -163,18 +117,18 @@
                         </div>
                     </div>
                     <div class="col">
-                        <p>Low</p>
+                        <p>Motivation</p>
                         <div id="inputconIL" class="exampleIL">
-                            <span id="cl">{{ $Ilcount }}</span>
-                            <input id="clI" type="hidden" value="{{ $Ilcount }}">
+                            {{-- <span id="cl">{{ $Ilcount }}</span>
+                            <input id="clI" type="hidden" value="{{ $Ilcount }}"> --}}
 
-                            @foreach ($ILow as $j => $ILow)
+                            @foreach ($Imot as $j => $Imot)
                                     @if ($j > 4)
                                         @break
                                     @endif
                                     <p id="diIL{{ $j }}"></p>
                                     <div class="mb-3">
-                                        <input type="text" value="{{ $ILow }}" class="form-control inputIL"
+                                        <input type="text" value="{{ $Imot }}" class="form-control inputIL"
                                         id="inIL{{ $j }}" placeholder="soalan" name="valueL[]"
                                         maxlength="100">
                                     </div>
@@ -196,54 +150,31 @@
 
     </form>
 
-    <form action="{{ route('tempstore') }}" method="post" id="form_template">
+    <form action="{{ route('fearstore') }}" method="post" id="form_template">
         @csrf
         <input type="hidden" name="style" value="S">
         <div style="display: none " id="tab-S" class="card title2 col-10 mx-auto mb-3">
             <div class="card-header">
-                <h3 class="text-primary">Behaviour Template</h3>
+                <h3 class="text-primary">Fear & Motivation Template</h3>
             </div>
             <div class="card-body">
                 <h3 class="text-primary mb-3">Stediness (S)</h3>
 
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <p>Highest</p>
-                        {{-- <input type="hidden" name="style" value="D"> --}}
-                        <div id="inputconSHH" class="exampleSHH">
-                             <span id="chh">{{ $SHHcount }}</span>
-                           <input id="chhD" type="hidden" value="{{ $SHHcount }}">
-                            @foreach ($SHH as $i => $SHH)
-                                @if ($i > 4)
-                                    @break
-                                @endif
-                                <p id="diSHH{{ $i }}"></p>
-                                <div class="mb-3">
-                                    <input type="text" value="{{ $SHH }}" class="form-control inputSHH"
-                                    id="inSHH{{ $i }}" placeholder="soalan" name="valueHH[]" maxlength="100">
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button id="row-SHH" type="button" class="btn btn-primary">Add row HH</button>
-                        
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col">
-                        <p>High</p>
+                        <p>Fear</p>
                         <div id="inputconSH" class="exampleSH">
-                            <span id="ch">{{ $Scount }}</span>
-                            <input id="chS" type="hidden" value="{{ $Scount }}">
+                            {{-- <span id="ch">{{ $Scount }}</span>
+                            <input id="chS" type="hidden" value="{{ $Scount }}"> --}}
 
-                            @foreach ($Shigh as $i => $Shigh)
+                            @foreach ($Sfear as $i => $Sfear)
                                 @if ($i > 4)
                                     @break
                                 @endif
                                 <p id="diSH{{ $i }}"></p>
                                 <div class="mb-3">
-                                    <input type="text" value="{{ $Shigh }}" class="form-control inputSH"
+                                    <input type="text" value="{{ $Sfear }}" class="form-control inputSH"
                                     id="inSH{{ $i }}" placeholder="soalan" name="valueH[]"
                                     maxlength="100">
                                 </div>
@@ -251,18 +182,18 @@
                         </div>
                     </div>
                     <div class="col">
-                        <p>Low</p>
+                        <p>Motivation</p>
                         <div id="inputconSL" class="exampleSL">
-                            <span id="cl">{{ $Slcount }}</span>
-                            <input id="clS" type="hidden" value="{{ $Slcount }}">
+                            {{-- <span id="cl">{{ $Slcount }}</span>
+                            <input id="clS" type="hidden" value="{{ $Slcount }}"> --}}
 
-                            @foreach ($SLow as $j => $SLow)
+                            @foreach ($Smot as $j => $Smot)
                                 @if ($j > 4)
                                     @break
                                 @endif
                                 <p id="diSL{{ $j }}"></p>
                                 <div class="mb-3">
-                                    <input type="text" value="{{ $SLow }}" class="form-control inputSL"
+                                    <input type="text" value="{{ $Smot }}" class="form-control inputSL"
                                     id="inSL{{ $j }}" placeholder="soalan" name="valueL[]"
                                     maxlength="100">
                                 </div>
@@ -284,54 +215,31 @@
         </div>
 
     </form>
-    <form action="{{ route('tempstore') }}" method="post" id="form_template">
+    <form action="{{ route('fearstore') }}" method="post" id="form_template">
         @csrf
         <input type="hidden" name="style" value="C">
         <div style="display: none " id="tab-C" class="card title2 col-10 mx-auto mb-3">
             <div class="card-header">
-                <h3 class="text-primary">Behaviour Template</h3>
+                <h3 class="text-primary">Fear & Motivation Template</h3>
             </div>
             <div class="card-body">
                 <h3 class="text-primary mb-3">Compliance (C)</h3>
 
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <p>Highest</p>
-                        {{-- <input type="hidden" name="style" value="D"> --}}
-                        <div id="inputconCHH" class="exampleCHH">
-                             <span id="chh">{{ $CHHcount }}</span>
-                           <input id="chhD" type="hidden" value="{{ $CHHcount }}">
-                            @foreach ($CHH as $i => $CHH)
-                                @if ($i > 4)
-                                    @break
-                                @endif
-                                <p id="diCHH{{ $i }}"></p>
-                                <div class="mb-3">
-                                    <input type="text" value="{{ $CHH }}" class="form-control inputCHH"
-                                    id="inCHH{{ $i }}" placeholder="soalan" name="valueHH[]" maxlength="100">
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button id="row-CHH" type="button" class="btn btn-primary">Add row HH</button>
-                        
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col">
-                        <p>High</p>
+                        <p>Fear</p>
                         <div id="inputconCH" class="exampleCH">
-                            <span id="ch">{{ $Ccount }}</span>
-                            <input id="chC" type="hidden" value="{{ $Ccount }}">
+                            {{-- <span id="ch">{{ $Ccount }}</span>
+                            <input id="chC" type="hidden" value="{{ $Ccount }}"> --}}
 
-                            @foreach ($Chigh as $i => $Chigh)
+                            @foreach ($Cfear as $i => $Cfear)
                                 @if ($i > 4)
                                     @break
                                 @endif
                                 <p id="diCH{{ $i }}"></p>
                                 <div class="mb-3">
-                                    <input type="text" value="{{ $Chigh }}" class="form-control inputCH"
+                                    <input type="text" value="{{ $Cfear }}" class="form-control inputCH"
                                     id="inCH{{ $i }}" placeholder="soalan" name="valueH[]"
                                     maxlength="100">
                                 </div>
@@ -339,18 +247,18 @@
                         </div>
                     </div>
                     <div class="col">
-                        <p>Low</p>
+                        <p>Motivation</p>
                         <div id="inputconCL" class="exampleCL">
-                            <span id="cl">{{ $Clcount }}</span>
-                            <input id="clC" type="hidden" value="{{ $Clcount }}">
+                            {{-- <span id="cl">{{ $Clcount }}</span>
+                            <input id="clC" type="hidden" value="{{ $Clcount }}"> --}}
 
-                            @foreach ($CLow as $j => $CLow)
+                            @foreach ($Cmot as $j => $Cmot)
                                 @if ($j > 4)
                                     @break
                                 @endif
                                 <p id="diCL{{ $j }}"></p>
                                 <div class="mb-3">
-                                    <input type="text" value="{{ $CLow }}" class="form-control inputCL"
+                                    <input type="text" value="{{ $Cmot }}" class="form-control inputCL"
                                     id="inCL{{ $j }}" placeholder="soalan" name="valueL[]"
                                     maxlength="100">
                                 </div>

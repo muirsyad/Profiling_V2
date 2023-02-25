@@ -5,6 +5,13 @@ $(document).ready(function () {
 
     //start
     //D
+    var inputCountDHH = $("form input").filter(".inputDHH").length;
+    console.log("COUNT INPUT HIGHest  D " + inputCountDHH);
+
+    if (inputCountDHH > rowlimitstr) {
+        $("#row-DHH").attr("disabled", true);
+    }
+
     var inputCountDH = $("form input").filter(".inputDH").length;
     console.log("COUNT INPUT HIGH D " + inputCountDH);
 
@@ -20,6 +27,11 @@ $(document).ready(function () {
     }
 
     //I
+
+    var inputCountIHH = $("form input").filter(".inputIHH").length;
+    console.log("COUNT INPUT HIGHest  I " + inputCountIHH);
+
+
     var inputCountIH = $("form input").filter(".inputIH").length;
     console.log("COUNT INPUT HIGH I " + inputCountIH);
 
@@ -35,6 +47,11 @@ $(document).ready(function () {
     }
 
     //S
+
+    var inputCountSHH = $("form input").filter(".inputSHH").length;
+    console.log("COUNT INPUT HIGHest  S " + inputCountSHH);
+
+
     var inputCountSH = $("form input").filter(".inputSH").length;
     console.log("COUNT INPUT HIGH S" + inputCountSH);
 
@@ -50,6 +67,10 @@ $(document).ready(function () {
     }
 
     //C
+
+    var inputCountCHH = $("form input").filter(".inputCHH").length;
+    console.log("COUNT INPUT HIGHest  D " + inputCountCHH);
+
     var inputCountCH = $("form input").filter(".inputCH").length;
     console.log("COUNT INPUT HIGH C" + inputCountCH);
 
@@ -89,6 +110,20 @@ $(document).ready(function () {
     }
 
 
+    $("#row-DHH").click(function () {
+
+
+        $("#inputconDHH").append("<p id='diDHH" + inputCountDHH + "'>(0/100)</p><div class='mb-3'><input type='text' class='form-control inputDH'  id='inDHH" + inputCountDHH + "' placeholder='soalan' name='valueHH[]' maxlength='100'></div>");
+
+        console.log("CLICL BUTTON");
+        inputCountDHH++;
+        console.log("COUNT INPUT" + inputCountDHH);
+        if (inputCountDHH > rowlimitstr) {
+            $("#row-DHH").attr("disabled", true);
+        }
+        focusCount(inputCountDHH, 'DHH');
+    });
+
     $("#row-DH").click(function () {
 
 
@@ -115,6 +150,20 @@ $(document).ready(function () {
             $("#row-DL").attr("disabled", true);
         }
         focusCount(inputCountDL, 'DL');
+    });
+
+    $("#row-IHH").click(function () {
+
+
+        $("#inputconIHH").append("<p id='diIHH" + inputCountIHH + "'>(0/100)</p><div class='mb-3'><input type='text' class='form-control inputDH'  id='inIHH" + inputCountIHH + "' placeholder='soalan' name='valueHH[]' maxlength='100'></div>");
+
+        console.log("CLICL BUTTON");
+        inputCountIHH++;
+        console.log("COUNT INPUT" + inputCountIHH);
+        if (inputCountIHH > rowlimitstr) {
+            $("#row-IHH").attr("disabled", true);
+        }
+        focusCount(inputCountIHH, 'IHH');
     });
 
     $("#row-IH").click(function () {
@@ -145,6 +194,22 @@ $(document).ready(function () {
         focusCount(inputCountIL, 'IL');
     });
 
+
+    $("#row-SHH").click(function () {
+
+
+        $("#inputconSHH").append("<p id='diSHH" + inputCountSHH + "'>(0/100)</p><div class='mb-3'><input type='text' class='form-control inputDH'  id='inSHH" + inputCountSHH + "' placeholder='soalan' name='valueHH[]' maxlength='100'></div>");
+
+        console.log("CLICL BUTTON");
+        inputCountSHH++;
+        console.log("COUNT INPUT" + inputCountSHH);
+        if (inputCountSHH > rowlimitstr) {
+            $("#row-SHH").attr("disabled", true);
+        }
+        focusCount(inputCountSHH, 'SHH');
+    });
+
+
     $("#row-SH").click(function () {
 
 
@@ -171,6 +236,20 @@ $(document).ready(function () {
             $("#row-SL").attr("disabled", true);
         }
         focusCount(inputCountSL, 'SL');
+    });
+
+    $("#row-CHH").click(function () {
+
+
+        $("#inputconCHH").append("<p id='diCHH" + inputCountCHH + "'>(0/100)</p><div class='mb-3'><input type='text' class='form-control inputDH'  id='inCHH" + inputCountCHH + "' placeholder='soalan' name='valueHH[]' maxlength='100'></div>");
+
+        console.log("CLICL BUTTON");
+        inputCountCHH++;
+        console.log("COUNT INPUT" + inputCountCHH);
+        if (inputCountCHH > rowlimitstr) {
+            $("#row-CHH").attr("disabled", true);
+        }
+        focusCount(inputCountCHH, 'CHH');
     });
 
     $("#row-CH").click(function () {
@@ -269,21 +348,32 @@ $(document).ready(function () {
     var arr1 = [];
     var arr2 = [];
 
+    wordCount(inputCountDHH, 'DHH');
+    focusCount(inputCountDHH, 'DHH');
+
     wordCount(inputCountDH, 'DH');
     focusCount(inputCountDH, 'DH');
     wordCount(inputCountDL, 'DL');
     focusCount(inputCountDL, 'DL');
+
+    wordCount(inputCountIHH, 'IHH');
+    focusCount(inputCountIHH, 'IHH');
 
     wordCount(inputCountIH, 'IH');
     focusCount(inputCountIH, 'IH');
     wordCount(inputCountIL, 'IL');
     focusCount(inputCountIL, 'IL');
 
+
+    wordCount(inputCountSHH, 'SHH');
+    focusCount(inputCountSHH, 'SHH');
     wordCount(inputCountSH, 'SH');
     focusCount(inputCountSH, 'SH');
     wordCount(inputCountSL, 'SL');
     focusCount(inputCountSL, 'SL');
 
+    wordCount(inputCountCHH, 'CHH');
+    focusCount(inputCountCHH, 'CHH');
     wordCount(inputCountCH, 'CH');
     focusCount(inputCountCH, 'CH');
     wordCount(inputCountCL, 'CL');

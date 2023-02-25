@@ -150,6 +150,7 @@
         }
     </style>
     <div class="container page-break">
+        
         @switch($High)
             @case('D')
                 <img src="{{ public_path('assets/img/report/D.png') }}" width="800px" height="1122px">
@@ -200,22 +201,22 @@
 
 <div class="top-right">
     <ul>
-        @foreach ($motivates as $i => $motivate)
+        @foreach ($motS as $i => $motivate)
             <li class="sm-text">{{ $motivate }}</li>
-            @if ($i > 0)
+            {{-- @if ($i > 0)
             @break
-        @endif
+        @endif --}}
     @endforeach
 </ul>
 </div>
 
 <div class="bot-left">
 <ul>
-    @foreach ($improves as $i => $improve)
+    @foreach ($fear as $i => $improve)
         <li class="sm-text">{{ $improve }}</li>
-        @if ($i > 0)
+        {{-- @if ($i > 0)
         @break
-    @endif
+    @endif --}}
 @endforeach
 </ul>
 </div>
@@ -234,6 +235,9 @@
     </div>
 <div class="row-1">
     @switch($HLD)
+        @case("Higest")
+        <span style="color: #d54ce6;" class="hl-1">Highest</span>
+            @break
         @case("High")
         <span style="color: #d54ce6;" class="hl-1">High</span>
             @break
@@ -252,6 +256,9 @@
 </div>
 <div class="row-2">
     @switch($HLI)
+        @case("Higest")
+        <span style="color: #ffcc16;" class="hl-1">Highest</span>
+            @break
         @case("High")
         <span style="color: #ffcc16;" class="hl-1">High</span>
             @break
@@ -270,6 +277,9 @@
 </div>
 <div class="row-3">
     @switch($HLS)
+        @case("Higest")
+            <span style="color: #1c8638;" class="hl-1">Highest</span>
+                @break
         @case("High")
         <span style="color: #1c8638;" class="hl-1">High</span>
             @break
@@ -287,7 +297,11 @@
 </ul>
 </div>
 <div class="row-4">
+    
     @switch($HLC)
+        @case("Higest")
+        <span style="color: #024cad;" class="hl-1">Highest</span>
+            @break
         @case("High")
         <span style="color: #024cad;" class="hl-1">High</span>
             @break
@@ -308,7 +322,23 @@
 
 </div>
 <div class="container page-break">
-<img src="{{ public_path('assets/img/report/4.png') }}" width="800px" height="1122px">
+    @switch($High)
+        @case('D')
+        <img src="{{ public_path('assets/img/report/DM.png') }}" width="800px" height="1122px">
+            @break
+        @case('I')
+        <img src="{{ public_path('assets/img/report/IM.png') }}" width="800px" height="1122px">
+            @break
+        @case('S')
+        <img src="{{ public_path('assets/img/report/SM.png') }}" width="800px" height="1122px">
+            @break
+        @case('C')
+        <img src="{{ public_path('assets/img/report/CM.png') }}" width="800px" height="1122px">
+            @break
+        @default
+            
+    @endswitch
+{{-- <img src="{{ public_path('assets/img/report/4.png') }}" width="800px" height="1122px"> --}}
 <div class="rem-1">
     <ul>
         @if ($cremarks > 0)
@@ -350,7 +380,23 @@
 </div>
 {{-- LAST PAGE --}}
 <div class="container">
-<img src="{{ public_path('assets/img/report/5.png') }}" width="800px" height="1122px">
+    @switch($High)
+        @case('D')
+        <img src="{{ public_path('assets/img/report/DP.png') }}" width="800px" height="1122px">
+            @break
+        @case('I')
+        <img src="{{ public_path('assets/img/report/IP.png') }}" width="800px" height="1122px">
+            @break
+        @case('S')
+        <img src="{{ public_path('assets/img/report/SP.png') }}" width="800px" height="1122px">
+            @break
+        @case('C')
+        <img src="{{ public_path('assets/img/report/CP.png') }}" width="800px" height="1122px">
+            @break
+        @default
+        
+@endswitch
+{{-- <img src="{{ public_path('assets/img/report/5.png') }}" width="800px" height="1122px"> --}}
 <div class="rem-1">
     <ul>
         

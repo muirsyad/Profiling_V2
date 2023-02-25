@@ -255,7 +255,7 @@ class questionsController extends Controller
 
 
 
-       
+
         return view('user.results', [
             'record' => $record,
             'high' => $highV,
@@ -1197,7 +1197,7 @@ class questionsController extends Controller
     }
     //end
 
-    
+
     //version 3 start
     public function report_inv($uid)
     {
@@ -1212,24 +1212,28 @@ class questionsController extends Controller
             ->first();
         $remarks = DB::table('remarks')->where('user_id', $auth)->first();
         $cremarks =  DB::table('remarks')->where('user_id', $auth)->count();
-        if($cremarks > 0){
-            $remarks=$remarks;
-            $remarks->rem_1 = explode(".",$remarks->rem_1);
-            $remarks->rem_2 = explode(".",$remarks->rem_2);
-            $remarks->rem_3 = explode(".",$remarks->rem_3);
-           
-        }
-        else{
+        if ($cremarks > 0) {
+            $remarks = $remarks;
+            $remarks->rem_1 = explode(".", $remarks->rem_1);
+            $remarks->rem_2 = explode(".", $remarks->rem_2);
+            $remarks->rem_3 = explode(".", $remarks->rem_3);
+        } else {
             $remarks = "";
         }
         // dd($remarks);
         //template query
 
-        
+
 
         $template = DB::table('templates_reports')->where('Behaviour_type', $ans->High)->first();
+
         $strength = $template->Strength;
         $strength = explode(".", $strength);
+        $fear = $template->fear;
+        $fear = explode(",", $fear);
+        $motS = $template->motivate_sum;
+        $motS = explode(",", $motS);
+
 
         //fetch motivation management
         $motivate = $template->Wmotivate;
@@ -1254,7 +1258,7 @@ class questionsController extends Controller
         $environment = explode(".", $environment);
 
         //dd($improve,$better,$avoid,$environment);
-        
+
         $High = $ans->High;
         $keywords = $template->keywords;
         $keywords = explode(",", $keywords);
@@ -1263,43 +1267,77 @@ class questionsController extends Controller
         //fetch motivation
 
 
-        
-       
-        $array_plot = explode(",",$ans->plot);
+
+
+        $array_plot = explode(",", $ans->plot);
         $array_plot = array_map('intval', $array_plot);
 
         //assign high or low the style
         $D_value = $array_plot[0];
-        $D_value = $this->compareHL($D_value,"D");
-
+        $D_value = $this->compareHL($D_value, "D");
         $I_value = $array_plot[1];
-        $I_value = $this->compareHL($I_value,"I");
+        $I_value = $this->compareHL($I_value, "I");
         $S_value = $array_plot[2];
-        $S_value = $this->compareHL($S_value,"S");
+        $S_value = $this->compareHL($S_value, "S");
         $C_value = $array_plot[3];
-        $C_value = $this->compareHL($C_value,"C");
+        $C_value = $this->compareHL($C_value, "C");
 
-        // dd($D_value,$S_value,$C_value,$I_value);
+        $higest = 0;
+        foreach ($array_plot as $plt) {
+            if ($plt > $higest) {
+                $higest = $plt;
+                
+            }
+        }
+
+        
+        switch ($higest) {
+            case $array_plot[0]:
+                
+                $D_value = 'Higest';
+                break;
+            case $array_plot[1]:
+                
+                $I_value = 'Higest';
+                break;
+            case $array_plot[2]:
+                
+                $S_value = 'Higest';
+                break;
+            case $array_plot[3]:
+                
+                $C_value = 'Higest';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        
+
+        
         $HL_D = $D_value;
-        $HL_I= $I_value;
+        $HL_I = $I_value;
         $HL_S = $S_value;
         $HL_C = $C_value;
         
 
-        $D_value = $this->styleTemplate("D",$D_value);
-        $I_value = $this->styleTemplate("I",$I_value);
-        $S_value = $this->styleTemplate("S",$S_value);
-        $C_value = $this->styleTemplate("C",$C_value);
+
+        $D_value = $this->styleTemplate("D", $D_value);
+        $I_value = $this->styleTemplate("I", $I_value);
+        $S_value = $this->styleTemplate("S", $S_value);
+        $C_value = $this->styleTemplate("C", $C_value);
         //assign final value into array so can easily display this for style template high or low
-        $D_value = explode(".",$D_value);
-        $I_value = explode(".",$I_value);
-        $S_value = explode(".",$S_value);
-        $C_value = explode(".",$C_value);
+        $D_value = explode(".", $D_value);
+        $I_value = explode(".", $I_value);
+        $S_value = explode(".", $S_value);
+        $C_value = explode(".", $C_value);
         //dd($ans,$array_plot,$D_value,$I_value,$S_value,$C_value);
 
-        
+
         // dd($High);
-        
+
 
 
 
@@ -1318,17 +1356,17 @@ class questionsController extends Controller
         // dd($join);
 
         $personalchart = [];
-        array_push($personalchart, $ans->D, $ans->I,$ans->S,$ans->C);
+        array_push($personalchart, $ans->D, $ans->I, $ans->S, $ans->C);
         $pervalue = $personalchart;
         $personalchart = $this->getURLchart($personalchart);
-        
 
-        
-        
-        
-        $teamChart = $this->bydepart($join->department_id, 'department_id',$ans->client_id);
+
+
+
+
+        $teamChart = $this->bydepart($join->department_id, 'department_id', $ans->client_id);
         $teamvalue = $teamChart;
-        
+
 
 
         $teamChart = $this->getURLchart($teamChart);
@@ -1341,26 +1379,26 @@ class questionsController extends Controller
 
         //dd($companyvalue,$teamvalue,$pervalue);
 
-        
 
-        
+
+
 
         //dd($ans->D." ". $ans->I." ".$ans->S." ".$ans->C,$teamvalue,$companyvalue);
 
-        
+
         $u_among = $this->comteam($join->id);
         // dd($join);
-        $cname = DB::table('clients')->where('id',$join->client_id)->first();
-        
+        $cname = DB::table('clients')->where('id', $join->client_id)->first();
 
-        $logo = "images/".$join->client_id.".png";
+
+        $logo = "images/" . $join->client_id . ".png";
 
         // dd($logo);
-       
-        
 
-        
-        
+
+
+
+
         $best = array_filter($best);
         $motivate = array_filter($motivate);
         $demotive = array_filter($demotive);
@@ -1370,18 +1408,20 @@ class questionsController extends Controller
         $avoid = array_filter($avoid);
         $environment = array_filter($environment);
         $date = date('d  M  Y');
-        
-        
+        // dd($HL_D, $HL_I, $HL_S, $HL_C);
+
+
+        // dd($fear,$motS);
         
         $pdf = pdf::loadView('PDF.ProfilingIndividu', [
             'logo' => $logo,
-            'personalchart' =>$personalchart,
+            'personalchart' => $personalchart,
             'teamChart' => $teamChart,
             'companyChart' => $companyChart,
             'strength' => $strength,
             'motivates' => $motivate,
             'bests' => $best,
-            'demotives'=>$demotive,
+            'demotives' => $demotive,
             'worsts' => $worst,
             'improves' => $improve,
             'betters' => $better,
@@ -1402,6 +1442,8 @@ class questionsController extends Controller
             'HLS' => $HL_S,
             'HLC' => $HL_C,
             'date' => $date,
+            'fear' => $fear,
+            'motS' => $motS,
 
 
         ]);
@@ -1415,7 +1457,7 @@ class questionsController extends Controller
             ])
         );
         // $pdf->setPaper('A4', 'potrait');
-        $docname = 'Profiling Report '.$join->name.'.pdf';
+        $docname = 'Profiling Report ' . $join->name . '.pdf';
         $pdf->setOption('isRemoteEnabled', true);
         return $pdf->stream($docname);
         //return $pdf->download('profiling.pdf');
@@ -2854,7 +2896,7 @@ class questionsController extends Controller
     }
     public function Linequick($name, $value, $width, $height)
     {
-        
+
 
         $qc = new QuickChart(array(
             'width' => $width,
@@ -3634,7 +3676,7 @@ class questionsController extends Controller
     }
 
     //To get averange value from style
-    public function bydepart($d_id, $qury,$cid)
+    public function bydepart($d_id, $qury, $cid)
     {
 
         $sumD = 0;
@@ -3643,7 +3685,7 @@ class questionsController extends Controller
         $sumC = 0;
 
         $qdept = DB::table('answer_records')
-            ->where($qury, $d_id)->where('client_id',$cid)
+            ->where($qury, $d_id)->where('client_id', $cid)
             ->get();
         // dd($qdept);
         $count = count($qdept);
@@ -3753,15 +3795,15 @@ class questionsController extends Controller
         $query = DB::table('answer_records')
             ->where('user_id', $uid)
             ->first();
-        
+
         $H_ish = $query->High;
-        
+
         $dept = $this->selcom($query->client_id);
-        
+
         // $dept = $this->seldept($query->department_id);
         $count = count($dept);
         // dd($dept,$count);
-        
+
         // dd($dept,$count);
 
         // foreach ($dept as $dept) {
@@ -3785,31 +3827,29 @@ class questionsController extends Controller
         //     $value = array();
         //     array_push($value, $sumD, $sumi, $sumS, $sumC);
         // }
-        $same=0;
+        $same = 0;
         // dd($H_ish);
         foreach ($dept as $dept) {
             $High = $dept->High;
-           
+
             switch ($High) {
                 case $H_ish:
                     $same++;
                     break;
-                
+
                 default:
-                    $same=$same;
+                    $same = $same;
             }
-           
         }
-        $same = intval($same/$count*100);
-        
-        
+        $same = intval($same / $count * 100);
+
+
 
 
         return $same;
     }
-    public function percentageamong($value,$client,$dept)
+    public function percentageamong($value, $client, $dept)
     {
-       
     }
     public function seldept($did)
     {
@@ -4233,38 +4273,41 @@ class questionsController extends Controller
         ]);
     }
 
-    public function compareHL($value,$style){
-        
-        if($value > 22){
-            $value ="High";
-        }
-        else{
+    public function compareHL($value, $style)
+    {
+
+        if ($value > 22) {
+            $value = "High";
+        } else {
             $value = "Low";
         }
 
-        
+
         return $value;
     }
 
-    public function styleTemplate($style,$rank){
-       switch ($rank) {
-        case 'High':
-            $qury = DB::table('templates_reports')->where('Behaviour_type',$style)->first();
-            $template = $qury->H_temp;
-            break;
+    public function styleTemplate($style, $rank)
+    {
+        switch ($rank) {
+            case 'Higest':
+                $qury = DB::table('templates_reports')->where('Behaviour_type', $style)->first();
+                $template = $qury->HH_temp;
+                break;
+            case 'High':
+                $qury = DB::table('templates_reports')->where('Behaviour_type', $style)->first();
+                $template = $qury->H_temp;
+                break;
 
-        case 'Low':
-            $qury = DB::table('templates_reports')->where('Behaviour_type',$style)->first();
-            $template = $qury->H_temp;
-            break;
-        
-        default:
-            dd("error");
-            break;
-       }
+            case 'Low':
+                $qury = DB::table('templates_reports')->where('Behaviour_type', $style)->first();
+                $template = $qury->H_temp;
+                break;
 
-       return $template;
+            default:
+                dd("error");
+                break;
+        }
+
+        return $template;
     }
-
-    
 }

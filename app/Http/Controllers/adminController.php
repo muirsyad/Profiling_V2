@@ -224,7 +224,7 @@ class adminController extends Controller
         $highlowI = $this->selBehaviour('I');
         $highlowS = $this->selBehaviour('S');
         $highlowC = $this->selBehaviour('C');
-
+        $DHH =  explode(".", $highlowD->HH_temp);
         $Dhigh = explode(".", $highlowD->H_temp);
         $Dcount = count($Dhigh);
         $DLow = explode(".", $highlowD->L_temp);
@@ -271,45 +271,95 @@ class adminController extends Controller
         $highlowI = $this->selBehaviour('I');
         $highlowS = $this->selBehaviour('S');
         $highlowC = $this->selBehaviour('C');
-
+        $DHH = explode(".", $highlowD->HH_temp);
+        $DHHcount = count($DHH);
         $Dhigh = explode(".", $highlowD->H_temp);
         $Dcount = count($Dhigh);
         $DLow = explode(".", $highlowD->L_temp);
         $Dlcount = count($DLow);
 
+        $IHH = explode(".", $highlowI->HH_temp);
+        $IHHcount = count($IHH);
         $Ihigh = explode(".", $highlowI->H_temp);
         $Icount = count($Ihigh);
         $ILow = explode(".", $highlowI->L_temp);
         $Ilcount = count($ILow);
 
+        $SHH = explode(".", $highlowS->HH_temp);
+        $SHHcount = count($SHH);
         $Shigh = explode(".", $highlowS->H_temp);
         $Scount = count($Shigh);
         $SLow = explode(".", $highlowS->L_temp);
         $Slcount = count($SLow);
 
+        $CHH = explode(".", $highlowC->HH_temp);
+        $CHHcount = count($CHH);
         $Chigh = explode(".", $highlowC->H_temp);
         $Ccount = count($Chigh);
         $CLow = explode(".", $highlowC->L_temp);
         $Clcount = count($CLow);
 
         return view('admin.inv-template4copy', [
+            'DHH' => $DHH,
+            'DHHcount' => $DHHcount,
             'Dhigh' => $Dhigh,
             'DLow' => $DLow,
             'Dcount' => $Dcount,
             'Dlcount' => $Dlcount,
+            'IHH' => $IHH,
+            'IHHcount' => $IHHcount,
             'Ihigh' => $Ihigh,
             'ILow' => $ILow,
             'Icount' => $Icount,
             'Ilcount' => $Ilcount,
+            'SHH' => $SHH,
+            'SHHcount' => $SHHcount,
             'Shigh' => $Shigh,
             'SLow' => $SLow,
             'Scount' => $Scount,
             'Slcount' => $Slcount,
+            'CHH' => $CHH,
+            'CHHcount' => $CHHcount,
             'Chigh' => $Chigh,
             'CLow' => $CLow,
             'Ccount' => $Ccount,
             'Clcount' => $Clcount,
         ]);
+    }
+    public function fear_motivate(){
+        $Dfear = $this->selfear('D');
+        $Ifear = $this->selfear('I');
+        $Sfear = $this->selfear('S');
+        $Cfear = $this->selfear('C');
+
+        $Dmot = $this->selmotiS('D');
+        $Imot = $this->selmotiS('I');
+        $Smot = $this->selmotiS('S');
+        $Cmot = $this->selmotiS('C');
+
+        
+        $Dfear = explode(",", $Dfear->fear);
+        $Ifear = explode(",", $Ifear->fear);
+        $Sfear = explode(",", $Sfear->fear);
+        $Cfear = explode(",", $Cfear->fear);
+        
+        $Dmot = explode(",", $Dmot->motivate_sum);   
+        $Imot = explode(",", $Imot->motivate_sum);    
+        $Smot = explode(",", $Smot->motivate_sum);   
+        $Cmot = explode(",", $Cmot->motivate_sum);    
+        
+        return view('admin.fear&motivate', [
+            'Dfear' => $Dfear,
+            'Ifear' => $Ifear,
+            'Sfear' => $Sfear,
+            'Cfear' => $Cfear,
+            'Dmot' => $Dmot,
+            'Imot' => $Imot,
+            'Smot' => $Smot,
+            'Cmot' => $Cmot,
+        ]);
+        
+
     }
     public function indTemplate3()
     {
@@ -1004,20 +1054,43 @@ class adminController extends Controller
     }
     public function uptemplate(Request $request)
     {
+        
         //dd($request->style);
+        $valueHH = $request['valueHH'];
         $valueH = $request['valueH'];
         $valueL = $request['valueL'];
         // dd($valueH,$valueL);
+        $valueHH = array_filter($valueHH);
         $valueH = array_filter($valueH);
         $valueL = array_filter($valueL);
 
-        $arrvalueH = array();
+        $arrvalueHH = array();
+        $arrvalueHH = implode('.', $valueHH);
+        $arrfear = array();
         $arrvalueH = implode('.', $valueH);
         $arrvalueL = array();
         $arrvalueL = implode('.', $valueL);
         //dd($request);
         $update = DB::table('templates_reports')->where('Behaviour_type', $request['style'])
-            ->update(['L_temp' => $arrvalueL, 'H_temp' => $arrvalueH,]);
+            ->update(['L_temp' => $arrvalueL, 'H_temp' => $arrvalueH,  'HH_temp' => $arrvalueHH ,]);
+
+        return redirect(route('indTemp2'))->with('message', 'Template has been updated');
+    }
+    public function upfearmotivate(Request $request)
+    {
+        $fear = $request['valueH'];
+        $motivation = $request['valueL'];
+
+        $fear = array_filter($fear);
+        $motivation = array_filter($motivation);
+
+        $arrfear = array();
+        $arrfear = implode(',', $fear);
+        $arrmotivation = array();
+        $arrmotivation = implode(',', $motivation);
+
+        $update = DB::table('templates_reports')->where('Behaviour_type', $request['style'])
+            ->update(['fear' => $arrfear, 'motivate_sum' => $arrmotivation,]);
 
         return redirect(route('indTemp2'))->with('message', 'Template has been updated');
     }
@@ -1211,9 +1284,25 @@ class adminController extends Controller
     public function selBehaviour($style)
     {
         $array = DB::table('templates_reports')
-            ->select('L_temp', 'H_temp')
+            ->select('L_temp', 'H_temp','HH_temp')
             ->where('Behaviour_type', $style)
             ->first();
+
+        return $array;
+    }
+    public function selfear($style){
+        $array = DB::table('templates_reports')
+        ->select('fear')
+        ->where('Behaviour_type', $style)
+        ->first();
+
+        return $array;
+    }
+    public function selmotiS($style){
+        $array = DB::table('templates_reports')
+        ->select('motivate_sum')
+        ->where('Behaviour_type', $style)
+        ->first();
 
         return $array;
     }

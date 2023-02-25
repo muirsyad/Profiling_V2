@@ -68,7 +68,9 @@
 
         </div>
     </div>
-    <div class="d-flex justify-content-center ">
+    
+
+    <div class="d-flex justify-content-evenly mb-3">
         <div class="card col-5">
             <div class="card-body shadow">
                 <div class="d-flex justify-content-between">
@@ -85,6 +87,22 @@
 
             </div>
         </div>
+        <div class="card col-5">
+            <div class="card-body shadow">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h1 class="fw-bold text-primary">Fear & Motivation</h1>
+                        <h4 class="text-primary">Small point </h4>
+                    </div>
+                    <div class="align-self-center">
+                        <a href="{{ route('performance') }}"><i class="far fa-eye fa-2x text-gray-300"></i></a>
 
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
+    
 @endsection
