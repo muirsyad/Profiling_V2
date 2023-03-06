@@ -31,6 +31,10 @@ $(document).ready(function () {
     var inputCountIHH = $("form input").filter(".inputIHH").length;
     console.log("COUNT INPUT HIGHest  I " + inputCountIHH);
 
+    if (inputCountIHH > rowlimitstr) {
+        $("#row-IHH").attr("disabled", true);
+    }
+
 
     var inputCountIH = $("form input").filter(".inputIH").length;
     console.log("COUNT INPUT HIGH I " + inputCountIH);
@@ -51,6 +55,9 @@ $(document).ready(function () {
     var inputCountSHH = $("form input").filter(".inputSHH").length;
     console.log("COUNT INPUT HIGHest  S " + inputCountSHH);
 
+    if (inputCountSHH > rowlimitstr) {
+        $("#row-SHH").attr("disabled", true);
+    }
 
     var inputCountSH = $("form input").filter(".inputSH").length;
     console.log("COUNT INPUT HIGH S" + inputCountSH);
@@ -70,6 +77,10 @@ $(document).ready(function () {
 
     var inputCountCHH = $("form input").filter(".inputCHH").length;
     console.log("COUNT INPUT HIGHest  D " + inputCountCHH);
+
+    if (inputCountCHH > rowlimitstr) {
+        $("#row-CHH").attr("disabled", true);
+    }
 
     var inputCountCH = $("form input").filter(".inputCH").length;
     console.log("COUNT INPUT HIGH C" + inputCountCH);
@@ -261,7 +272,7 @@ $(document).ready(function () {
         inputCountCH++;
         console.log("COUNT INPUT" + inputCountCH);
         if (inputCountCH > rowlimitstr) {
-            $("#row-SH").attr("disabled", true);
+            $("#row-CH").attr("disabled", true);
         }
         focusCount(inputCountCH, 'CH');
     });

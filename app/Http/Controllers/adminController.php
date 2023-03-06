@@ -1092,7 +1092,7 @@ class adminController extends Controller
         $update = DB::table('templates_reports')->where('Behaviour_type', $request['style'])
             ->update(['fear' => $arrfear, 'motivate_sum' => $arrmotivation,]);
 
-        return redirect(route('indTemp2'))->with('message', 'Template has been updated');
+        return redirect(route('fm'))->with('message', 'Template has been updated');
     }
 
     public function Update_keywords(Request $request)

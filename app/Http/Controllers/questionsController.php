@@ -1462,6 +1462,270 @@ class questionsController extends Controller
         return $pdf->stream($docname);
         //return $pdf->download('profiling.pdf');
     }
+    //trial
+    public function report_trial($uid)
+    {
+        $auth = $uid;
+        //get plot value
+
+        $ans = DB::table('answer_records')->where('user_id', $auth)->first();
+        $join = DB::table('users')
+            ->join('departments', 'users.department_id', '=', 'departments.id')
+            ->select('users.*', 'departments.department')
+            ->where('users.id', $auth)
+            ->first();
+        $remarks = DB::table('remarks')->where('user_id', $auth)->first();
+        $cremarks =  DB::table('remarks')->where('user_id', $auth)->count();
+        if ($cremarks > 0) {
+            $remarks = $remarks;
+            $remarks->rem_1 = explode(".", $remarks->rem_1);
+            $remarks->rem_2 = explode(".", $remarks->rem_2);
+            $remarks->rem_3 = explode(".", $remarks->rem_3);
+        } else {
+            $remarks = "";
+        }
+        // dd($remarks);
+        //template query
+
+
+
+        $template = DB::table('templates_reports')->where('Behaviour_type', $ans->High)->first();
+
+        $strength = $template->Strength;
+        $strength = explode(".", $strength);
+        $fear = $template->fear;
+        $fear = explode(",", $fear);
+        $motS = $template->motivate_sum;
+        $motS = explode(",", $motS);
+
+
+        //fetch motivation management
+        $motivate = $template->Wmotivate;
+        $motivate = explode(".", $motivate);
+        $best = $template->Wbest;
+        $best = explode(".", $best);
+        $demotive = $template->Wdemotive;
+        $demotive = explode(".", $demotive);
+        $worst = $template->Wworst;
+        $worst = explode(".", $worst);
+
+        //dd($motivate,$best,$demotive,$worst);
+
+        //fetch perfoemance management
+        $improve = $template->A_improve;
+        $improve = explode(".", $improve);
+        $better = $template->O_better;
+        $better = explode(".", $better);
+        $avoid = $template->O_avoid;
+        $avoid = explode(".", $avoid);
+        $environment = $template->Y_environment;
+        $environment = explode(".", $environment);
+
+        //dd($improve,$better,$avoid,$environment);
+
+        $High = $ans->High;
+        $keywords = $template->keywords;
+        $keywords = explode(",", $keywords);
+
+
+        //fetch motivation
+
+
+
+
+        $array_plot = explode(",", $ans->plot);
+        $array_plot = array_map('intval', $array_plot);
+
+        //assign high or low the style
+        $D_value = $array_plot[0];
+        $D_value = $this->compareHL($D_value, "D");
+        $I_value = $array_plot[1];
+        $I_value = $this->compareHL($I_value, "I");
+        $S_value = $array_plot[2];
+        $S_value = $this->compareHL($S_value, "S");
+        $C_value = $array_plot[3];
+        $C_value = $this->compareHL($C_value, "C");
+
+        $higest = 0;
+        foreach ($array_plot as $plt) {
+            if ($plt > $higest) {
+                $higest = $plt;
+                
+            }
+        }
+
+        
+        switch ($higest) {
+            case $array_plot[0]:
+                
+                $D_value = 'Higest';
+                break;
+            case $array_plot[1]:
+                
+                $I_value = 'Higest';
+                break;
+            case $array_plot[2]:
+                
+                $S_value = 'Higest';
+                break;
+            case $array_plot[3]:
+                
+                $C_value = 'Higest';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        
+
+        
+        $HL_D = $D_value;
+        $HL_I = $I_value;
+        $HL_S = $S_value;
+        $HL_C = $C_value;
+        
+
+
+        $D_value = $this->styleTemplate("D", $D_value);
+        $I_value = $this->styleTemplate("I", $I_value);
+        $S_value = $this->styleTemplate("S", $S_value);
+        $C_value = $this->styleTemplate("C", $C_value);
+        //assign final value into array so can easily display this for style template high or low
+        $D_value = explode(".", $D_value);
+        $I_value = explode(".", $I_value);
+        $S_value = explode(".", $S_value);
+        $C_value = explode(".", $C_value);
+        //dd($ans,$array_plot,$D_value,$I_value,$S_value,$C_value);
+
+
+        // dd($High);
+
+
+
+
+
+
+
+        // dd($join);
+
+
+
+
+        //qury get value depat
+
+
+        // $personchart = $this->getURLchart();
+        // dd($join);
+
+        $personalchart = [];
+        array_push($personalchart, $ans->D, $ans->I, $ans->S, $ans->C);
+        $pervalue = $personalchart;
+        $personalchart = $this->getURLchart($personalchart);
+
+
+
+
+
+        $teamChart = $this->bydepart($join->department_id, 'department_id', $ans->client_id);
+        $teamvalue = $teamChart;
+
+
+
+        $teamChart = $this->getURLchart($teamChart);
+
+        $companyChart = $this->byclient($join->client_id, 'client_id');
+        $companyvalue = $companyChart;
+        // dd($companyvalue);
+        $companyChart = $this->getURLchart($companyChart);
+
+
+        //dd($companyvalue,$teamvalue,$pervalue);
+
+
+
+
+
+        //dd($ans->D." ". $ans->I." ".$ans->S." ".$ans->C,$teamvalue,$companyvalue);
+
+
+        $u_among = $this->comteam($join->id);
+        // dd($join);
+        $cname = DB::table('clients')->where('id', $join->client_id)->first();
+
+
+        $logo = "images/" . $join->client_id . ".png";
+
+        // dd($logo);
+
+
+
+
+
+        $best = array_filter($best);
+        $motivate = array_filter($motivate);
+        $demotive = array_filter($demotive);
+        $worst = array_filter($worst);
+        $improve = array_filter($improve);
+        $better = array_filter($better);
+        $avoid = array_filter($avoid);
+        $environment = array_filter($environment);
+        $date = date('d  M  Y');
+        // dd($HL_D, $HL_I, $HL_S, $HL_C);
+
+
+        // dd($fear,$motS);
+        
+        $pdf = pdf::loadView('PDF.ProfilingTrial', [
+            'logo' => $logo,
+            'personalchart' => $personalchart,
+            'teamChart' => $teamChart,
+            'companyChart' => $companyChart,
+            'strength' => $strength,
+            'motivates' => $motivate,
+            'bests' => $best,
+            'demotives' => $demotive,
+            'worsts' => $worst,
+            'improves' => $improve,
+            'betters' => $better,
+            'avoids' => $avoid,
+            'environments' => $environment,
+            'High' => $High,
+            'keywords' => $keywords,
+            'users' => $join,
+            'Dvalues' => $D_value,
+            'Ivalues' => $I_value,
+            'Svalues' => $S_value,
+            'Cvalues' => $C_value,
+            'remarks' => $remarks,
+            'cremarks' => $cremarks,
+            'percent' => $u_among,
+            'HLD' => $HL_D,
+            'HLI' => $HL_I,
+            'HLS' => $HL_S,
+            'HLC' => $HL_C,
+            'date' => $date,
+            'fear' => $fear,
+            'motS' => $motS,
+
+
+        ]);
+        $pdf->getDomPDF()->setHttpContext(
+            stream_context_create([
+                'ssl' => [
+                    'allow_self_signed' => TRUE,
+                    'verify_peer' => FALSE,
+                    'verify_peer_name' => FALSE,
+                ]
+            ])
+        );
+        // $pdf->setPaper('A4', 'potrait');
+        $docname = 'Profiling Report ' . $join->name . '.pdf';
+        $pdf->setOption('isRemoteEnabled', true);
+        return $pdf->stream($docname);
+        //return $pdf->download('profiling.pdf');
+    }
     //end
     //version 3 start
     public function grv3()

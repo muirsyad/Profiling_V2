@@ -195,7 +195,7 @@
                                         @csrf
                                         <div class="mb-3"><input class="form-control" type="text" id="name-2"
                                                 name="client" placeholder="Name" value="{{ $clients->client }}"></div>
-                                        <div class="mb-3"><input class="form-control" type="email" id="email-2"
+                                        <div class="mb-3"><input class="form-control" type="hidden" id="email-2"
                                                 name="email" placeholder="Email" value="{{ $clients->email }}"></div>
                                         <div class="mb-3"><input class="form-control" type="text" id="address-1"
                                                 name="address" placeholder="Address" value="{{ $clients->address }}">

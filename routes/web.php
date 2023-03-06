@@ -90,7 +90,7 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     route::get('/admin/templates/individual', [adminController::class, 'indTemplate'])->name('indTemp');
     route::get('/admin/templates/individual2', [adminController::class, 'indTemplate2'])->name('indTemp2');
     route::get('/admin/templates/individual4', [adminController::class, 'indTemplate4'])->name('indTemp2');
-    route::get('/admin/templates/fear&motivate', [adminController::class, 'fear_motivate'])->name('indTemp2');
+    route::get('/admin/templates/fear&motivate', [adminController::class, 'fear_motivate'])->name('fm');
     route::get('/admin/templates/keywords', [adminController::class, 'Template_key'])->name('key');
     route::get('/admin/templates/motivation', [adminController::class, 'Template_motivate'])->name('motivate');
     route::get('/admin/templates/performance', [adminController::class, 'Template_performance'])->name('performance');
@@ -152,6 +152,8 @@ Route::middleware(['auth'])->group(function () {
     route::get('/pdf2', [questionsController::class, 'inv2'])->name('inv2')->middleware('auth');
     route::get('/pdf/version3', [questionsController::class, 'inv3'])->name('inv3')->middleware('auth');
     route::get('/pdf/version3/{id}', [questionsController::class, 'report_inv'])->name('report_inv')->middleware('auth');
+    route::get('/pdf/version4/{id}', [questionsController::class, 'report_trial'])->name('report_trial')->middleware('auth');
+
 
 
     

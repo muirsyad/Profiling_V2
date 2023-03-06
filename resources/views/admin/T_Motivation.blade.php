@@ -60,9 +60,9 @@
 
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <button type="button" id="btn-D1" class="btn btn-primary">Add Row</button>
-                </div>
+                </div> --}}
 
                 <div class="p-4">
                     <button type="submit" class="btn btn-primary">Save template11</button>

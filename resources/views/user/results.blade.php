@@ -226,11 +226,10 @@
                 <div id="link_wrapper">
 
                 </div>
-                @if ($percentage >= 100)
+                {{-- ori version --}}
+                {{-- @if ($percentage >= 100)
                     <div class="col text center">
-                        {{-- <a href="{{ route('dlpdf') }}" class="btn btn-primary">Download</a> --}}
                         <a href="#" class="btn btn-primary">Home</a>
-                        {{-- <a href="{{ route('inv2') }}" class="btn btn-primary">Download ver 2</a> --}}
                         <a href="{{ route('inv3') }}" class="btn btn-primary" id="ButtonId">Download ver 3</a>
 
                     </div>
@@ -238,10 +237,18 @@
                     <div class="col text center">
 
                         <a href="{{ route('Qhome') }}" class="btn btn-primary">Home</a>
-                        {{-- <a href="{{ route('inv3') }}" class="btn btn-primary">Download Individual</a> --}}
+                        <a href="{{ route('report_inv',Auth::id()) }}" class="btn btn-primary" id="ButtonId">Download ver 3</a>
 
                     </div>
-                @endif
+                @endif --}}
+
+                {{-- trial version individual --}}
+                <div class="col text center">
+
+                    <a href="{{ route('Qhome') }}" class="btn btn-primary">Home</a>
+                    <a href="{{ route('report_trial', Auth::id()) }}" class="btn btn-primary">Download</a>
+
+                </div>
 
             </div>
 
@@ -411,6 +418,7 @@
                     // responsive: true,
 
 
+
                     plugins: {
                         title: {
                             display: false,
@@ -425,6 +433,9 @@
                             //     }
                             // },
                         },
+                        tooltip: {
+                            enabled: false // <-- this option disables tooltips
+                        }
 
 
 

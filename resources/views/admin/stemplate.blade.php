@@ -95,7 +95,7 @@
                         <h4 class="text-primary">Small point </h4>
                     </div>
                     <div class="align-self-center">
-                        <a href="{{ route('performance') }}"><i class="far fa-eye fa-2x text-gray-300"></i></a>
+                        <a href="{{ route('fm') }}"><i class="far fa-eye fa-2x text-gray-300"></i></a>
 
                     </div>
                 </div>

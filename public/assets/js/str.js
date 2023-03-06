@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var rowlimitstr = 1
+    var rowlimitstr = 4
 
 
 
