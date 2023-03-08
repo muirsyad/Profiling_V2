@@ -160,13 +160,21 @@
 
                     <td>
                         <div class="row">
-                            @if ($var === '100%')
+                            {{-- @if ($var === '100%')
                                 <div class="col"><a href="{{ route('report_inv', $pax->id) }}" aria-disabled="true"><i
                                             class="fas fa-download "></i></a></div>
                             @else
                                 <div class="col"><a href="{{ route('report_inv', $pax->id) }}" class="dis-icon"
                                         aria-disabled="true"><i class="fas fa-download dis-icon "></i></a></div>
+                            @endif --}}
+                            @if ($pax->status === 1)
+                                <div class="col"><a href="{{ route('report_inv', $pax->id) }}" aria-disabled="true"><i
+                                    class="fas fa-download "></i></a></div>
+                            @else
+                            <div class="col"><a href="{{ route('report_inv', $pax->id) }}" class="dis-icon"
+                                aria-disabled="true"><i class="fas fa-download dis-icon "></i></a></div>
                             @endif
+                            
                             <div class="col"><a href="{{ route('remarks', $pax->id) }}" aria-disabled="true"><i
                                         class="	fas fa-edit"></i></a></div>
                             <div class="col"><a href="{{ route('Udelete', $pax->id) }}"><i

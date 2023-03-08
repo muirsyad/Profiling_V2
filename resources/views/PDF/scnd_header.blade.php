@@ -440,7 +440,7 @@
     <div class="page-break">
         <img src="{{ public_path('assets/img/report/1.png') }}" width="800px" height="1100px">
         {{-- <img class="logo" src="{{ public_path('images/2_ttbung.jpg') }}" width="200x" height="200px"> --}}
-        <img class="logo" src="{{ public_path($logo) }}" width="100px" height="100px">
+        {{-- <img class="logo" src="{{ public_path($logo) }}" width="100px" height="100px"> --}}
         <span class="name text-bolder" style="color: #05572f">{{ $users->name }}</span>
         <span class="department text-bolder" style="color: #05572f">{{ $users->department }}</span>
         <span class="date text-bolder" style="color: #05572f">{{$date}}</span>
