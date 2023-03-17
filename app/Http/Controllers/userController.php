@@ -12,6 +12,7 @@ use Illuminate\Validation\Rule;
 use PhpParser\Node\Stmt\Switch_;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Users;
 
 class userController extends Controller
 {
@@ -24,7 +25,10 @@ class userController extends Controller
     
     public function create()
     {
-        return view('register');
+        $dp = DB::table('departments')->get();
+        return view('register-public',[
+            'dp' => $dp
+        ]);
     }
     public function createcode($name)
     {
@@ -120,6 +124,75 @@ class userController extends Controller
             ]);
 
         }
+        
+
+        //Login
+        //auth()->login($user);
+        return redirect('/')->with('message', 'Your account has been created successfully');
+    }
+
+    public function pubreg(Request $request)
+    {
+        
+        $countdept = DB::table('departments')->get();
+        $ar=array();
+        
+        foreach ($countdept as $dp) {
+            if($dp->id > 0){
+                array_push($ar,$dp->id);
+            } else{
+                $ar = $ar;
+            }
+            
+        }
+        $ar=implode(",",$ar);
+        
+        $formFields = $request->validate([
+            
+            'name' => 'required',
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            
+            'password' => 'required|confirmed|min:6',
+            'client_id' => 'required',
+            'role_id' => 'required',
+            
+            'department_id' => 'required|in:'.$ar,
+            'status' => 'required',
+            'created_at' => 'required',
+            'is_delete' => 'required',
+        ]);
+        
+        
+        
+        //hash password
+        $formFields['password'] = bcrypt($formFields['password']);
+        //create user
+        // $user = User::create($formFields);
+        
+        $role = $formFields['role_id'];
+        
+        
+            
+            // User::where('email', $formFields['email'])
+            // ->update([
+            //     'password' => $formFields['password'],
+            //     'department_id' => $formFields['department_id'],
+            //     'status' => 2,
+            // ]);
+
+            $newUser = new User;
+            $newUser->name = $formFields['name'];
+            $newUser->email = $formFields['email'];
+            $newUser->password = $formFields['password'];
+            $newUser->client_id = $formFields['client_id'];
+            $newUser->department_id = $formFields['department_id'];
+            $newUser->role_id = $formFields['role_id'];
+            $newUser->status = 2;
+            $newUser->created_at = $formFields['created_at'];
+            $newUser->is_delete = $formFields['is_delete'];
+            $newUser->save();
+
+        
         
 
         //Login

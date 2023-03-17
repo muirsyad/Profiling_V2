@@ -62,6 +62,10 @@
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
                     <span>Show Password</span>
                 </div>
+                <div class="mb-3">
+                    <a href="{{route('register')}}">Create new account</a>
+                </div>
+                
 
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Login</button>

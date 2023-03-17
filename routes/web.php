@@ -25,6 +25,7 @@ Route::post('/auth', [userController::class, 'auth'])->name('auth');
 Route::get('/logout', [userController::class, 'logout'])->name('logout');
 Route::get('/register', [userController::class, 'create'])->name('register');
 //register by client
+Route::post('/publicClient', [userController::class, 'pubreg'])->name('pubR');
 Route::get('/register/{name}', [userController::class, 'createcode'])->name('link');
 Route::post('/Cadmin', [userController::class, 'Rstore'])->name('adminR');
 Route::post('/_UserStore', [userController::class, 'R_User'])->name('U_Store');
